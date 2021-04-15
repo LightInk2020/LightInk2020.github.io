@@ -84,10 +84,15 @@
 <meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210414210256736.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210414225432242.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210414210942114.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210415125750098.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210415125951929.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210329092824673.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210329094838806.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210415191855698.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/TCPsocket.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/04/10/jsjwl02/image-20210415232630215.png">
 <meta property="article:published_time" content="2021-04-10T07:40:56.000Z">
-<meta property="article:modified_time" content="2021-04-14T15:01:07.554Z">
+<meta property="article:modified_time" content="2021-04-15T16:02:13.158Z">
 <meta property="article:author" content="浅墨">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -292,7 +297,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-14 23:01:07" itemprop="dateModified" datetime="2021-04-14T23:01:07+08:00">2021-04-14</time>
+                <time title="修改时间：2021-04-16 00:02:13" itemprop="dateModified" datetime="2021-04-16T00:02:13+08:00">2021-04-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -331,14 +336,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>20k</span>
+              <span>29k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>18 分钟</span>
+              <span>26 分钟</span>
             </span>
 
         </div>
@@ -1277,7 +1282,7 @@ SSL socket API：应用通过API将明文交给socket，SSL将其加密后在互
 <ul>
 <li><p>IP地址标识某一时刻网络中唯一的主机、路由器，但IP地址不好记忆，不便人类使用(没有意义)，人类一般倾向于使用一些有意义的字符串来标识 Internet上的设备。 </p>
 <blockquote>
-<p>例如：<a href="mailto:&#113;&#x7a;&#x68;&#101;&#x6e;&#x67;&#x40;&#x75;&#115;&#116;&#99;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;">&#113;&#x7a;&#x68;&#101;&#x6e;&#x67;&#x40;&#x75;&#115;&#116;&#99;&#46;&#x65;&#x64;&#x75;&#46;&#x63;&#x6e;</a> 所在的邮件服务器<br> <a target="_blank" rel="noopener" href="http://www.ustc.edu.cn/">www.ustc.edu.cn</a> 所在的web服务器 </p>
+<p>例如：<a href="mailto:&#x71;&#122;&#104;&#x65;&#110;&#103;&#x40;&#117;&#x73;&#x74;&#99;&#x2e;&#x65;&#x64;&#x75;&#46;&#99;&#110;">&#x71;&#122;&#104;&#x65;&#110;&#103;&#x40;&#117;&#x73;&#x74;&#99;&#x2e;&#x65;&#x64;&#x75;&#46;&#99;&#110;</a> 所在的邮件服务器<br> <a target="_blank" rel="noopener" href="http://www.ustc.edu.cn/">www.ustc.edu.cn</a> 所在的web服务器 </p>
 </blockquote>
 </li>
 <li><p>存在着“字符串”—IP地址的转换的必要性</p>
@@ -1948,7 +1953,164 @@ SSL socket API：应用通过API将明文交给socket，SSL将其加密后在互
 </ul>
 </li>
 </ul>
-<h4 id="4-6-CDN"><a href="#4-6-CDN" class="headerlink" title="4.6 CDN"></a>4.6 CDN</h4><h3 id="5-Socket（套接字）编程"><a href="#5-Socket（套接字）编程" class="headerlink" title="5 Socket（套接字）编程"></a>5 Socket（套接字）编程</h3><p><img src="/2021/04/10/jsjwl02/image-20210329092824673.png" alt="网络程序设计接口"></p>
+<h4 id="4-6-CDN"><a href="#4-6-CDN" class="headerlink" title="4.6 CDN"></a>4.6 CDN</h4><ul>
+<li><p>视频流量：占据着互联网大部分的带宽。</p>
+<p>Netflix，Youlube:占据37%，16%的ISP下行流量<br><del>1B YouTube用户，</del>75M Netflix用户</p>
+<p>挑战:规模性-如何服务者~1B 用户？</p>
+<p>​    单个超级服务器无法提供服务</p>
+<p>挑战:异构性</p>
+<pre><code>不同用户拥有不同的能力（例如:有线接入和移动用户；带宽丰富和受限用户)
+</code></pre>
+<p>解决方案:分布式的，应用层面的基础设施</p>
+</li>
+<li><p>多媒体：视频</p>
+<ul>
+<li><p>视频：固定速度显示的图像序列，e.g. 24 images/sec</p>
+</li>
+<li><p>网络视频特点：</p>
+<ul>
+<li>高码率：&gt;10x于音频，高的网络带宽需求</li>
+<li>可以被压缩</li>
+<li>90%以上的网络流量是视频 </li>
+</ul>
+</li>
+<li><p>数字化图像：像素的阵列</p>
+</li>
+<li><p>每个像素被若干bits表示</p>
+</li>
+<li><p>编码：使用图像内和图像间的冗余来降低编码的比特数 </p>
+<ul>
+<li>空间冗余（图像内） </li>
+<li>时间冗余（相邻的图像间）</li>
+</ul>
+<p><img src="/2021/04/10/jsjwl02/image-20210415125750098.png" alt="编码方式示例"></p>
+<ul>
+<li><p>编码标准：</p>
+<p>CBR: (constant bit  rate): 以固定速率编码 </p>
+<p>VBR: (variable bit  rate): 视频编码速率随时间的变化而变化</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>存储视频的流化服务</p>
+<p>对于视频文件，并不是将文件全部下载完成以后才进行播放，而是边下载边播放</p>
+</li>
+</ul>
+<p><img src="/2021/04/10/jsjwl02/image-20210415125951929.png" alt="场景示例"></p>
+<ul>
+<li><p>多媒体流化服务示例：DASH</p>
+<ul>
+<li>DASH: Dynamic, Adaptive Streaming over HTTP</li>
+</ul>
+<blockquote>
+<p>通过HTTP协议传送数据</p>
+</blockquote>
+<ul>
+<li><p>可以解决不同客户端、不同网络情况、不同需求的问题</p>
+</li>
+<li><p>服务器: </p>
+<ul>
+<li>将视频文件分割成多个块</li>
+<li>每个块独立存储，编码于不同码率（8-10种）</li>
+</ul>
+<blockquote>
+<p>对于每一个块都可以有不同版本，可以是不同清晰度的、不同编码方式的、不同码率的</p>
+</blockquote>
+<ul>
+<li>告示文件（manifest file）: 提供不同块的URL </li>
+</ul>
+<blockquote>
+<p>告示文件提供块的数量、格式、版本以及相应的URL等信息</p>
+</blockquote>
+</li>
+<li><p>客户端: </p>
+<ul>
+<li><p>先获取告示文件</p>
+<blockquote>
+<p>客户端会周期性地测量服务器到客户端的带宽</p>
+</blockquote>
+</li>
+<li><p>查询告示文件，在一个时刻请求一个块，HTTP头部指定字节范围</p>
+<ul>
+<li>会根据带宽、客户端需求等信息选择下载块的什么版本等，使得播放流畅质量相对高</li>
+<li>如果带宽足够，选择最大码率的视频块</li>
+<li>会话中的不同时刻，可以切换请求不同的编码块（取决于当时的可用带宽等）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>“智能”客户端：客户端自适应决定</p>
+<ul>
+<li>什么时候去请求块 (不至于缓存挨饿，或者溢出)</li>
+<li>请求什么编码速率的视频块 (当带宽够用时，请求高质量的视频块) </li>
+<li>哪里去请求块 (可以向离自己近的服务器发送URL，或者向高可用带宽的服务器请求) </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>挑战：服务器如何通过网络向上百万用户同时流化视频内容 (上百万视频内容)？</p>
+<ul>
+<li><p>选择1：单个的、大的超级服务中心“mega-server” </p>
+<ul>
+<li>服务器到客户端路径上跳数较多，瓶颈链路的带宽小导致停顿 </li>
+<li>“二八规律”决定了网络同时充斥着同一个视频的多个拷贝，效率低（付费高、带宽浪费、效果差） </li>
+<li>单点故障点，性能瓶颈</li>
+</ul>
+<blockquote>
+<p>一个服务器的服务能力有限</p>
+</blockquote>
+<ul>
+<li>周边网络的拥塞</li>
+</ul>
+<blockquote>
+<p>对于网络拥塞问题，服务器难以解决</p>
+</blockquote>
+<ul>
+<li>评价：相当简单，但是这个方法不可扩展</li>
+</ul>
+</li>
+<li><p>选项2：通过CDN（Content distribution networks），全网部署缓存节点，存储服务内容，就近为用户提供服务，提高用户体验</p>
+<ul>
+<li><p>CDN部署节点方式：</p>
+<ul>
+<li>enter deep：将CDN服务器深入到许多接入网，将缓存节点部署到local ISP<ul>
+<li>更接近用户，服务质量高，但是数量多，离用户近所以管理困难</li>
+<li>例子：Akamai, 1700个位置</li>
+</ul>
+</li>
+<li>bring home：部署在少数(10个左右)关键位置，如将服务器簇安装于POP附近（离若干1<sup>st</sup> ISP POP较近）<ul>
+<li>采用租用线路将服务器簇连接起来，部署节点少还保证质量较高，但是跳数较多</li>
+<li>例子：Limelight</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CDN实现内容加速示例：</p>
+<ul>
+<li>提供内容服务者首先将内容的备份通过专用链路拷贝到CDN服务商部署的缓存节点中，然后用户申请资源时，先向内容提供者的源服务器请求，然后源服务器提供给他一个告示文件（manifest file），告示文件中有用户所需内容在各缓存节点中的版本信息、URL存储位置等信息，然后用户客户端可以根据网络情况、距离、用户需求等就近从CDN缓存中获取文件块。</li>
+<li>用户从CDN中请求内容<ul>
+<li>重定向到最近的拷贝，请求内容 </li>
+<li>如果网络路径拥塞，可能选择不同的拷贝</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CDN是应用层协议，是在网络边缘来加速网络运营服务、来提供服务的     over the top</p>
+</li>
+<li><p>OTT （over the top）面临的挑战：在拥塞的互联网上复制 </p>
+<ul>
+<li>从哪个CDN节点中获取内容？</li>
+<li>用户在网络拥塞时的行为？</li>
+<li>在哪些CDN节点中存储什么内容？</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-Socket（套接字）编程"><a href="#5-Socket（套接字）编程" class="headerlink" title="5 Socket（套接字）编程"></a>5 Socket（套接字）编程</h3><p><img src="/2021/04/10/jsjwl02/image-20210329092824673.png" alt="网络程序设计接口"></p>
 <ul>
 <li><p>网络应用是在应用层中运行的应用进程之间的通信。应用进程使用<strong>传输层提供的服务</strong>才能够交换报文，实现<strong>应用层协议</strong>，实现应用</p>
 </li>
@@ -1961,16 +2123,175 @@ SSL socket API：应用通过API将明文交给socket，SSL将其加密后在互
 </ul>
 <p><img src="/2021/04/10/jsjwl02/image-20210329094838806.png" alt="五层结构"></p>
 <ul>
-<li>典型的应用编程接口：<ul>
+<li><p>典型的应用编程接口：</p>
+<ul>
 <li>Berkeley UNIX操作系统   套接字接口（socket interface），简称套接字（socket）</li>
 <li>Windows 上     基于socket的稍不同的API：  WINSOCK</li>
 <li>AT&amp;T为其UNIX系统V定义的一种API：TLI（Transport Layer Interface）</li>
 </ul>
 </li>
-<li></li>
+<li><p>TCP/IP  应用进程使用Socket API访问传输服务</p>
+<p>地点：界面上的SAP（socket）方式： Socket API  </p>
+<p>socket: 分布式应用进程之间的门，传输层协议提供的端到端 服务接口</p>
+</li>
+<li><p>传输层服务的协议，决定了socket也是两种类型</p>
+<ul>
+<li>TCP：可靠的、字节流的服务</li>
 </ul>
-<p>TCP/IP  应用进程使用Socket API访问传输服务</p>
-<p>地点：界面上的SAP（socket）方式：Socket API  </p>
+<blockquote>
+<p>字节流不提供报文的边界区分</p>
+</blockquote>
+<ul>
+<li>UDP：不可靠的（数据UDP数据报）服务</li>
+</ul>
+</li>
+<li><p>套接字：应用进程与端到端传输协议（TCP或UDP）之间的门户</p>
+</li>
+</ul>
+<h4 id="5-1-TCP-Socket"><a href="#5-1-TCP-Socket" class="headerlink" title="5.1 TCP Socket"></a>5.1 TCP Socket</h4><ul>
+<li><p>TCP套接字编程</p>
+<ul>
+<li><p>服务器首先运行，等待连接建立 </p>
+</li>
+<li><p>服务器进程必须先处于运行状态：</p>
+<ul>
+<li>创建欢迎socket和对应的一个套接字整数</li>
+<li>和本地端口捆绑</li>
+<li>在欢迎socket上阻塞式等待接收用户的连接</li>
+</ul>
+<blockquote>
+<p>阻塞式，即没有用户连接，则程序停止在该函数，不向下进行</p>
+</blockquote>
+</li>
+<li><p>客户端需要时，将主动和服务器建立连接： </p>
+<ul>
+<li>创建客户端本地套接字（隐式捆绑到本地port）</li>
+<li>然后指定服务器进程的IP地址和端口号，与服务器进程连接</li>
+</ul>
+<blockquote>
+<p>向服务器请求连接时，服务器的响应未到达时，客户端的socket函数也是阻塞状态</p>
+</blockquote>
+</li>
+<li><p>当客户端的连接请求到达服务器时：</p>
+<p>服务器接受来自用户端的请求 ，解除阻塞式等待，返回一个 新的socket（与欢迎socket不 一样），与客户端通信</p>
+<ul>
+<li>允许服务器与多个客户端通信</li>
+<li>使用源IP和源端口来区分不同的客户端</li>
+</ul>
+</li>
+<li><p>连接API调用有效时，客户端与服务器建立了TCP连接</p>
+</li>
+</ul>
+</li>
+<li><p>TCP socket应用示例</p>
+<p>C/S模式的应用样例: </p>
+<ol>
+<li>客户端从标准输入装置读取一行字符，发送给服务器</li>
+<li>服务器从socket读取字符</li>
+<li>服务器将字符转换成大写 ，然后返回给客户端</li>
+<li>客户端从socket中读取一行字符，然后打印出来</li>
+</ol>
+<p>实际上，这里描述了C-S之间交互的动作次序</p>
+<p><img src="/2021/04/10/jsjwl02/image-20210415191855698.png" alt="TCP socket 示例"></p>
+<ul>
+<li><p>socket中涉及的数据结构介绍</p>
+<ol>
+<li>数据结构 sockaddr_in</li>
+</ol>
+<p>IP地址和port捆绑关系的数据结构（标示进程的端节点）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> &#123;</span></span><br><span class="line">  	<span class="keyword">short</span> sin_family; <span class="comment">//AF_INET</span></span><br><span class="line">      <span class="comment">/*地址族 简单来说就是底层是使用的哪种通信协议来递交数据的，如 AF_INET 用的是 TCP/IPv4；AF_INET6使用的是 TCP/IPv6；而 AF_LOCAL 或者 AF_UNIX 则指的是本地通信（即本次通信是在当前主机上的进程间的通信），一般用绝对路径的形式来指明*/</span></span><br><span class="line">  	u_short sin_port; <span class="comment">//port  端口号</span></span><br><span class="line">  	<span class="class"><span class="keyword">struct</span> <span class="title">in_addr</span> <span class="title">sin_addr</span> ;</span><span class="comment">/*IP address, unsigned long*/</span></span><br><span class="line">  	<span class="keyword">char</span> sin_zero[<span class="number">8</span>];  <span class="comment">//align  </span></span><br><span class="line">      <span class="comment">/*起对齐作用，为了让其他格式的不同长度IP地址和TCP/IP格式中的IP地址对齐*/</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>数据结构 hostent</li>
+</ol>
+<p>域名和IP地址的数据结构</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hostent</span>&#123;</span></span><br><span class="line">	<span class="keyword">char</span> *h_name;<span class="comment">//主机域名</span></span><br><span class="line">    <span class="keyword">char</span> **h_aliases;<span class="comment">//主机的一系列别名</span></span><br><span class="line">    <span class="keyword">int</span> h_addrtype;</span><br><span class="line">	<span class="keyword">int</span> h_length;<span class="comment">/*地址的长度*/</span></span><br><span class="line">    <span class="keyword">char</span> **h_addr_list; <span class="comment">//存储一系列IP地址</span></span><br><span class="line">	<span class="meta">#<span class="meta-keyword">define</span> h_addr h_addr_list[0];</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>作为调用域名解析函数时的参数返回后，将IP地址拷贝到 sockaddr_in的IP地址部分</p>
+</li>
+<li><p>C/S socket 交互：TCP </p>
+<p><img src="/2021/04/10/jsjwl02/TCPsocket.png" alt="TCPsocket交互过程"></p>
+</li>
+</ul>
+<blockquote>
+<p>黑色箭头是TCP的建立连接过程，红色箭头是TCP Socket传输数据</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* client.c */</span> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> <span class="comment">//argv[]</span></span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">sad</span>;</span> <span class="comment">/* structure to hold an IP address of server   服务器的信息sockaddr_in结构*/</span> </span><br><span class="line">	<span class="keyword">int</span> clientSocket; <span class="comment">/* socket descriptor 客户端socket整数*/</span> 	</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">hostent</span> *<span class="title">ptrh</span>;</span> <span class="comment">/* pointer to a host table entry 指针指向hostent的结构体*/</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">char</span> Sentence[<span class="number">128</span>];  </span><br><span class="line">    <span class="keyword">char</span> modifiedSentence[<span class="number">128</span>];  </span><br><span class="line">    <span class="comment">//argv[0]存应用程序本身名字</span></span><br><span class="line">    host = argv[<span class="number">1</span>]; <span class="comment">//argv[1]存服务器域名 字符串</span></span><br><span class="line">    port = atoi(argv[<span class="number">2</span>]); <span class="comment">//argv[2]存服务器端口号 字符串   //atoi()  字符串转为整形</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Create client socket, connect to server</span></span><br><span class="line">    clientSocket = socket(PF_INET, SOCK_STREAM, <span class="number">0</span>);  <span class="comment">//建立TCP socket</span></span><br><span class="line">    	<span class="built_in">memset</span>((<span class="keyword">char</span> *)&amp;sad,<span class="number">0</span>,<span class="keyword">sizeof</span>(sad)); <span class="comment">/* clear sockaddr structure 清零sad*/</span>  </span><br><span class="line">    	sad.sin_family = AF_INET; <span class="comment">/* set family to Internet 地址族*/</span>  </span><br><span class="line">    	sad.sin_port = htons((u_short)port); <span class="comment">//(u_short)  port先转为无符号短整型   然后htons再变成网络次序（大端/小端）</span></span><br><span class="line">    	ptrh = gethostbyname(host);  <span class="comment">/* Convert host name to IP address 由域名得到有效IP地址*/</span> </span><br><span class="line">    	<span class="built_in">memcpy</span>(&amp;sad.sin_addr, ptrh-&gt;h_addr, ptrh-&gt;h_length);  <span class="comment">//将IP地址拷贝到sad.sin_addr </span></span><br><span class="line">    	connect(clientSocket,(struct sockaddr*)&amp;sad,<span class="keyword">sizeof</span>(sad));<span class="comment">//将客户端与服务器建立连接</span></span><br><span class="line">    </span><br><span class="line">    gets(Sentence);<span class="comment">//Get input stream from user 标准input获得用户输入</span></span><br><span class="line">    n=write(clientSocket, Sentence,<span class="built_in">strlen</span>(Sentence)+<span class="number">1</span>); <span class="comment">//Send line to server</span></span><br><span class="line">	n=read(clientSocket, modifiedSentence, <span class="keyword">sizeof</span>(modifiedSentence)); <span class="comment">//Read line from server</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;FROM SERVER: %s\n”,modifiedSentence);</span></span><br><span class="line"><span class="string">       </span></span><br><span class="line"><span class="string">	close(clientSocket); //Close connection</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* server.c */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">sad</span>;</span> <span class="comment">/* structure to hold an IP address of server服务器本地的sockaddr_in*/</span> </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">cad</span>;</span> <span class="comment">/*client的sockaddr_in */</span></span><br><span class="line">	<span class="keyword">int</span> welcomeSocket, connectionSocket; <span class="comment">/* socket descriptor 套接字*/</span> </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">hostent</span> *<span class="title">ptrh</span>;</span> <span class="comment">/* pointer to a host table entry */</span> </span><br><span class="line">    </span><br><span class="line">	<span class="keyword">char</span> clientSentence[<span class="number">128</span>]; </span><br><span class="line">	<span class="keyword">char</span> capitalizedSentence[<span class="number">128</span>]; </span><br><span class="line">    </span><br><span class="line">	port = atoi(argv[<span class="number">1</span>]);</span><br><span class="line">    <span class="comment">//Create welcoming socket at port &amp; Bind a local address</span></span><br><span class="line">	welcomeSocket = socket(PF_INET, SOCK_STREAM, <span class="number">0</span>); </span><br><span class="line">		<span class="built_in">memset</span>((<span class="keyword">char</span> *)&amp;sad,<span class="number">0</span>,<span class="keyword">sizeof</span>(sad)); <span class="comment">/* clear sockaddr structure */</span> </span><br><span class="line">		sad.sin_family = AF_INET; <span class="comment">/* set family to Internet */</span> </span><br><span class="line">		sad.sin_addr.s_addr = INADDR_ANY; <span class="comment">/* set the local IP address */</span> </span><br><span class="line">		sad.sin_port = htons((u_short)port);<span class="comment">/* set the port number */</span> </span><br><span class="line">	bind(welcomeSocket, (struct sockaddr *)&amp;sad, <span class="keyword">sizeof</span>(sad));<span class="comment">//和自己的IP、端口绑定</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">/* Specify the maximum number of clients that can be queued 可以并行10个进程，超过将会拒绝其他连接*/</span></span><br><span class="line">	listen(welcomeSocket, <span class="number">10</span>)</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123; </span><br><span class="line">		connectionSocket=accept(welcomeSocket, (struct sockaddr *)&amp;cad, &amp;alen);<span class="comment">//Wait, on welcoming socket for contact by a client</span></span><br><span class="line">		n=read(connectionSocket, clientSentence, <span class="keyword">sizeof</span>(clientSentence));</span><br><span class="line">		<span class="comment">/* capitalize Sentence and store the result in capitalizedSentence*/</span> 		</span><br><span class="line">    	n=write(connectionSocket, capitalizedSentence, <span class="built_in">strlen</span>(capitalizedSentence)+<span class="number">1</span>); <span class="comment">//Write out the result to socket</span></span><br><span class="line">		close(connectionSocket); <span class="comment">//End of while loop,loop back and wait for another client connection</span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-2-UDP-Socket"><a href="#5-2-UDP-Socket" class="headerlink" title="5.2 UDP Socket"></a>5.2 UDP Socket</h4><ul>
+<li>UDP：在客户端和服务器之间没有连接 <ul>
+<li>没有握手</li>
+<li>发送端必须在每一个报文中明确地指定目标的IP地址和端口号</li>
+<li>服务器必须从收到的分组中提取出发送端的IP地址和端口号 </li>
+</ul>
+</li>
+<li>UDP：传送的数据可能乱序，也可能丢失。UDP为客户端和服务器提供不可靠的字节组的传送服务。</li>
+<li>UDP交互过程：</li>
+</ul>
+<p><img src="/2021/04/10/jsjwl02/image-20210415232630215.png" alt="UDP socket 交互"></p>
+<blockquote>
+<p>UDP的socket包括socket套接字整数值、自己的IP、自己的端口号，而无对方的IP和端口号</p>
+</blockquote>
+<blockquote>
+<p><font color="red">疑问：是不是UDP不能并行？只有一个Socket</font></p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* client.c */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">sad</span>;</span> <span class="comment">/* structure to hold an IP address */</span> </span><br><span class="line">	<span class="keyword">int</span> clientSocket; <span class="comment">/* socket descriptor */</span> </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">hostent</span> *<span class="title">ptrh</span>;</span> <span class="comment">/* pointer to a host table entry */</span> </span><br><span class="line">	</span><br><span class="line">    <span class="keyword">char</span> Sentence[<span class="number">128</span>]; </span><br><span class="line">	<span class="keyword">char</span> modifiedSentence[<span class="number">128</span>]; </span><br><span class="line"></span><br><span class="line">    host = argv[<span class="number">1</span>]; port = atoi(argv[<span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line">    clientSocket = socket(PF_INET, SOCK_DGRAM, <span class="number">0</span>);<span class="comment">//创建客户端 socket</span></span><br><span class="line"></span><br><span class="line">    	<span class="comment">/* determine the server&#x27;s address */</span></span><br><span class="line">		<span class="built_in">memset</span>((<span class="keyword">char</span> *)&amp;sad,<span class="number">0</span>,<span class="keyword">sizeof</span>(sad)); <span class="comment">/* clear sockaddr structure */</span> </span><br><span class="line">		sad.sin_family = AF_INET; <span class="comment">/* set family to Internet */</span> </span><br><span class="line">		sad.sin_port = htons((u_short)port); </span><br><span class="line">		ptrh = gethostbyname(host);</span><br><span class="line">	<span class="comment">/* Convert host name to IP address */</span></span><br><span class="line">		<span class="built_in">memcpy</span>(&amp;sad.sin_addr, ptrh-&gt;h_addr, ptrh-&gt;h_length); </span><br><span class="line">    	<span class="comment">//无connect  客户端socket没有连接到服务器</span></span><br><span class="line">    </span><br><span class="line">	gets(Sentence);<span class="comment">//Get input stream from user</span></span><br><span class="line">	addr_len =<span class="keyword">sizeof</span>(struct sockaddr); </span><br><span class="line">	n=sendto(clientSocket, Sentence, <span class="built_in">strlen</span>(Sentence)+<span class="number">1</span>,(struct sockaddr *) &amp;sad, addr_len); <span class="comment">//Send line to server  要指明服务器IP和端口号</span></span><br><span class="line">    </span><br><span class="line">	n=recvfrom(clientSocket, modifiedSentence, <span class="keyword">sizeof</span>(modifiedSentence),(struct sockaddr *) &amp;sad, &amp;addr_len);<span class="comment">//Read line from server 要指明服务器IP和端口号</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;FROM SERVER: %s\n”,modifiedSentence); </span></span><br><span class="line"><span class="string">	</span></span><br><span class="line"><span class="string">	close(clientSocket); //Close connection</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* server.c */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">sad</span>;</span> <span class="comment">/* structure to hold an IP address */</span> </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">cad</span>;</span></span><br><span class="line">	<span class="keyword">int</span> serverSocket; <span class="comment">/* socket descriptor */</span> </span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">hostent</span> *<span class="title">ptrh</span>;</span> <span class="comment">/* pointer to a host table entry */</span> </span><br><span class="line"></span><br><span class="line">    <span class="keyword">char</span> clientSentence[<span class="number">128</span>]; </span><br><span class="line">	<span class="keyword">char</span> capitalizedSentence[<span class="number">128</span>]; </span><br><span class="line"></span><br><span class="line">    port = atoi(argv[<span class="number">1</span>]);</span><br><span class="line">    <span class="comment">//Create welcoming socket at port &amp; Bind a local address</span></span><br><span class="line"></span><br><span class="line">    serverSocket = socket(PF_INET, SOCK_DGRAM, <span class="number">0</span>); </span><br><span class="line">		<span class="built_in">memset</span>((<span class="keyword">char</span> *)&amp;sad,<span class="number">0</span>,<span class="keyword">sizeof</span>(sad)); <span class="comment">/* clear sockaddr structure */</span> </span><br><span class="line">		sad.sin_family = AF_INET; <span class="comment">/* set family to Internet */</span> </span><br><span class="line">		sad.sin_addr.s_addr = INADDR_ANY; <span class="comment">/* set the local IP address */</span> </span><br><span class="line">		sad.sin_port = htons((u_short)port);<span class="comment">/* set the port number */</span> </span><br><span class="line">	bind(serverSocket, (struct sockaddr *)&amp;sad, <span class="keyword">sizeof</span>(sad));<span class="comment">//和自己的IP、端口绑定</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123; </span><br><span class="line"></span><br><span class="line">        n=recvfrom(serverSocket, clientSentence, <span class="keyword">sizeof</span>(clientSentence), <span class="number">0</span> (struct sockaddr *) &amp;cad, &amp;addr_len );<span class="comment">//Receive messages from clients</span></span><br><span class="line">	<span class="comment">/* capitalize Sentence and store the result in capitalizedSentence*/</span></span><br><span class="line"></span><br><span class="line">        n=sendto(serverSocket , capitalizedSentence, <span class="built_in">strlen</span>(capitalizedSentence)+<span class="number">1</span>,(struct sockaddr *) &amp;cad, &amp;addr_len); <span class="comment">//Write out the result to socket</span></span><br><span class="line">	&#125; <span class="comment">//End of while loop,loop back and wait for another client connection</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-小结"><a href="#6-小结" class="headerlink" title="6 小结"></a>6 小结</h3><h4 id="6-1-章节整体框架"><a href="#6-1-章节整体框架" class="headerlink" title="6.1 章节整体框架"></a>6.1 章节整体框架</h4><ul>
+<li>应用程序体系结构<ul>
+<li>客户-服务器</li>
+<li>P2P </li>
+<li>混合</li>
+</ul>
+</li>
+<li>应用程序需要的服务品质描述：<ul>
+<li>可靠性、带宽、延时、安全</li>
+</ul>
+</li>
+<li>Internet传输层服务模式 <ul>
+<li>可靠的、面向连接的服务： TCP</li>
+<li>不可靠的数据报：UDP</li>
+</ul>
+</li>
+<li>流行的应用层协议：<ul>
+<li>HTTP</li>
+<li>FTP</li>
+<li>SMTP, POP, IMAP </li>
+<li>DNS </li>
+</ul>
+</li>
+<li>Socket编程</li>
+</ul>
+<h4 id="6-2-复习部分协议内容"><a href="#6-2-复习部分协议内容" class="headerlink" title="6.2 复习部分协议内容"></a>6.2 复习部分协议内容</h4><ul>
+<li>应用层协议报文类型：请求/响应报文：<ul>
+<li>客户端请求信息或服务</li>
+<li>服务器以数据、状态码进行响应 </li>
+</ul>
+</li>
+<li>报文格式： <ul>
+<li>首部：关于数据信息的字段</li>
+<li>数据：被交换的信息</li>
+</ul>
+</li>
+<li>控制报文 vs. 数据报文<ul>
+<li>带内（控制与数据报文一起传输）、带外（控制报文与数据报文不在同一端口传输）</li>
+</ul>
+</li>
+<li>集中式 vs. 分散式</li>
+<li>无状态 vs. 维护状态</li>
+<li>可靠的 vs. 不可靠的报文传输 </li>
+<li>在网络边缘处理复杂性</li>
+<li>一个协议定义了在两个或多个通信实体之间交换报文的格式和次序、以及就一条报文传输和接收或其他事件采取的动作</li>
+</ul>
+<hr>
+<p>终于肝完了，然而我们老师已经讲到了链路层，泪目…  </p>
+<p>之后会加快学习进度 /汗  求支持</p>
 
     </div>
 
@@ -2101,7 +2422,7 @@ SSL socket API：应用通过API将明文交给socket，SSL将其加密后在互
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">计算机网络应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">1 网络应用体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E5%AE%A2%E6%88%B7%E6%9C%BA-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%93%E6%9E%84%EF%BC%88Client-Server%EF%BC%8CC-S%EF%BC%89"><span class="nav-text">1.1 客户机&#x2F;服务器结构（Client-Server，C&#x2F;S）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-P2P%E7%BB%93%E6%9E%84"><span class="nav-text">1.2 P2P结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E6%B7%B7%E5%90%88%E7%BB%93%E6%9E%84"><span class="nav-text">1.3 混合结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="nav-text">2 网络应用的进程间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">2.1 进程间通信基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-text">2.2 分布式进程间通信实现机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Internet%E4%BC%A0%E8%BE%93%E5%B1%82%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="nav-text">3 Internet传输层服务模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%8F%8F%E8%BF%B0%E4%BC%A0%E8%BE%93%E5%B1%82%E6%8C%87%E6%A0%87"><span class="nav-text">3.1 描述传输层指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Internet%E4%BC%A0%E8%BE%93%E5%B1%82%E6%8F%90%E4%BE%9B%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E6%9C%8D%E5%8A%A1%EF%BC%9F"><span class="nav-text">3.2 Internet传输层提供什么样的服务？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%89%B9%E5%AE%9A%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%8D%8F%E8%AE%AE"><span class="nav-text">4 特定网络应用以及协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Web%E4%B8%8EHTTP"><span class="nav-text">4.1 Web与HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-1-HTTP%E6%A6%82%E5%86%B5"><span class="nav-text">4.1.1 HTTP概况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-2-HTTP%E8%BF%9E%E6%8E%A5"><span class="nav-text">4.1.2 HTTP连接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-3-HTTP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F%EF%BC%9A%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E5%92%8C%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="nav-text">4.1.3 HTTP报文格式：请求报文和响应报文</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-4-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%9ACookie"><span class="nav-text">4.1.4 用户与服务器的交互：Cookie</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-5-Web%E7%BC%93%E5%AD%98%EF%BC%88%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="nav-text">4.1.5 Web缓存（代理服务器）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-6-%E6%9D%A1%E4%BB%B6GET%E6%96%B9%E6%B3%95"><span class="nav-text">4.1.6 条件GET方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-FTP%EF%BC%9A%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-text">4.2 FTP：文件传输协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-EMail"><span class="nav-text">4.3 EMail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-DNS%EF%BC%88Domain-Name-System%EF%BC%89"><span class="nav-text">4.4 DNS（Domain Name System）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-P2P%E5%BA%94%E7%94%A8"><span class="nav-text">4.5 P2P应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-CDN"><span class="nav-text">4.6 CDN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Socket%EF%BC%88%E5%A5%97%E6%8E%A5%E5%AD%97%EF%BC%89%E7%BC%96%E7%A8%8B"><span class="nav-text">5 Socket（套接字）编程</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">计算机网络应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-text">1 网络应用体系结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E5%AE%A2%E6%88%B7%E6%9C%BA-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%93%E6%9E%84%EF%BC%88Client-Server%EF%BC%8CC-S%EF%BC%89"><span class="nav-text">1.1 客户机&#x2F;服务器结构（Client-Server，C&#x2F;S）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-P2P%E7%BB%93%E6%9E%84"><span class="nav-text">1.2 P2P结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E6%B7%B7%E5%90%88%E7%BB%93%E6%9E%84"><span class="nav-text">1.3 混合结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="nav-text">2 网络应用的进程间通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">2.1 进程间通信基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%88%86%E5%B8%83%E5%BC%8F%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-text">2.2 分布式进程间通信实现机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Internet%E4%BC%A0%E8%BE%93%E5%B1%82%E6%9C%8D%E5%8A%A1%E6%A8%A1%E5%9E%8B"><span class="nav-text">3 Internet传输层服务模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%8F%8F%E8%BF%B0%E4%BC%A0%E8%BE%93%E5%B1%82%E6%8C%87%E6%A0%87"><span class="nav-text">3.1 描述传输层指标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Internet%E4%BC%A0%E8%BE%93%E5%B1%82%E6%8F%90%E4%BE%9B%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E6%9C%8D%E5%8A%A1%EF%BC%9F"><span class="nav-text">3.2 Internet传输层提供什么样的服务？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%89%B9%E5%AE%9A%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%8D%8F%E8%AE%AE"><span class="nav-text">4 特定网络应用以及协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Web%E4%B8%8EHTTP"><span class="nav-text">4.1 Web与HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-1-HTTP%E6%A6%82%E5%86%B5"><span class="nav-text">4.1.1 HTTP概况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-2-HTTP%E8%BF%9E%E6%8E%A5"><span class="nav-text">4.1.2 HTTP连接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-3-HTTP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F%EF%BC%9A%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E5%92%8C%E5%93%8D%E5%BA%94%E6%8A%A5%E6%96%87"><span class="nav-text">4.1.3 HTTP报文格式：请求报文和响应报文</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-4-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%9ACookie"><span class="nav-text">4.1.4 用户与服务器的交互：Cookie</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-5-Web%E7%BC%93%E5%AD%98%EF%BC%88%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="nav-text">4.1.5 Web缓存（代理服务器）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-6-%E6%9D%A1%E4%BB%B6GET%E6%96%B9%E6%B3%95"><span class="nav-text">4.1.6 条件GET方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-FTP%EF%BC%9A%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="nav-text">4.2 FTP：文件传输协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-EMail"><span class="nav-text">4.3 EMail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-DNS%EF%BC%88Domain-Name-System%EF%BC%89"><span class="nav-text">4.4 DNS（Domain Name System）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-P2P%E5%BA%94%E7%94%A8"><span class="nav-text">4.5 P2P应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-CDN"><span class="nav-text">4.6 CDN</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Socket%EF%BC%88%E5%A5%97%E6%8E%A5%E5%AD%97%EF%BC%89%E7%BC%96%E7%A8%8B"><span class="nav-text">5 Socket（套接字）编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-TCP-Socket"><span class="nav-text">5.1 TCP Socket</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-UDP-Socket"><span class="nav-text">5.2 UDP Socket</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%B0%8F%E7%BB%93"><span class="nav-text">6 小结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-%E7%AB%A0%E8%8A%82%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6"><span class="nav-text">6.1 章节整体框架</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-%E5%A4%8D%E4%B9%A0%E9%83%A8%E5%88%86%E5%8D%8F%E8%AE%AE%E5%86%85%E5%AE%B9"><span class="nav-text">6.2 复习部分协议内容</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -2175,13 +2496,13 @@ SSL socket API：应用通过API将明文交给socket，SSL将其加密后在互
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">28k</span>
+    <span title="站点总字数">37k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">26 分钟</span>
+    <span title="站点阅读时长">33 分钟</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
