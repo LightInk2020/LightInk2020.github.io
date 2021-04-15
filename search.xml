@@ -4,6 +4,108 @@
   
     
     <entry>
+      <title>数据库系统-基础学习路线</title>
+      <link href="2021/04/16/sjk/"/>
+      <url>2021/04/16/sjk/</url>
+      
+        <content type="html"><![CDATA[<h2 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h2><h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><ul><li>《MySQL必知必会》 - Ben forta </li><li>《高性能MySQL（第3版）》 - Baron Schwartz </li></ul><h3 id="推荐视频"><a href="#推荐视频" class="headerlink" title="推荐视频"></a>推荐视频</h3><ul><li><a href="http://db.lcs.mit.edu/6.830/index.php">麻省理工学院 MIT 6.830</a></li><li><a href="http://www.icourse163.org/course/HIT-1001516002">哈尔滨工业大学 数据库系统</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>概率论与数理统计-基础学习路线</title>
+      <link href="2021/04/16/gl/"/>
+      <url>2021/04/16/gl/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概率论与数理统计"><a href="#概率论与数理统计" class="headerlink" title="概率论与数理统计"></a>概率论与数理统计</h2><h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><ul><li><p>《Probability and Statistics》 -Morris H.Degroot</p></li><li><p>《概率论与数理统计》 -陈希孺</p></li></ul><h3 id="推荐视频"><a href="#推荐视频" class="headerlink" title="推荐视频"></a>推荐视频</h3><ul><li><a href="https://www.bilibili.com/video/BV1Zy4y1J7vM?p=2">概率数学基础 - 台湾大学叶丙成</a></li><li><a href="https://www.bilibili.com/video/BV1ot411y7mU?from=search&seid=5596277735640438059">《概率论与数理统计》教学视频全集（宋浩）</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 概率论与数理统计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 概率论与数理统计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>操作系统-基础学习路线</title>
+      <link href="2021/04/16/os/"/>
+      <url>2021/04/16/os/</url>
+      
+        <content type="html"><![CDATA[<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><ul><li>《现代操作系统》 - Andrew S. Tanenbaum</li><li>《深入理解计算机系统》</li><li>《操作系统导论》- Remzi，H. </li></ul><h3 id="推荐视频"><a href="#推荐视频" class="headerlink" title="推荐视频"></a>推荐视频</h3><ul><li><a href="https://www.bilibili.com/video/BV1d4411v7u7?from=search&seid=9067503727200252128">操作系统（哈工大李治军老师）32讲</a></li><li><a href="https://www.lanqiao.cn/courses/115">操作系统（哈工大李治军老师）32讲 -配套实验课</a></li><li><a href="https://www.bilibili.com/video/BV1iW411d7hd?from=search&seid=13353650717207742800d?from=search&seid=13353650717207742800">【精校中英字幕】2015 CMU 15-213 CSAPP 深入理解计算机系统</a></li></ul><h3 id="其他资料"><a href="#其他资料" class="headerlink" title="其他资料"></a>其他资料</h3><ul><li><a href="https://github.com/Exely/CSAPP-Labs">CSAPP-Labs</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 操作系统 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 操作系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>计算机网络-基础学习路线</title>
+      <link href="2021/04/16/jsjwl/"/>
+      <url>2021/04/16/jsjwl/</url>
+      
+        <content type="html"><![CDATA[<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><ul><li>《计算机网络：自顶向下方法》（James F.Kurose、Keith W.Ross)</li></ul><h3 id="推荐视频"><a href="#推荐视频" class="headerlink" title="推荐视频"></a>推荐视频</h3><ul><li><a href="https://www.bilibili.com/video/BV1JV411t7ow?p=8">中科大郑烇老师全套《计算机网络》</a></li><li><a href="https://www.bilibili.com/video/BV1Up411Z7hC?p=1&share_medium=android&share_plat=android&share_source=COPY&share_tag=s_i&timestamp=1598544022&unique_k=eeA2CI">哈尔滨工业大学 计算机网络</a></li><li><a href="https://www.bilibili.com/video/av64605483/">计算机网络微课堂</a></li></ul><h3 id="其他资料"><a href="#其他资料" class="headerlink" title="其他资料"></a>其他资料</h3><ul><li><a href="https://blog.csdn.net/qq_39326472/article/details/88089747?utm_source=app&app_version=4.5.4">计算机网络（自顶向下方法）学习笔记(头秃的女程序员)</a></li><li><a href="https://www.yuque.com/nepjnq/ntyr7v">劝退宝典</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>英语单词</title>
       <link href="2021/04/12/English01/"/>
       <url>2021/04/12/English01/</url>
@@ -33,7 +135,7 @@
       <link href="2021/04/12/python01/"/>
       <url>2021/04/12/python01/</url>
       
-        <content type="html"><![CDATA[<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><ul><li>python是一门完全开源的高级编程语言，拥有优雅的语法和丰富的第三方库。</li><li>编程语言，是一种用于编写计算机程序的语言，用于控制计算机的行为。</li><li>按照语言在执行之前是否需要编译区分，可以将编程语言分为需要编译的编译型语言和不需要编译的解释型语言。</li></ul><p><img src="/2021/04/12/python01/image-20210413224609458.png" alt="编程语言"></p><blockquote><p> 解释型语言运行要比编译型语言慢。</p></blockquote><p>* </p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><ul><li>python是一门完全开源的高级编程语言，拥有优雅的语法和丰富的第三方库。</li><li>编程语言，是一种用于编写计算机程序的语言，用于控制计算机的行为。</li><li>按照语言在执行之前是否需要编译区分，可以将编程语言分为需要编译的编译型语言和不需要编译的解释型语言。</li></ul><p><img src="/2021/04/12/python01/image-20210413224609458.png" alt="编程语言"></p><blockquote><p> 解释型语言运行要比编译型语言慢。</p></blockquote>]]></content>
       
       
       <categories>

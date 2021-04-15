@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lightink2020.github.io/2021/04/16/os/</loc>
+    
+    <lastmod>2021-04-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2021/04/16/sjk/</loc>
+    
+    <lastmod>2021-04-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2021/04/16/jsjwl/</loc>
+    
+    <lastmod>2021-04-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2021/04/16/gl/</loc>
+    
+    <lastmod>2021-04-15</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2021/04/12/python01/</loc>
+    
+    <lastmod>2021-04-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lightink2020.github.io/2021/04/12/English01/</loc>
     
     <lastmod>2021-04-15</lastmod>
@@ -12,13 +47,6 @@
     <loc>https://lightink2020.github.io/2021/04/10/jsjwl02/</loc>
     
     <lastmod>2021-04-15</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://lightink2020.github.io/2021/04/12/python01/</loc>
-    
-    <lastmod>2021-04-13</lastmod>
     
   </url>
   
@@ -115,6 +143,27 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://lightink2020.github.io/tags/%E6%95%B0%E5%AD%A6/</loc>
+    <lastmod>2021-04-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/tags/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
+    <lastmod>2021-04-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</loc>
+    <lastmod>2021-04-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -140,6 +189,20 @@
   
   <url>
     <loc>https://lightink2020.github.io/categories/English/</loc>
+    <lastmod>2021-04-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/categories/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</loc>
+    <lastmod>2021-04-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</loc>
     <lastmod>2021-04-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
