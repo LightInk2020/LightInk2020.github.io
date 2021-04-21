@@ -23,15 +23,15 @@
     var CONFIG = {"hostname":"lightink2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="算法基础题——刷题01 题目来源：Leetcode       PAT      codeup 题目解析参考：个人理解+题目解析+网络解析  刷题策略 选取合适题目 坚持每天适量刷题   强调英文注释   每道题回顾：">
+  <meta name="description" content="算法基础题——开端+二叉树 题目来源：Leetcode       PAT      codeup 题目解析参考：个人理解+题目解析+网络解析  刷题策略 选取合适题目 坚持每天适量刷题   强调英文注释   每道题回顾：  思路回溯并简单记录（最好英文）  参考其他人的好的解题思路并简要记录  知识点学习和总结  寻找相识的题目进行练习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法基础题——刷题01">
+<meta property="og:title" content="算法基础题——开端+二叉树">
 <meta property="og:url" content="https://lightink2020.github.io/2021/04/17/algorithm01/index.html">
 <meta property="og:site_name" content="落纸浅墨">
-<meta property="og:description" content="算法基础题——刷题01 题目来源：Leetcode       PAT      codeup 题目解析参考：个人理解+题目解析+网络解析  刷题策略 选取合适题目 坚持每天适量刷题   强调英文注释   每道题回顾：">
+<meta property="og:description" content="算法基础题——开端+二叉树 题目来源：Leetcode       PAT      codeup 题目解析参考：个人理解+题目解析+网络解析  刷题策略 选取合适题目 坚持每天适量刷题   强调英文注释   每道题回顾：  思路回溯并简单记录（最好英文）  参考其他人的好的解题思路并简要记录  知识点学习和总结  寻找相识的题目进行练习">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-17T08:45:48.000Z">
-<meta property="article:modified_time" content="2021-04-18T03:30:42.339Z">
+<meta property="article:modified_time" content="2021-04-21T09:06:08.548Z">
 <meta property="article:author" content="浅墨">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="Leetcode">
@@ -52,7 +52,7 @@
   };
 </script>
 
-  <title>算法基础题——刷题01 | 落纸浅墨</title>
+  <title>算法基础题——开端+二叉树 | 落纸浅墨</title>
   
 
 
@@ -138,12 +138,12 @@
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -215,7 +215,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          算法基础题——刷题01
+          算法基础题——开端+二叉树
         </h1>
 
         <div class="post-meta">
@@ -234,7 +234,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-18 11:30:42" itemprop="dateModified" datetime="2021-04-18T11:30:42+08:00">2021-04-18</time>
+                <time title="修改时间：2021-04-21 17:06:08" itemprop="dateModified" datetime="2021-04-21T17:06:08+08:00">2021-04-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,6 +243,10 @@
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">算法基础</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a>
                 </span>
             </span>
 
@@ -273,14 +277,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>447</span>
+              <span>7.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -292,11 +296,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="算法基础题——刷题01"><a href="#算法基础题——刷题01" class="headerlink" title="算法基础题——刷题01"></a>算法基础题——刷题01</h2><blockquote>
+        <h1 id="算法基础题——开端-二叉树"><a href="#算法基础题——开端-二叉树" class="headerlink" title="算法基础题——开端+二叉树"></a>算法基础题——开端+二叉树</h1><blockquote>
 <p>题目来源：<a href>Leetcode</a>       <a href>PAT</a>      <a href>codeup</a></p>
 <p>题目解析参考：个人理解+题目解析+网络解析</p>
 </blockquote>
-<h3 id="刷题策略"><a href="#刷题策略" class="headerlink" title="刷题策略"></a>刷题策略</h3><ul>
+<h2 id="刷题策略"><a href="#刷题策略" class="headerlink" title="刷题策略"></a>刷题策略</h2><ul>
 <li>选取合适题目</li>
 <li>坚持每天适量刷题</li>
 </ul>
@@ -305,14 +309,16 @@
 </blockquote>
 <ul>
 <li><p>每道题回顾：</p>
-<span id="more"></span>
-
 <ul>
 <li><p>思路回溯并简单记录（最好英文）</p>
 </li>
 <li><p>参考其他人的好的解题思路并简要记录</p>
 </li>
 <li><p>知识点学习和总结</p>
+</li>
+<li><p>寻找相识的题目进行练习</p>
+<span id="more"></span>
+
 <blockquote>
 <p>对于解法涉及到的不会的知识点进行学习和总结，包括视频、文章学习核心知识点，新的常用函数，代码规范等</p>
 </blockquote>
@@ -334,28 +340,97 @@
 </li>
 </ul>
 <hr>
+<h2 id="学习算法和数据结构的框架思维"><a href="#学习算法和数据结构的框架思维" class="headerlink" title="学习算法和数据结构的框架思维"></a>学习算法和数据结构的框架思维</h2><h3 id="一、数据结构的存储方式"><a href="#一、数据结构的存储方式" class="headerlink" title="一、数据结构的存储方式"></a>一、数据结构的存储方式</h3><p>数据结构的存储方式只有两种：<strong>数组（顺序存储）和链表（链式存储）</strong>。</p>
+<p>数据结构种类很多，甚至你也可以发明自己的数据结构，但是底层存储无非数组或者链表，二者的优缺点如下：</p>
+<p><strong>数组</strong>由于是紧凑连续存储,可以随机访问，通过索引快速找到对应元素，而且相对节约存储空间。但正因为连续存储，内存空间必须一次性分配够，所以说数组如果要扩容，需要重新分配一块更大的空间，再把数据全部复制过去，时间复杂度 O(N)；而且你如果想在数组中间进行插入和删除，每次必须搬移后面的所有数据以保持连续，时间复杂度 O(N)。</p>
+<p><strong>链表</strong>因为元素不连续，而是靠指针指向下一个元素的位置，所以不存在数组的扩容问题；如果知道某一元素的前驱和后驱，操作指针即可删除该元素或者插入新元素，时间复杂度 O(1)。但是正因为存储空间不连续，你无法根据一个索引算出对应元素的地址，所以不能随机访问；而且由于每个元素必须存储指向前后元素位置的指针，会消耗相对更多的储存空间。</p>
+<h3 id="二、数据结构的基本操作"><a href="#二、数据结构的基本操作" class="headerlink" title="二、数据结构的基本操作"></a>二、数据结构的基本操作</h3><p>对于任何数据结构，其基本操作无非遍历 + 访问，再具体一点就是：增删查改。</p>
+<p><strong>数据结构种类很多，但它们存在的目的都是在不同的应用场景，尽可能高效地增删查改</strong>。</p>
+<p>各种数据结构的遍历 + 访问无非两种形式：线性的和非线性的。</p>
+<p>线性就是 for/while 迭代为代表，非线性就是递归为代表。再具体一步，无非以下几种框架：</p>
+<p><strong>数组遍历框架</strong>，典型的<strong>线性迭代结构</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">        <span class="comment">// 迭代访问 arr[i]</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>链表遍历框架</strong>，<strong>兼具迭代和递归结构</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基本的单链表节点 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (ListNode p = head; p != null; p = p.next) &#123;</span><br><span class="line">        <span class="comment">// 迭代访问 p.val</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 递归访问 head.val</span></span><br><span class="line">    <span class="built_in">traverse</span>(head.next);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>二叉树遍历框架</strong>，典型的<strong>非线性递归遍历结构</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基本的二叉树节点 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode left, right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">traverse</span>(root.left);</span><br><span class="line">    <span class="built_in">traverse</span>(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你看二叉树的递归遍历方式和链表的递归遍历方式，相似不？再看看二叉树结构和单链表结构，相似不？如果再多几条叉，N 叉树你会不会遍历？</p>
+<p>二叉树框架可以扩展为 <strong>N 叉树的遍历框架</strong>：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 基本的 N 叉树节点 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    TreeNode[] children;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">traverse</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (TreeNode child : root.children)</span><br><span class="line">        <span class="built_in">traverse</span>(child);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>N 叉树的遍历又可以扩展为图的遍历，因为图就是好几 N 叉棵树的结合体。你说图是可能出现环的？这个很好办，用个布尔数组 visited 做标记就行了，这里就不写代码了。</p>
+<p><strong>所谓框架，就是套路。不管增删查改，这些代码都是永远无法脱离的结构，你可以把这个结构作为大纲，根据具体问题在框架上添加代码就行了，下面会具体举例</strong>。</p>
+<h3 id="三、算法刷题指南"><a href="#三、算法刷题指南" class="headerlink" title="三、算法刷题指南"></a>三、算法刷题指南</h3><p><strong>数据结构是工具，算法是通过合适的工具解决特定问题的方法</strong>。也就是说，学习算法之前，最起码得了解那些常用的数据结构，了解它们的特性和缺陷。</p>
+<p><strong>二叉树是最容易培养框架思维的，而且大部分算法技巧，本质上都是树的遍历问题</strong>。</p>
+<p>刷二叉树看到题目没思路？根据很多读者的问题，其实大家不是没思路，只是没有理解我们说的「框架」是什么。<strong>不要小看这几行破代码，几乎所有二叉树的题目都是一套这个框架就出来了</strong>。</p>
+<p><strong>你就会发现只要涉及递归的问题，都是树的问题</strong>。</p>
+<hr>
+<hr>
+<hr>
+<h2 id="链表-二叉树-框架建立"><a href="#链表-二叉树-框架建立" class="headerlink" title="链表+二叉树-框架建立"></a>链表+二叉树-框架建立</h2><h3 id="一、反转链表的一部分（培养递归思维）"><a href="#一、反转链表的一部分（培养递归思维）" class="headerlink" title="一、反转链表的一部分（培养递归思维）"></a>一、反转链表的一部分（培养递归思维）</h3><hr>
 <blockquote>
-<p>2021/4/17 18:27</p>
+<p>2021/4/19  18:00</p>
 </blockquote>
-<ul>
-<li><strong>题目：</strong></li>
-</ul>
-<ul>
-<li><p><strong>知识点学习</strong></p>
-<ul>
-<li><p>sort()</p>
-<ul>
-<li><p>使用sort()排序</p>
-<p>sort()函数可以高效的对数据进行排序。</p>
-<p>sort()函数的使用必须加上头文件”#include&lt;algorithm&gt;”和”using namespace std;”，使用方式如下：</p>
-<p><code>sort(首元素地址（必填）,尾元素地址的下一个地址（必填）,比较函数（非必填）);</code></p>
-<p>如果不写比较函数，则默认对前面给出的函数进行递归排序。元素排序后将返回赋值到原来数据的地址。</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+<p>Leetcode </p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">92. 反转链表 II</a></p>
+<h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给你单链表的头指针 head 和两个整数 left 和 right ，其中 left &lt;= right 。请你反转从位置 left 到位置 right 的链表节点，返回反转后的链表 。<br>输入：head = [1,2,3,4,5], left = 2, right = 4<br>输出：[1, 4, 3, 2, 5]</p>
+<h4 id="初解（迭代）"><a href="#初解（迭代）" class="headerlink" title="初解（迭代）"></a>初解（迭代）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//思路一：每次查找最后一个要被翻转的节点  添加到已被翻转的链表后</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        ListNode* leftfou_ptr = <span class="literal">nullptr</span>;<span class="comment">//错误点：leftfou_ptr/right_ptr/...这几个变量开始都让他们等于head  这导致下面next时访问空指针了</span></span><br><span class="line">        ListNode* right_ptr = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* end_ptr = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* begin_ptr = <span class="literal">nullptr</span>;<span class="comment">//翻转的开始节点</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; left - <span class="number">1</span>; i++)<span class="comment">//接反转后的节点</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                leftfou_ptr = head;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            leftfou_ptr = leftfou_ptr-&gt;next;</span><br><span class="line">        &#125;<span class="comment">//如果left=1 leftfou_ptr=nullptr</span></span><br><span class="line">        <span class="keyword">if</span> (left == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            begin_ptr = head;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            begin_ptr = leftfou_ptr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; right + <span class="number">1</span>; i++)<span class="comment">//接最后一个节点后面的其他节点</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (i == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                end_ptr = head;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            end_ptr = end_ptr-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">0</span>; h &lt; right - left + <span class="number">1</span>; h++)<span class="comment">//翻转</span></span><br><span class="line">        &#123;</span><br><span class="line">            right_ptr = begin_ptr;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; right - left - h; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                right_ptr = right_ptr-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (h == <span class="number">0</span> &amp;&amp; left == <span class="number">1</span>)<span class="comment">//如果head被换了</span></span><br><span class="line">            &#123;</span><br><span class="line">                head = right_ptr;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (leftfou_ptr == <span class="literal">nullptr</span>)<span class="comment">//错误点：未考虑如果交换的是头结点  那样最左边翻转结点的前一个结点为空 再next会访问空指针</span></span><br><span class="line">            &#123;</span><br><span class="line">                leftfou_ptr = right_ptr;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                leftfou_ptr-&gt;next = right_ptr;</span><br><span class="line">                leftfou_ptr = leftfou_ptr-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        leftfou_ptr-&gt;next = end_ptr;<span class="comment">//连接之后的节点</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> head;<span class="comment">//错误点  未考虑到如果交换的是头节点  head会发生变化  导致输出链表不全</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提交次数：4次</p>
+</blockquote>
+<blockquote>
+<p>2021/4/20  15:30</p>
+</blockquote>
+<h4 id="参考解法（递归实现）"><a href="#参考解法（递归实现）" class="headerlink" title="参考解法（递归实现）"></a>参考解法（递归实现）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">	ListNode* next;</span><br><span class="line">	<span class="built_in">ListNode</span>() : <span class="built_in">val</span>(<span class="number">0</span>), <span class="built_in">next</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">	<span class="built_in">ListNode</span>(<span class="keyword">int</span> x) : <span class="built_in">val</span>(x), <span class="built_in">next</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">	<span class="built_in">ListNode</span>(<span class="keyword">int</span> x, ListNode* next) : <span class="built_in">val</span>(x), <span class="built_in">next</span>(next) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//递归翻转整个链表</span></span><br><span class="line"><span class="function">ListNode* <span class="title">reverse</span><span class="params">(ListNode* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (head-&gt;next == <span class="literal">nullptr</span>)<span class="keyword">return</span> head;</span><br><span class="line">	ListNode* ptr=<span class="built_in">reverse</span>(head-&gt;next);</span><br><span class="line">	head-&gt;next-&gt;next = head;</span><br><span class="line">	head-&gt;next = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ptr;</span><br><span class="line">&#125;</span><br><span class="line">ListNode* nextNode = <span class="literal">nullptr</span>;<span class="comment">//全局变量  记录每次的下一个结点</span></span><br><span class="line"><span class="comment">// 将链表的前 n 个节点反转（n &lt;= 链表长度）</span></span><br><span class="line"><span class="function">ListNode* <span class="title">reverseN</span><span class="params">(ListNode* head, <span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//最后</span></span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		nextNode = head-&gt;next;</span><br><span class="line">		<span class="keyword">return</span> head;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//递归</span></span><br><span class="line">	ListNode* ptr=<span class="built_in">reverseN</span>(head-&gt;next,n<span class="number">-1</span>);</span><br><span class="line">	head-&gt;next-&gt;next = head;</span><br><span class="line">	head-&gt;next = nextNode;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> ptr;<span class="comment">//这里递归的返回值别忘记了</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将链表的 left到right 节点反转（0&lt;left&lt;=right&lt;=n）</span></span><br><span class="line"><span class="function">ListNode* <span class="title">reverseBetween</span><span class="params">(ListNode* head, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//base case</span></span><br><span class="line">	<span class="keyword">if</span> (left==<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">reverseN</span>(head, right);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//递归</span></span><br><span class="line">	head-&gt;next = <span class="built_in">reverseBetween</span>(head-&gt;next, left - <span class="number">1</span>, right - <span class="number">1</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(ListNode* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (head!=<span class="literal">nullptr</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; head-&gt;val &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">		head = head-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	ListNode* head=<span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>);</span><br><span class="line">	ListNode* ptr = head;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ListNode* tmp = <span class="keyword">new</span> <span class="built_in">ListNode</span>(i);<span class="comment">//不能在这里使用ListNode tmp(i);这是局部变量  会被释放</span></span><br><span class="line">		ptr-&gt;next = tmp;</span><br><span class="line">		ptr = ptr-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">show</span>(head);</span><br><span class="line">	head = <span class="built_in">reverse</span>(head);</span><br><span class="line">	<span class="built_in">show</span>(head);</span><br><span class="line">	head = <span class="built_in">reverseN</span>(head, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">show</span>(head);</span><br><span class="line">	head = <span class="built_in">reverseBetween</span>(head, <span class="number">2</span>, <span class="number">5</span>);</span><br><span class="line">	<span class="built_in">show</span>(head);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="二、二叉树-01"><a href="#二、二叉树-01" class="headerlink" title="二、二叉树-01"></a>二、二叉树-01</h3><blockquote>
+<p>2021/4/21  16:00</p>
+</blockquote>
+<p>Leetcode </p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/invert-binary-tree/">226. 翻转二叉树</a></p>
+<h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>翻转一棵二叉树。</p>
+<p>输入：</p>
+<p>​     4</p>
+<p>   /   <br>  2      7<br> / \     / <br>1   3 6   9<br>输出：</p>
+<p>​     4</p>
+<p>   /   <br>  7      2<br> / \     / <br>9   6 3   1</p>
+<h4 id="初解（递归）"><a href="#初解（递归）" class="headerlink" title="初解（递归）"></a>初解（递归）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==<span class="literal">nullptr</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        TreeNode* l=<span class="built_in">invertTree</span>(root-&gt;left);</span><br><span class="line">        TreeNode* r=<span class="built_in">invertTree</span>(root-&gt;right);</span><br><span class="line">        root-&gt;left=r;</span><br><span class="line">        root-&gt;right=l;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="参考题解（迭代方法）"><a href="#参考题解（迭代方法）" class="headerlink" title="参考题解（迭代方法）"></a>参考题解（迭代方法）</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//迭代法</span></span><br><span class="line"><span class="comment">//深度优先遍历</span></span><br><span class="line"><span class="comment">//C++代码迭代法（前序遍历）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span> root;</span><br><span class="line">        stack&lt;TreeNode*&gt; st;</span><br><span class="line">        st.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span>(!st.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            TreeNode* node = st.<span class="built_in">top</span>();              <span class="comment">// 中</span></span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="built_in">swap</span>(node-&gt;left, node-&gt;right);          </span><br><span class="line">            <span class="keyword">if</span>(node-&gt;right) st.<span class="built_in">push</span>(node-&gt;right);   <span class="comment">// 右</span></span><br><span class="line">            <span class="keyword">if</span>(node-&gt;left) st.<span class="built_in">push</span>(node-&gt;left);     <span class="comment">// 左</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//C++代码如下迭代法另一种写法（前序遍历）</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; st;</span><br><span class="line">        <span class="keyword">if</span> (root != <span class="literal">NULL</span>) st.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!st.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            TreeNode* node = st.<span class="built_in">top</span>();</span><br><span class="line">            <span class="keyword">if</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;right) st.<span class="built_in">push</span>(node-&gt;right);  <span class="comment">// 右</span></span><br><span class="line">                <span class="keyword">if</span> (node-&gt;left) st.<span class="built_in">push</span>(node-&gt;left);    <span class="comment">// 左</span></span><br><span class="line">                st.<span class="built_in">push</span>(node);                          <span class="comment">// 中</span></span><br><span class="line">                st.<span class="built_in">push</span>(<span class="literal">NULL</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">                node = st.<span class="built_in">top</span>();</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="built_in">swap</span>(node-&gt;left, node-&gt;right);          <span class="comment">// 节点处理逻辑</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//广度优先遍历</span></span><br><span class="line"><span class="comment">//也就是层序遍历，层数遍历也是可以翻转这棵树的，因为层序遍历也可以把每个节点的左右孩子都翻转一遍，代码如下：</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">invertTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        queue&lt;TreeNode*&gt; que;</span><br><span class="line">        <span class="keyword">if</span> (root != <span class="literal">NULL</span>) que.<span class="built_in">push</span>(root);</span><br><span class="line">        <span class="keyword">while</span> (!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">int</span> size = que.<span class="built_in">size</span>();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                TreeNode* node = que.<span class="built_in">front</span>();</span><br><span class="line">                que.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="built_in">swap</span>(node-&gt;left, node-&gt;right); <span class="comment">// 节点处理</span></span><br><span class="line">                <span class="keyword">if</span> (node-&gt;left) que.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span> (node-&gt;right) que.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
 
@@ -399,7 +474,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://lightink2020.github.io/2021/04/17/algorithm01/" title="算法基础题——刷题01">https://lightink2020.github.io/2021/04/17/algorithm01/</a>
+    <a href="https://lightink2020.github.io/2021/04/17/algorithm01/" title="算法基础题——开端+二叉树">https://lightink2020.github.io/2021/04/17/algorithm01/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -426,7 +501,10 @@
     <a href="/2021/04/16/jsjwl03/" rel="prev" title="计算机网络-传输层">
       <i class="fa fa-chevron-left"></i> 计算机网络-传输层
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/04/19/jsjwl03_1/" rel="next" title="计算机网络重难点-滑动窗口">
+      计算机网络重难点-滑动窗口 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -486,7 +564,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%A2%98%E2%80%94%E2%80%94%E5%88%B7%E9%A2%9801"><span class="nav-text">算法基础题——刷题01</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E7%AD%96%E7%95%A5"><span class="nav-text">刷题策略</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E9%A2%98%E2%80%94%E2%80%94%E5%BC%80%E7%AB%AF-%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-text">算法基础题——开端+二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B7%E9%A2%98%E7%AD%96%E7%95%A5"><span class="nav-text">刷题策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E6%A1%86%E6%9E%B6%E6%80%9D%E7%BB%B4"><span class="nav-text">学习算法和数据结构的框架思维</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E5%AD%98%E5%82%A8%E6%96%B9%E5%BC%8F"><span class="nav-text">一、数据结构的存储方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">二、数据结构的基本操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98%E6%8C%87%E5%8D%97"><span class="nav-text">三、算法刷题指南</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8-%E4%BA%8C%E5%8F%89%E6%A0%91-%E6%A1%86%E6%9E%B6%E5%BB%BA%E7%AB%8B"><span class="nav-text">链表+二叉树-框架建立</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%88%E5%9F%B9%E5%85%BB%E9%80%92%E5%BD%92%E6%80%9D%E7%BB%B4%EF%BC%89"><span class="nav-text">一、反转链表的一部分（培养递归思维）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E8%A7%A3%EF%BC%88%E8%BF%AD%E4%BB%A3%EF%BC%89"><span class="nav-text">初解（迭代）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%A7%A3%E6%B3%95%EF%BC%88%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="nav-text">参考解法（递归实现）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BA%8C%E5%8F%89%E6%A0%91-01"><span class="nav-text">二、二叉树-01</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E8%A7%A3%EF%BC%88%E9%80%92%E5%BD%92%EF%BC%89"><span class="nav-text">初解（递归）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%A2%98%E8%A7%A3%EF%BC%88%E8%BF%AD%E4%BB%A3%E6%96%B9%E6%B3%95%EF%BC%89"><span class="nav-text">参考题解（迭代方法）</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -502,14 +580,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -560,13 +638,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">40k</span>
+    <span title="站点总字数">63k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">37 分钟</span>
+    <span title="站点阅读时长">57 分钟</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
