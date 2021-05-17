@@ -23,20 +23,103 @@
     var CONFIG = {"hostname":"lightink2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="计算机网络-数据链路层和局域网1. 概述">
+  <meta name="description" content="计算机网络-数据链路层和局域网1. 概述 网络层解决了一个网络如何到达另外一个网络的路由问题。在一个网络内部如何由一个节点（主机或者路由器）到达另外一个相邻节点？—链路层的点到点传输层功能 目标: 理解数据链路层服务的原理:  检错和纠错 共享广播信道：多点接入（多路访问） 链路层寻址 LAN:以太网、WLAN、VLANs 可靠数据传输，流控制: 解决!   实例和各种链路层技术的实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络-数据链路层和局域网">
 <meta property="og:url" content="https://lightink2020.github.io/2021/05/10/jsjwl06/index.html">
 <meta property="og:site_name" content="落纸浅墨">
-<meta property="og:description" content="计算机网络-数据链路层和局域网1. 概述">
+<meta property="og:description" content="计算机网络-数据链路层和局域网1. 概述 网络层解决了一个网络如何到达另外一个网络的路由问题。在一个网络内部如何由一个节点（主机或者路由器）到达另外一个相邻节点？—链路层的点到点传输层功能 目标: 理解数据链路层服务的原理:  检错和纠错 共享广播信道：多点接入（多路访问） 链路层寻址 LAN:以太网、WLAN、VLANs 可靠数据传输，流控制: 解决!   实例和各种链路层技术的实现">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210510212247175.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511212212995.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511212338477.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210510213213501.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511212938351.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210510213516860.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210510213631618.png">
 <meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210510213706374.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511214146161.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511234046203.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511234703213.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511235056619.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511235432146.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210511235834302.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512000758328.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512001052632.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512002737886.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512002902453.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512003119913.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512003155337.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512003332647.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512003630498.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512004017258.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512004246847.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512004508786.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512004642533.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512004938459.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512010439949.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512011307257.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512142945641.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512011941561.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512012222585.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512012404196.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512144459710.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512145412284.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512151509457.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512151747211.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512152506821.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512155551626.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512155619651.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512155638963.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512012558906.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512013145993.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512013752940.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512013950395.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512160957066.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512161017732.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512161429645.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512162017813.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512163013409.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512163418607.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512163602990.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512163641357.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512163805021.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512164559330.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512231646969.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512231937042.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512232128837.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512232749266.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512233143142.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512233537087.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512233904063.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512234157284.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512234332046.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512234531746.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512234639836.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512234912961.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512235208782.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512235600010.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210512235821137.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513000328511.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513000826859.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513000925584.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513001115423.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513001538980.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513001727415.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513002332754.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513002422272.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513002612733.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513003035200.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513003207972.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513003424197.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513003718392.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513004126740.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513004322601.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513004516578.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513004647994.png">
+<meta property="og:image" content="https://lightink2020.github.io/2021/05/10/jsjwl06/image-20210513004846692.png">
 <meta property="article:published_time" content="2021-05-10T13:18:46.000Z">
-<meta property="article:modified_time" content="2021-05-10T13:38:48.182Z">
+<meta property="article:modified_time" content="2021-05-12T16:48:55.825Z">
 <meta property="article:author" content="浅墨">
 <meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
@@ -233,10 +316,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-10 21:18:46 / 修改时间：21:38:48" itemprop="dateCreated datePublished" datetime="2021-05-10T21:18:46+08:00">2021-05-10</time>
+              <time title="创建时间：2021-05-10 21:18:46" itemprop="dateCreated datePublished" datetime="2021-05-10T21:18:46+08:00">2021-05-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-13 00:48:55" itemprop="dateModified" datetime="2021-05-13T00:48:55+08:00">2021-05-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -274,14 +363,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>68</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -293,13 +382,45 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="计算机网络-数据链路层和局域网"><a href="#计算机网络-数据链路层和局域网" class="headerlink" title="计算机网络-数据链路层和局域网"></a>计算机网络-数据链路层和局域网</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><p><img src="/2021/05/10/jsjwl06/image-20210510212247175.png" alt="概述"></p>
-<span id="more"></span>
-
+        <h2 id="计算机网络-数据链路层和局域网"><a href="#计算机网络-数据链路层和局域网" class="headerlink" title="计算机网络-数据链路层和局域网"></a>计算机网络-数据链路层和局域网</h2><h3 id="1-概述"><a href="#1-概述" class="headerlink" title="1. 概述"></a>1. 概述</h3><ul>
+<li>网络层解决了一个网络如何到达另外一个网络的路由问题。在一个网络内部如何由一个节点（主机或者路由器）到达另外一个相邻节点？—链路层的点到点传输层功能</li>
+<li>目标:<ul>
+<li><p>理解数据链路层服务的原理:</p>
 <ul>
+<li>检错和纠错</li>
+<li>共享广播信道：多点接入（多路访问）</li>
+<li>链路层寻址</li>
+<li>LAN:以太网、WLAN、VLANs</li>
+<li>可靠数据传输，流控制: 解决!</li>
+</ul>
+</li>
+<li><p>实例和各种链路层技术的实现</p>
+<span id="more"></span></li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210510212247175.png" alt="概述"></p>
+<ul>
+<li><p>一个子网中的若干节点是如何连接到一起的？</p>
+<ul>
+<li>点到点连接</li>
+<li>多点连接<ul>
+<li>共享型介质</li>
+<li>通过网络交换机</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>一般来说，局域网是多点连接，实现比较复杂；而广域网是点到点连接，实现相对简单。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210511212212995.png" alt="一个子网中的若干节点是如何连接到一起的？"></p>
+</li>
+<li><p><img src="/2021/05/10/jsjwl06/image-20210511212338477.png" alt="链路层：上下文"></p>
+</li>
 <li><p>数据链路层服务</p>
-<p><img src="/2021/05/10/jsjwl06/image-20210510213213501.png" alt="链路层服务"></p>
-<p><img src="/2021/05/10/jsjwl06/image-20210510213516860.png" alt="链路层服务2"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210510213213501.png" alt="链路层服务1"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210511212938351.png" alt="链路层服务2"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210510213516860.png" alt="链路层服务3"></p>
 </li>
 </ul>
 <blockquote>
@@ -310,6 +431,204 @@
 </ul>
 <p><img src="/2021/05/10/jsjwl06/image-20210510213631618.png" alt="链路层的具体实现"></p>
 <p><img src="/2021/05/10/jsjwl06/image-20210510213706374.png" alt="网卡间通信"></p>
+<h3 id="2-差错检测"><a href="#2-差错检测" class="headerlink" title="2. 差错检测"></a>2. 差错检测</h3><p><img src="/2021/05/10/jsjwl06/image-20210511214146161.png" alt="差错编码原理"></p>
+<blockquote>
+<p>差错编码不能保证100%正确。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210511234046203.png" alt="差错编码的检错能力"></p>
+<ul>
+<li>常见的差错编码</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210511234703213.png" alt="奇偶校验码"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210511235056619.png" alt="Checksum"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210511235432146.png" alt="CRC"></p>
+<blockquote>
+<p>模2运算，即异或运算</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210511235834302.png" alt="CRC举例"></p>
+<blockquote>
+<p>G是发送方和接收方约定好的生成多项式</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512000758328.png" alt="CRC性能分析"></p>
+<h3 id="3-多点访问协议"><a href="#3-多点访问协议" class="headerlink" title="3. 多点访问协议"></a>3. 多点访问协议</h3><p><img src="/2021/05/10/jsjwl06/image-20210512001052632.png" alt="两种链路"></p>
+<ul>
+<li>解决单一共享广播信道的接入问题：MAC协议</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512002737886.png" alt="MAC协议"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512002902453.png" alt="理想MAC协议"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512003119913.png" alt="MAC协议分类"></p>
+<h4 id="3-1-信道划分MAC协议"><a href="#3-1-信道划分MAC协议" class="headerlink" title="3.1 信道划分MAC协议"></a>3.1 信道划分MAC协议</h4><p><img src="/2021/05/10/jsjwl06/image-20210512003155337.png" alt="TDMA"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512003332647.png" alt="FDMA"></p>
+<h4 id="3-2-随机访问MAC协议"><a href="#3-2-随机访问MAC协议" class="headerlink" title="3.2 随机访问MAC协议"></a>3.2 随机访问MAC协议</h4><p><img src="/2021/05/10/jsjwl06/image-20210512003630498.png" alt="随机访问MAC协议"></p>
+<ul>
+<li>时隙ALOHA协议</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512004017258.png" alt="时隙ALOHA协议"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512004246847.png" alt="时隙ALOHA协议优缺点"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512004508786.png" alt="时隙ALOHA协议的效率"></p>
+<ul>
+<li>ALOHA协议</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512004642533.png" alt="ALOHA协议"></p>
+<blockquote>
+<p>t<sub>0</sub>-1到t<sub>0</sub>+1  易损时间区     –两个时隙。</p>
+<p>时隙ALOHA协议易损时间区   –一个时隙</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512004938459.png" alt="ALOHA协议的效率"></p>
+<ul>
+<li>CSMA协议</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512010439949.png" alt="CSMA协议"></p>
+<blockquote>
+<p>CSMA检测冲突是只在发送帧之前监听信道，而在发送帧的过程中不再监听信道，这将导致即使发生冲突了仍会继续发送冲突帧而浪费信道资源。</p>
+</blockquote>
+<ul>
+<li>以太网CSMA/CD协议</li>
+</ul>
+<blockquote>
+<p>CSMA/CD协议是在发送帧的同时就可以检测是否有冲突</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512011307257.png" alt="CSMA/CD"></p>
+<blockquote>
+<p>CD是不仅在发送帧之前监听信道，在发送帧的过程中仍在监听信道。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512142945641.png" alt="以太网CSMA/CD"></p>
+<blockquote>
+<p>发送强化冲突信号是为了让所有站点都知道发生冲突了</p>
+</blockquote>
+<blockquote>
+<p>二进制指数退避算法（exponential backoff）：（在等待时间和再次发生碰撞可能性两个矛盾之间取得一个较为均衡的结果）</p>
+<p>第一次碰撞m=1  两个适配器冲突发送失败的适配器在{0,1}之间选择一个i   即等待i*512位时之后再进行监听发送    所以再次发送失败的概率为1/2</p>
+<p>第二次碰撞m=2  两个适配器冲突发送失败的适配器在{0,1,2,3}之间选择一个i   即等待i*512位时之后再进行监听发送    所以再次发送失败的概率为1/4</p>
+<p>第二次碰撞m=3  两个适配器冲突发送失败的适配器在{0,1,2,3,4,5,6,7}之间选择一个i   即等待i*512位时之后再进行监听发送    所以再次发送失败的概率为1/8</p>
+<p>……</p>
+<p>几次尝试后放弃(通常是16次)，然后向主机报告传送错误</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512011941561.png" alt="CSMA/CD需满足等式"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512012222585.png" alt="例题"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512012404196.png" alt="CSMA/CD效率"></p>
+<ul>
+<li>无线局域网WLAN中CSMA/CA</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512144459710.png" alt="CSMA/CA"></p>
+<blockquote>
+<p>移动主机节点会通过无线信道向基站AP发送电磁波，但是由于多个主机向同一个基站发送同样频段的信号，同样会发生冲突。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512145412284.png" alt="CSMA/CA"></p>
+<blockquote>
+<p>CSMA/CD检测冲突不适用于无线网，因为无线网电磁波与距离平方成反比进行衰减，自身发送的信号要比接收到的其他节点的信号强的多，同时在开放空间会受到其他信号的干扰。所以802.11不进行冲突检测。</p>
+<p>同时在以太网LAN中不冲突基本等于发送成功，而WLAN中不冲突不等于发送成功（可能由于山川等阻隔原因、与基站距离原因而传送失败）。</p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512151509457.png" alt="对于WALN而言冲突检测问题"></p>
+<p>所以WLAN不能采用CSMA/CD冲突检测，没有用，而是采用CSMA/CA发送帧之前来避免冲突。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512151747211.png" alt="CSMA/CA"></p>
+<blockquote>
+<p>以太网中信道质量好，所以不做ACK确认帧的传输。而在WLAN中信道质量不好需要确认。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512152506821.png" alt="CSMA/CA冲突避免"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512155551626.png" alt="CSMA/CA无法完全避免冲突"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512155619651.png" alt="CSMA/CA无法完全避免冲突2"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512155638963.png" alt="RTS-CTS交换"></p>
+<h4 id="3-3-轮转访问MAC协议"><a href="#3-3-轮转访问MAC协议" class="headerlink" title="3.3 轮转访问MAC协议"></a>3.3 轮转访问MAC协议</h4><p><img src="/2021/05/10/jsjwl06/image-20210512012558906.png" alt="三种方法比较"></p>
+<ul>
+<li><p>轮转访问MAC协议既不是最好也不是最坏，比较综合。</p>
+</li>
+<li><p>轮询方式</p>
+</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512013145993.png" alt="轮转访问MAC协议-轮询"></p>
+<ul>
+<li>令牌传递方式</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512013752940.png" alt="轮转访问MAC协议-令牌传递方式"></p>
+<ul>
+<li>总结</li>
+</ul>
+<p>解决多点接入问题：对于一个共享型介质，各个节点如何协调对它的访问和使用？</p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512013950395.png" alt="总结"></p>
+<blockquote>
+<p>CSMA/CD应用于802.3Ethernet网</p>
+<p>CSMA/CA应用于802.11WLAN中</p>
+</blockquote>
+<blockquote>
+<p>轮转访问MAC协议：<br>主节点轮询是集中式的    令牌传递是分布式的</p>
+</blockquote>
+<h3 id="4-LANs"><a href="#4-LANs" class="headerlink" title="4. LANs"></a>4. LANs</h3><h4 id="4-1-MAC地址"><a href="#4-1-MAC地址" class="headerlink" title="4.1 MAC地址"></a>4.1 MAC地址</h4><ul>
+<li>网络层：IPv4的32位IP地址<ul>
+<li>接口的网络层地址</li>
+<li>用于标识网络层（第3层）分组，支持分组转发</li>
+</ul>
+</li>
+<li>MAC地址是链路层地址</li>
+<li>MAC地址是固定的，（也可手动修改），但是需保证一个局域网内的MAC地址（即物理地址）是互不相同的</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512160957066.png" alt="MAC地址"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512161017732.png" alt="MAC地址局域网内唯一"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512161429645.png" alt="MAC地址特点"></p>
+<h4 id="4-2-ARP：地址解析协议"><a href="#4-2-ARP：地址解析协议" class="headerlink" title="4.2 ARP：地址解析协议"></a>4.2 ARP：地址解析协议</h4><ul>
+<li>局域网：数据链路层的概念，指二层可达的网络（也就是不需要三层设备，如路由器，也能到达的网络），通俗得讲就是小范围的网络</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512162017813.png" alt="ARP：地址解析协议"></p>
+<ul>
+<li>同一个局域网下的ARP协议</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512163013409.png" alt="同一个局域网下的ARP协议"></p>
+<ul>
+<li>不是同一个局域网下的ARP协议</li>
+</ul>
+<p><img src="/2021/05/10/jsjwl06/image-20210512163418607.png" alt="不同一个局域网下的ARP协议-寻址"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512163602990.png" alt="不同一个局域网下的ARP协议-寻址2"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512163641357.png" alt="不同一个局域网下的ARP协议-寻址3"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512163805021.png" alt="不同一个局域网下的ARP协议-寻址3"></p>
+<blockquote>
+<p>在R的网络层，可能会对数据报的IP地址进行改变（NAT协议 内网和广域网之间IP转换）</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512164559330.png" alt="不同一个局域网下的ARP协议-寻址4"></p>
+<h4 id="4-3-以太网（Ethernet）"><a href="#4-3-以太网（Ethernet）" class="headerlink" title="4.3 以太网（Ethernet）"></a>4.3 以太网（Ethernet）</h4><p><img src="/2021/05/10/jsjwl06/image-20210512231646969.png" alt="以太网"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512231937042.png" alt="以太网：物理拓扑"></p>
+<blockquote>
+<p><strong>冲突域（collision domain）</strong>：交换机的某一个端口不再连接另外的交换机或网络，只是连接到主机，则称这个链路为冲突域。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512232128837.png" alt="以太网特点"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512232749266.png" alt="以太网CSMA/CD算法"></p>
+<blockquote>
+<p>二进制指数退避，冲突16次就不再进行尝试了。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210512233143142.png" alt="以太网帧结构1"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512233537087.png" alt="以太网帧结构2"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512233904063.png" alt="以太网标准"></p>
+<h4 id="4-4-交换机（switch）"><a href="#4-4-交换机（switch）" class="headerlink" title="4.4 交换机（switch）"></a>4.4 交换机（switch）</h4><p><img src="/2021/05/10/jsjwl06/image-20210512234157284.png" alt="交换机特点"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512234332046.png" alt="交换机：多端口间同时传输"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512234531746.png" alt="交换表"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512234639836.png" alt="自学习构建交换表"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512234912961.png" alt="帧过滤"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512235208782.png" alt="交换机互联"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512235600010.png" alt="组织机构网络"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210512235821137.png" alt="交换机 vs. 路由器"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513000328511.png" alt="网络设备对比"></p>
+<h4 id="4-5-虚拟局域网（VLAN）"><a href="#4-5-虚拟局域网（VLAN）" class="headerlink" title="4.5 虚拟局域网（VLAN）"></a>4.5 虚拟局域网（VLAN）</h4><p><img src="/2021/05/10/jsjwl06/image-20210513000826859.png" alt="VLAN必要性"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513000925584.png" alt="VLAN"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513001115423.png" alt="基于端口的VLAN"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513001538980.png" alt="跨越多交换机的VLAN"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513001727415.png" alt="802.1Q帧格式"></p>
+<h3 id="5-802-11无线局域网"><a href="#5-802-11无线局域网" class="headerlink" title="5 802.11无线局域网"></a>5 802.11无线局域网</h3><p><img src="/2021/05/10/jsjwl06/image-20210513002332754.png" alt="802.11无线局域网"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513002422272.png" alt="802.11无线局域网"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513002612733.png" alt="802.11体系结构"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513003035200.png" alt="信道与AP关联"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513003207972.png" alt="AP关联"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513003424197.png" alt="多路访问控制"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513003718392.png" alt="CSMA/CA"></p>
+<blockquote>
+<p>802.11需要进行可靠性传输保证，需要ACK确认收到帧。</p>
+</blockquote>
+<blockquote>
+<p>802.11通过空闲时间长短（DIFS和SIFS）来判断优先级，实践越短优先级越高。SIFS比DIFS短，所以ACK一般先发送。</p>
+</blockquote>
+<p><img src="/2021/05/10/jsjwl06/image-20210513004126740.png" alt="CA基本思想"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513004322601.png" alt="RTS-CTS交换"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513004516578.png" alt="802.11 MAC帧格式"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513004647994.png" alt="数据帧地址"></p>
+<p><img src="/2021/05/10/jsjwl06/image-20210513004846692.png" alt="举例"></p>
 
     </div>
 
@@ -437,7 +756,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E5%92%8C%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="nav-text">计算机网络-数据链路层和局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-text">1. 概述</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E5%92%8C%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="nav-text">计算机网络-数据链路层和局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="nav-text">1. 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-text">2. 差错检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A4%9A%E7%82%B9%E8%AE%BF%E9%97%AE%E5%8D%8F%E8%AE%AE"><span class="nav-text">3. 多点访问协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E4%BF%A1%E9%81%93%E5%88%92%E5%88%86MAC%E5%8D%8F%E8%AE%AE"><span class="nav-text">3.1 信道划分MAC协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E9%9A%8F%E6%9C%BA%E8%AE%BF%E9%97%AEMAC%E5%8D%8F%E8%AE%AE"><span class="nav-text">3.2 随机访问MAC协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E8%BD%AE%E8%BD%AC%E8%AE%BF%E9%97%AEMAC%E5%8D%8F%E8%AE%AE"><span class="nav-text">3.3 轮转访问MAC协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-LANs"><span class="nav-text">4. LANs</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-MAC%E5%9C%B0%E5%9D%80"><span class="nav-text">4.1 MAC地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-ARP%EF%BC%9A%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE"><span class="nav-text">4.2 ARP：地址解析协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E4%BB%A5%E5%A4%AA%E7%BD%91%EF%BC%88Ethernet%EF%BC%89"><span class="nav-text">4.3 以太网（Ethernet）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%88switch%EF%BC%89"><span class="nav-text">4.4 交换机（switch）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91%EF%BC%88VLAN%EF%BC%89"><span class="nav-text">4.5 虚拟局域网（VLAN）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-802-11%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="nav-text">5 802.11无线局域网</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -511,13 +830,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">72k</span>
+    <span title="站点总字数">74k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:06</span>
+    <span title="站点阅读时长">1:07</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
