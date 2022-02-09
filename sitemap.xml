@@ -2,7 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lightink2020.github.io/2022/02/09/hexo/</loc>
+    
+    <lastmod>2022-02-09</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://lightink2020.github.io/2022/02/09/liking05/</loc>
+    
+    <lastmod>2022-02-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2022/02/05/liking04/</loc>
+    
+    <lastmod>2022-02-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2022/02/01/liking03/</loc>
+    
+    <lastmod>2022-02-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2022/01/27/liking02/</loc>
+    
+    <lastmod>2022-02-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2022/01/25/liking01/</loc>
+    
+    <lastmod>2022-02-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2022/01/04/acwingWinter02/</loc>
+    
+    <lastmod>2022-02-09</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/2022/01/04/acwingWinter01/</loc>
     
     <lastmod>2022-02-09</lastmod>
     
@@ -276,6 +325,48 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://lightink2020.github.io/tags/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/tags/C-C/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/tags/AcWing/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/tags/Liking/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/tags/SpringBoot/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -350,6 +441,27 @@
   
   <url>
     <loc>https://lightink2020.github.io/categories/Vue-%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/categories/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2022-02-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://lightink2020.github.io/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</loc>
     <lastmod>2022-02-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
