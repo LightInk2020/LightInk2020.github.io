@@ -163,13 +163,31 @@
     
     
     <entry>
-      <title></title>
-      <link href="2022/03/11/PAT/"/>
-      <url>2022/03/11/PAT/</url>
+      <title>PAT</title>
+      <link href="2022/03/10/PAT/"/>
+      <url>2022/03/10/PAT/</url>
       
-        <content type="html"><![CDATA[<h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><h2 id="英文单词"><a href="#英文单词" class="headerlink" title="英文单词"></a>英文单词</h2><p>comma  逗号</p><p>polynomial 表达式</p><p>exponent  幂</p><p>coefficient 系数</p><p>decimal place 小数位</p><p>in constant time 在常数时间内</p><p>continuous 连续</p><p>in ascending order 升序</p><h2 id="记录问题"><a href="#记录问题" class="headerlink" title="记录问题"></a>记录问题</h2><h3 id="STL中size-的返回值类型（坑）"><a href="#STL中size-的返回值类型（坑）" class="headerlink" title="STL中size()的返回值类型（坑）"></a>STL中size()的返回值类型（坑）</h3><p>size()返回值类型为无符号整型（std::size_t），如果要与int等计算，注意一定要强制类型转换，否则结果不对。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">int</span>)str.<span class="built_in">size</span>() - <span class="number">3</span></span><br></pre></td></tr></table></figure><h2 id="好题目"><a href="#好题目" class="headerlink" title="好题目"></a>好题目</h2>]]></content>
+        <content type="html"><![CDATA[<h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><h2 id="英文单词"><a href="#英文单词" class="headerlink" title="英文单词"></a>英文单词</h2><p>comma  逗号<br>polynomial 表达式<br>exponent  幂<br>coefficient 系数<br>decimal place 小数位</p><span id="more"></span><p>in constant time 在常数时间内<br>continuous 连续<br>in ascending order 升序</p><h2 id="记录问题"><a href="#记录问题" class="headerlink" title="记录问题"></a>记录问题</h2><h3 id="STL中size-的返回值类型（坑）"><a href="#STL中size-的返回值类型（坑）" class="headerlink" title="STL中size()的返回值类型（坑）"></a>STL中size()的返回值类型（坑）</h3><p>size()返回值类型为无符号整型（std::size_t），如果要与int等计算，注意一定要强制类型转换，否则结果不对。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">int</span>)str.<span class="built_in">size</span>() - <span class="number">3</span></span><br></pre></td></tr></table></figure><h2 id="好题目"><a href="#好题目" class="headerlink" title="好题目"></a>好题目</h2>]]></content>
       
       
+      <categories>
+          
+          <category> 算法刷题 </category>
+          
+          <category> PAT </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> C/C++ </tag>
+            
+            <tag> PAT </tag>
+            
+        </tags>
       
     </entry>
     
