@@ -147,7 +147,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">45</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -210,6 +210,495 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/13/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_17%E6%9E%9A%E4%B8%BE%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/13/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_17%E6%9E%9A%E4%B8%BE%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" class="post-title-link" itemprop="url">AcWing考研算法题-17枚举和位运算</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-13 21:00:12" itemprop="dateCreated datePublished" datetime="2022-03-13T21:00:12+08:00">2022-03-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-16 10:18:07" itemprop="dateModified" datetime="2022-03-16T10:18:07+08:00">2022-03-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">AcWing考研算法题</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/13/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_17%E6%9E%9A%E4%B8%BE%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/13/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_17%E6%9E%9A%E4%B8%BE%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="上机"><a href="#上机" class="headerlink" title="上机"></a>上机</h1><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><p>一般解决的问题：寻找特殊的数或者计算这些数的个数。往往数据范围比较小，可以穷举。<br>枚举，顾名思义就是将所有符合条件的数穷举出来。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/13/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_17%E6%9E%9A%E4%B8%BE%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/12/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_20%E5%93%88%E5%B8%8C%E8%A1%A8_%E5%8F%8C%E6%8C%87%E9%92%88_%E5%BA%8F%E5%88%97%E5%9E%8BDP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/12/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_20%E5%93%88%E5%B8%8C%E8%A1%A8_%E5%8F%8C%E6%8C%87%E9%92%88_%E5%BA%8F%E5%88%97%E5%9E%8BDP/" class="post-title-link" itemprop="url">AcWing考研算法题-20哈希表、双指针、序列型DP</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-12 15:00:16" itemprop="dateCreated datePublished" datetime="2022-03-12T15:00:16+08:00">2022-03-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-16 10:18:10" itemprop="dateModified" datetime="2022-03-16T10:18:10+08:00">2022-03-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">AcWing考研算法题</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/12/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_20%E5%93%88%E5%B8%8C%E8%A1%A8_%E5%8F%8C%E6%8C%87%E9%92%88_%E5%BA%8F%E5%88%97%E5%9E%8BDP/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/12/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_20%E5%93%88%E5%B8%8C%E8%A1%A8_%E5%8F%8C%E6%8C%87%E9%92%88_%E5%BA%8F%E5%88%97%E5%9E%8BDP/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="上机"><a href="#上机" class="headerlink" title="上机"></a>上机</h1><h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3450/">3447. 子串计算 - AcWing题库</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/12/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_20%E5%93%88%E5%B8%8C%E8%A1%A8_%E5%8F%8C%E6%8C%87%E9%92%88_%E5%BA%8F%E5%88%97%E5%9E%8BDP/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/11/AcWing%E7%AE%97%E6%B3%95%E9%A2%98_%E9%97%AB%E5%BC%8FDP%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/11/AcWing%E7%AE%97%E6%B3%95%E9%A2%98_%E9%97%AB%E5%BC%8FDP%E6%B3%95/" class="post-title-link" itemprop="url">AcWing算法题-闫式DP法</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-11 21:38:16" itemprop="dateCreated datePublished" datetime="2022-03-11T21:38:16+08:00">2022-03-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-16 10:18:22" itemprop="dateModified" datetime="2022-03-16T10:18:22+08:00">2022-03-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">AcWing考研算法题</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/11/AcWing%E7%AE%97%E6%B3%95%E9%A2%98_%E9%97%AB%E5%BC%8FDP%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/11/AcWing%E7%AE%97%E6%B3%95%E9%A2%98_%E9%97%AB%E5%BC%8FDP%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="闫式DP法"><a href="#闫式DP法" class="headerlink" title="闫式DP法"></a>闫式DP法</h1><p>动态规划问题本质：==有限集==中==最值==问题。<br>动态规划：</p>
+<ul>
+<li>状态表示 - 化零为整<ul>
+<li>集合 f(i, j)<ul>
+<li>一般描述：所有只考虑前i个物品，且总体积不超过j的<strong>选法</strong>的集合</li>
+</ul>
+</li>
+<li>属性：集合中每个方案的 max / min / count 值</li>
+</ul>
+</li>
+<li>状态计算 - 化整为零<ul>
+<li>划分为若干个不重复、不遗漏的子集来求解<blockquote>
+<p>划分依据：寻找最后一个不同点</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/11/AcWing%E7%AE%97%E6%B3%95%E9%A2%98_%E9%97%AB%E5%BC%8FDP%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/10/PAT%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/10/PAT%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">PAT刷题笔记</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-10 21:38:16" itemprop="dateCreated datePublished" datetime="2022-03-10T21:38:16+08:00">2022-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-16 10:37:17" itemprop="dateModified" datetime="2022-03-16T10:37:17+08:00">2022-03-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/PAT/" itemprop="url" rel="index"><span itemprop="name">PAT</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/10/PAT%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/10/PAT%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>219</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="PAT"><a href="#PAT" class="headerlink" title="PAT"></a>PAT</h1><h2 id="英文单词"><a href="#英文单词" class="headerlink" title="英文单词"></a>英文单词</h2><p>comma  逗号<br>polynomial 表达式<br>exponent  幂<br>coefficient 系数<br>decimal place 小数位</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/10/PAT%E5%88%B7%E9%A2%98%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/10/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_04%E6%A0%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5_%E4%BA%8C%E5%8F%89%E6%A0%91_%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -243,7 +732,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 10:17:52" itemprop="dateModified" datetime="2022-03-16T10:17:52+08:00">2022-03-16</time>
+                <time title="修改时间：2022-03-21 23:04:33" itemprop="dateModified" datetime="2022-03-21T23:04:33+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -279,7 +768,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.2k</span>
+              <span>2.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -361,7 +850,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 10:17:47" itemprop="dateModified" datetime="2022-03-16T10:17:47+08:00">2022-03-16</time>
+                <time title="修改时间：2022-03-21 23:04:44" itemprop="dateModified" datetime="2022-03-21T23:04:44+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -479,7 +968,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 10:17:35" itemprop="dateModified" datetime="2022-03-16T10:17:35+08:00">2022-03-16</time>
+                <time title="修改时间：2022-03-21 11:55:23" itemprop="dateModified" datetime="2022-03-21T11:55:23+08:00">2022-03-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -515,14 +1004,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>16k</span>
+              <span>17k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>14 分钟</span>
+              <span>15 分钟</span>
             </span>
 
         </div>
@@ -908,475 +1397,6 @@
   
 
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/02/09/Hexo%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E5%92%8C%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/09/Hexo%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E5%92%8C%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">Hexo基础使用和报错记录</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-09 13:56:21" itemprop="dateCreated datePublished" datetime="2022-02-09T13:56:21+08:00">2022-02-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 10:37:00" itemprop="dateModified" datetime="2022-03-16T10:37:00+08:00">2022-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/02/09/Hexo%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E5%92%8C%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/09/Hexo%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E5%92%8C%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>510</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h1><h2 id="YAMLException-can-not-read-a-block-mapping-entry-a-multiline-key-may-not-b"><a href="#YAMLException-can-not-read-a-block-mapping-entry-a-multiline-key-may-not-b" class="headerlink" title="YAMLException: can not read a block mapping entry; a multiline key may not b"></a>YAMLException: can not read a block mapping entry; a multiline key may not b</h2><p>报错信息：</p>
-<p>YAMLException: can not read a block mapping entry; a multiline key may not b</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: [转]--ISP（图像信号处理）算法概述、工作原理、架构、处理流程</span><br><span class="line">date: 2020-03-22 21:39:40</span><br><span class="line">tags: [图像处理]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/09/Hexo%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8%E5%92%8C%E6%8A%A5%E9%94%99%E8%AE%B0%E5%BD%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/02/09/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_04%E8%BD%AE%E6%92%AD%E5%9B%BESwiper/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/09/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_04%E8%BD%AE%E6%92%AD%E5%9B%BESwiper/" class="post-title-link" itemprop="url">Liking起始页搭建日记[前端]-04swiper轮播图</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-09 13:47:02" itemprop="dateCreated datePublished" datetime="2022-02-09T13:47:02+08:00">2022-02-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 10:39:41" itemprop="dateModified" datetime="2022-03-16T10:39:41+08:00">2022-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Liking起始页搭建日记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/02/09/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_04%E8%BD%AE%E6%92%AD%E5%9B%BESwiper/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/09/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_04%E8%BD%AE%E6%92%AD%E5%9B%BESwiper/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>官网：<a target="_blank" rel="noopener" href="https://swiperjs.com/vue">刷卡器 Vue.js 组件 (swiperjs.com)</a></p>
-<h2 id="下载swiper插件"><a href="#下载swiper插件" class="headerlink" title="下载swiper插件"></a>下载swiper插件</h2><p>Swiper Vue.js插件只能通过NPM作为主Swiper库的一部分使用：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">npm</span> i swiper@<span class="number">7</span>.<span class="number">2</span>.<span class="number">0</span> --save</span><br></pre></td></tr></table></figure>
-
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42063951/article/details/121354984?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~Rate-2.pc_relevant_default&utm_relevant_index=5">vue3中使用swiper7_weianl的博客-CSDN博客_vue使用swiper7</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/09/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_04%E8%BD%AE%E6%92%AD%E5%9B%BESwiper/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/02/05/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_03%E6%90%9C%E7%B4%A2%E9%A1%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/05/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_03%E6%90%9C%E7%B4%A2%E9%A1%B5/" class="post-title-link" itemprop="url">Liking起始页搭建日记[前端]-03搜索页</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-05 11:45:12" itemprop="dateCreated datePublished" datetime="2022-02-05T11:45:12+08:00">2022-02-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 10:39:32" itemprop="dateModified" datetime="2022-03-16T10:39:32+08:00">2022-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Liking起始页搭建日记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/02/05/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_03%E6%90%9C%E7%B4%A2%E9%A1%B5/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/05/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_03%E6%90%9C%E7%B4%A2%E9%A1%B5/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>6.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>6 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><h2 id="js设置输入框失去光标（onblur）与光标选中（onfocus）时样式"><a href="#js设置输入框失去光标（onblur）与光标选中（onfocus）时样式" class="headerlink" title="js设置输入框失去光标（onblur）与光标选中（onfocus）时样式"></a>js设置输入框失去光标（onblur）与光标选中（onfocus）时样式</h2><h3 id="onfocus事件"><a href="#onfocus事件" class="headerlink" title="onfocus事件"></a>onfocus事件</h3><p>onfocus 属性在元素获得焦点时触发。</p>
-<p>onfocus 常用于 <input>、<select> 以及 <a>.</a></select></p>
-<p><strong>提示：</strong>onfocus 属性与 onblur 属性相反。</p>
-<p><strong>注释：</strong>onfocus 属性不适用于以下元素：<base>、<bdo>、<br>、<head>、<html>、<iframe>、<meta>、<param>、<script>、<style> 或 <title>。</p></script></iframe></html></head></bdo></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/05/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_03%E6%90%9C%E7%B4%A2%E9%A1%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/02/01/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_02%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/02/01/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_02%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/" class="post-title-link" itemprop="url">Liking起始页搭建日记[前端]-02主页面布局</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-01 18:37:56" itemprop="dateCreated datePublished" datetime="2022-02-01T18:37:56+08:00">2022-02-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-16 10:39:07" itemprop="dateModified" datetime="2022-03-16T10:39:07+08:00">2022-03-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">Liking起始页搭建日记</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/02/01/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_02%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/02/01/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_02%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>5.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="已完成"><a href="#已完成" class="headerlink" title="已完成"></a>已完成</h1><ol>
-<li>完成主页面基础布局</li>
-<li>完成主页面通用组件</li>
-</ol>
-<h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><h2 id="实现菜单栏与组件绑定"><a href="#实现菜单栏与组件绑定" class="headerlink" title="实现菜单栏与组件绑定"></a>实现菜单栏与组件绑定</h2><h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><p>通过一个变量<code>activeURL</code>和一个动态class属性<code>:class=&quot;&#123; activedPage: activeURL == index + 1 &#125;&quot;</code>来实现点击菜单栏以后对应菜单栏发生样式变化，同时通过<code>a</code>标签/<code>router-link</code>标签实现对应组件渲染。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/02/01/Liking%E8%B5%B7%E5%A7%8B%E9%A1%B5%E6%90%AD%E5%BB%BA%E6%97%A5%E8%AE%B0_%E5%89%8D%E7%AB%AF_02%E4%B8%BB%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
 
   
   <nav class="pagination">
@@ -1448,7 +1468,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1506,13 +1526,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">172k</span>
+    <span title="站点总字数">185k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">2:36</span>
+    <span title="站点阅读时长">2:49</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
