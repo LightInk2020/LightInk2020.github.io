@@ -31,7 +31,7 @@
 <meta property="og:description" content="上机字符串处理#知识点 OJ平台报错：Presentation Error。1.思路是对的，且运行时间符合要求2.答案和标准结果非常接近，也就是说最可能是因为，在输出结果中，多了或少了不必要的空格或者回车或者其他，总而言之，OJ平台对格式的检查非常严格，所以一定要认真检查程序的输出结果是否与标准一致。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-15T00:11:34.000Z">
-<meta property="article:modified_time" content="2022-03-18T12:21:30.581Z">
+<meta property="article:modified_time" content="2022-04-03T08:21:59.334Z">
 <meta property="article:author" content="浅墨">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="C&#x2F;C++">
@@ -143,17 +143,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">33</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">38</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">65</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -249,7 +249,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-18 20:21:30" itemprop="dateModified" datetime="2022-03-18T20:21:30+08:00">2022-03-18</time>
+                <time title="修改时间：2022-04-03 16:21:59" itemprop="dateModified" datetime="2022-04-03T16:21:59+08:00">2022-04-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -333,7 +333,7 @@
 <li>状态计算<ul>
 <li>集合划分<ul>
 <li>不选物品i且总体积恰好等于j         f(i - 1, j)</li>
-<li>选物品i，且总体积恰好等于j         f(i - 1, j - v[i])<br>注意这道题关键是对f(i, j)的初始化体现出来了总体积恰好等于j，而不是上一题的小于等于j。f(0, 0) = 1含义：选前0个物品且总体积恰好等于0，则选法为1种；什么都不选；f(0, 1) = 0含义：选前0个物品且总体积恰好等于1，则选法为1种 ；f(0, 2) = 0…<br>而上一题如果改为计算个数，则f(0, 0) = 1，f(0, 1) = 1 ，…<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;  <span class="comment">// 关键是初始化决定了是小于等于v还是等于v</span></span><br><span class="line">    <span class="keyword">while</span> (n -- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v;</span><br><span class="line">        cin &gt;&gt; v;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">40</span>; i &gt;= v; i -- )</span><br><span class="line">            f[i] += f[i - v];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[<span class="number">40</span>] &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>选物品i，且总体积恰好等于j         f(i - 1, j - v[i])<br>注意这道题<mark style="background: #FF5582A6;">关键是对f(i, j)的初始化体现出来了总体积恰好等于j，而不是上一题的小于等于j</mark> 。f(0, 0) = 1含义：选前0个物品且总体积恰好等于0，则选法为1种；什么都不选；f(0, 1) = 0含义：选前0个物品且总体积恰好等于1，则选法为1种 ；f(0, 2) = 0…<br>而上一题如果改为计算个数，则f(0, 0) = 1，f(0, 1) = 1 ，…<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>;  <span class="comment">// 初始化决定了是小于等于v还是等于v</span></span><br><span class="line">    <span class="keyword">while</span> (n -- )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> v;</span><br><span class="line">        cin &gt;&gt; v;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">40</span>; i &gt;= v; i -- )</span><br><span class="line">            f[i] += f[i - v];</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; f[<span class="number">40</span>] &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/3385/">3382. 整数拆分 - AcWing题库</a><br>#疑问<br>为什么初始化f[0][0] = 1？<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://www.acwing.com/problem/content/3405/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"><span class="keyword">int</span> f[N];</span><br><span class="line"><span class="keyword">int</span> w[N];</span><br><span class="line"><span class="comment">// f[i][j] 表示只选前i种2的次幂的，结果等于j的选法数量</span></span><br><span class="line"><span class="comment">// f[i][j] 可以划分为不选i  选一个i   选两个i ...</span></span><br><span class="line"><span class="comment">// f[i][j] = f[i-1][j] + f[i-1][j - w[i]] + f[i-1][j - 2 * w[i]] + ...</span></span><br><span class="line"><span class="comment">// f[i][j - w[i]] = f[i - 1][j - w[i]] + f[i-1][j - 2 * w[i]] + ...</span></span><br><span class="line"><span class="comment">// f[i][j] = f[i-1][j] + f[i][j - w[i]]</span></span><br><span class="line"><span class="comment">// f[j] = f[j] + f[j - w[i]] // i, j从小到大列举</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    </span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    w[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++ j) <span class="comment">// 为什么错了？ f[0][j]  对应 w[0]限制j</span></span><br><span class="line">        f[j] = <span class="number">1</span>;</span><br><span class="line">    f[<span class="number">0</span>] = <span class="number">1</span>; <span class="comment">// f[0][0]  这里不知道为什么要等于1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n &amp;&amp; w[i - <span class="number">1</span>] &lt; n; ++ i)</span><br><span class="line">    &#123;</span><br><span class="line">        w[i] = w[i - <span class="number">1</span>] * <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = w[i]; j &lt;= n; ++ j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 本来段错误 j 可能小于零！ 因为int i溢出了，所以加了w[i-1] &lt; n的限制</span></span><br><span class="line">            f[j] =(f[j] + f[j - w[i]])% <span class="number">1000000000</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    cout &lt;&lt; f[n] &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
@@ -409,8 +409,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/03/14/%E7%AE%97%E6%B3%95_01%E6%95%B4%E9%99%A4%E4%B8%8E%E5%8F%96%E6%A8%A1%E8%BF%90%E7%AE%97%E8%AE%A8%E8%AE%BA/" rel="prev" title="算法-整除、取模运算讨论">
-      <i class="fa fa-chevron-left"></i> 算法-整除、取模运算讨论
+    <a href="/2022/03/14/%E7%AE%97%E6%B3%95TIPS_%E6%95%B4%E9%99%A4%E4%B8%8E%E5%8F%96%E6%A8%A1%E8%BF%90%E7%AE%97%E8%AE%A8%E8%AE%BA/" rel="prev" title="算法TIPS-整除、取模运算讨论">
+      <i class="fa fa-chevron-left"></i> 算法TIPS-整除、取模运算讨论
     </a></div>
       <div class="post-nav-item">
     <a href="/2022/03/15/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96_Echarts%E4%BD%BF%E7%94%A8/" rel="next" title="数据可视化-Echarts使用">
@@ -492,20 +492,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -550,13 +550,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">209k</span>
+    <span title="站点总字数">255k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:10</span>
+    <span title="站点阅读时长">3:52</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动

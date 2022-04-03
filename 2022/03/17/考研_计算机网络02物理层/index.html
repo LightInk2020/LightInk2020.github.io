@@ -25,32 +25,34 @@
 
   <meta name="description" content="2.1 物理层基础概念物理层接口特性物理层解决的是如何在连接各种计算机的传输媒体上&#x3D;&#x3D;传输数据比特流&#x3D;&#x3D;，而不是指具体的传输媒体。  传输介质不属于物理层！  物理层主要任务：确定与传输媒体&#x3D;&#x3D;接口&#x3D;&#x3D;有关的一些特性。 &#x3D;&#x3D;定义标准&#x3D;&#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="王道考研-计算机网络02物理层">
-<meta property="og:url" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/index.html">
+<meta property="og:title" content="考研-计算机网络02物理层">
+<meta property="og:url" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/index.html">
 <meta property="og:site_name" content="落纸浅墨">
 <meta property="og:description" content="2.1 物理层基础概念物理层接口特性物理层解决的是如何在连接各种计算机的传输媒体上&#x3D;&#x3D;传输数据比特流&#x3D;&#x3D;，而不是指具体的传输媒体。  传输介质不属于物理层！  物理层主要任务：确定与传输媒体&#x3D;&#x3D;接口&#x3D;&#x3D;有关的一些特性。 &#x3D;&#x3D;定义标准&#x3D;&#x3D;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317194825276.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317200159770.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205246254.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205435523.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213340793.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213533423.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215125830.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215305315.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317220140106.png">
-<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317222623012.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317194825276.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317200159770.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205246254.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205435523.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213340793.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213533423.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215125830.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215305315.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317220140106.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220329211319383.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317222623012.png">
 <meta property="article:published_time" content="2022-03-17T11:33:12.000Z">
-<meta property="article:modified_time" content="2022-03-17T14:28:29.795Z">
+<meta property="article:modified_time" content="2022-04-01T12:57:14.641Z">
 <meta property="article:author" content="浅墨">
 <meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="考研">
 <meta property="article:tag" content="408">
 <meta property="article:tag" content="王道">
+<meta property="article:tag" content="湖科大">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317194825276.png">
+<meta name="twitter:image" content="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317194825276.png">
 
-<link rel="canonical" href="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/">
+<link rel="canonical" href="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/">
 
 
 <script id="page-configurations">
@@ -63,7 +65,7 @@
   };
 </script>
 
-  <title>王道考研-计算机网络02物理层 | 落纸浅墨</title>
+  <title>考研-计算机网络02物理层 | 落纸浅墨</title>
   
 
 
@@ -154,17 +156,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">33</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">38</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">53</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">65</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -228,7 +230,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -241,7 +243,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          王道考研-计算机网络02物理层
+          考研-计算机网络02物理层
         </h1>
 
         <div class="post-meta">
@@ -252,10 +254,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-17 19:33:12 / 修改时间：22:28:29" itemprop="dateCreated datePublished" datetime="2022-03-17T19:33:12+08:00">2022-03-17</time>
+              <time title="创建时间：2022-03-17 19:33:12" itemprop="dateCreated datePublished" datetime="2022-03-17T19:33:12+08:00">2022-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-01 20:57:14" itemprop="dateModified" datetime="2022-04-01T20:57:14+08:00">2022-04-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -286,8 +294,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -297,14 +305,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.8k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -326,12 +334,12 @@
 <h3 id="电气接口"><a href="#电气接口" class="headerlink" title="电气接口"></a>电气接口</h3><p>规定传输二进制位时，线路上信号的电压范围、传输速率和距离限制等</p>
 <h3 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h3><p>某一电平表示何种意义、接口部件信号线的用途</p>
 <h3 id="规程特性"><a href="#规程特性" class="headerlink" title="规程特性"></a>规程特性</h3><p>过程特性，线路的工作规程和时序关系</p>
-<h1 id="2-2-数据通信基础知识"><a href="#2-2-数据通信基础知识" class="headerlink" title="2.2 数据通信基础知识"></a>2.2 数据通信基础知识</h1><p><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317194825276.png" alt="典型的数据通信模型"><br>数据首先翻译成数字信号，再通过调制解调器转换成模拟信号，（这样才能通过广域网上的模拟信道进行传输），之后再通过调制解调器转为数据信号，传给计算机转为人类可以理解的数据。<br>通信的目的是传送<strong>消息</strong>。<br><strong>数据Data</strong>：传送信息的实体，通常是有意义的符号序列。<br><strong>信号</strong>：数据的电气/电磁的表现，是数据在传输过程中的存在形式。</p>
+<h1 id="2-2-数据通信基础知识"><a href="#2-2-数据通信基础知识" class="headerlink" title="2.2 数据通信基础知识"></a>2.2 数据通信基础知识</h1><p><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317194825276.png" alt="典型的数据通信模型"><br>数据首先翻译成数字信号，再通过调制解调器转换成模拟信号，（这样才能通过广域网上的模拟信道进行传输），之后再通过调制解调器转为数据信号，传给计算机转为人类可以理解的数据。<br>通信的目的是传送<strong>消息</strong>。<br><strong>数据Data</strong>：传送信息的实体，通常是有意义的符号序列。<br><strong>信号</strong>：数据的电气/电磁的表现，是数据在传输过程中的存在形式。</p>
 <ul>
 <li>数字信号/离散信号</li>
 <li>模拟信号/连续信号<br>数据通信指在不同计算机之间传输表示信息的二进制数0、1序列的过程。</li>
 <li><strong>信源</strong> <strong>信宿</strong></li>
-<li><strong>信道</strong>：信号的传输媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一个发送信道和一个接收信道。<strong>信道具有方向性</strong><br><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317200159770.png" alt="信道"><h2 id="数据通信系统要考虑的3个问题"><a href="#数据通信系统要考虑的3个问题" class="headerlink" title="数据通信系统要考虑的3个问题"></a>数据通信系统要考虑的3个问题</h2><h3 id="三种数据通信方式"><a href="#三种数据通信方式" class="headerlink" title="三种数据通信方式"></a>三种数据通信方式</h3>单工：仅需要<strong>一条</strong>信道<br>半双工：需要<strong>两条</strong>信道<br>双工：需要<strong>两条</strong>信道<h3 id="数据传输方式"><a href="#数据传输方式" class="headerlink" title="数据传输方式"></a>数据传输方式</h3>串行传输</li>
+<li><strong>信道</strong>：信号的传输媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一个发送信道和一个接收信道。<strong>信道具有方向性</strong><br><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317200159770.png" alt="信道"><h2 id="数据通信系统要考虑的3个问题"><a href="#数据通信系统要考虑的3个问题" class="headerlink" title="数据通信系统要考虑的3个问题"></a>数据通信系统要考虑的3个问题</h2><h3 id="三种数据通信方式"><a href="#三种数据通信方式" class="headerlink" title="三种数据通信方式"></a>三种数据通信方式</h3>单工：仅需要<strong>一条</strong>信道<br>半双工：需要<strong>两条</strong>信道<br>双工：需要<strong>两条</strong>信道<h3 id="数据传输方式"><a href="#数据传输方式" class="headerlink" title="数据传输方式"></a>数据传输方式</h3>串行传输</li>
 <li>将表示一个字符的8位二进制数按从低位到高位顺序依此发送</li>
 <li>速度慢、费用低、适合远距离传输<br>并行传输</li>
 <li>将表示一个字符的8位二进制同时通过8条信道发送</li>
@@ -355,9 +363,9 @@
 </blockquote>
 <p>数字信号有进制之分，但是<strong>码元速率与进制数无关，只与码元长度T有关</strong>。<br>$$<br>R_B = \frac{1}{T}(B)<br>$$<br><strong>信息传输速率</strong><br>别名信息速率、比特率等，表示单位时间传输的<strong>二进制码元个数</strong>（即比特数），单位比特/秒（b/s）</p>
 <blockquote>
-<p>关系：若一个码元携带n bit的信息量，则M Baud的码元传输速率所对应的信息传输速率为M*n bit/s</p>
+<p>关系：若一个码元携带n bit的信息量，则M Baud的码元传输速率所对应的信息传输速率为M * n bit/s</p>
 </blockquote>
-<p><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205246254.png" alt="数字通信系统数据传输速率的两种表达形式思考题1"><br><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205435523.png" alt="数字通信系统数据传输速率的两种表达形式思考题2"></p>
+<p><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205246254.png" alt="数字通信系统数据传输速率的两种表达形式思考题1"><br><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317205435523.png" alt="数字通信系统数据传输速率的两种表达形式思考题2"></p>
 <h3 id="带宽-Bandwidth"><a href="#带宽-Bandwidth" class="headerlink" title="带宽 Bandwidth"></a>带宽 Bandwidth</h3><p><strong>模拟信号系统</strong>中，信号最高频率和最低频率之间的差值就是系统的通频带宽，单位是<strong>赫兹（Hz）</strong>。<br><strong>数字设备</strong>中，单位时间内从网络中某一点到另一点所能通过的“<strong>最高数据率</strong>”/单位时间内通过链路的数量，体现了最高传输能力。单位<strong>比特每秒（bps）</strong>。</p>
 <h1 id="2-3-奈式准则和香农定理"><a href="#2-3-奈式准则和香农定理" class="headerlink" title="2.3 奈式准则和香农定理"></a>2.3 奈式准则和香农定理</h1><h2 id="失真"><a href="#失真" class="headerlink" title="失真"></a>失真</h2><p>信号在现实信道中因为带宽受限、有噪声、干扰等而发生波形扭曲等。失真过大则无法识别实际波形。<br>影响失真程度的因素：</p>
 <ol>
@@ -371,7 +379,7 @@
 <p>频率过低的无法通过信道原因：震动过低，在信道传输的时候非常容易衰减，最后无法辨别波形。<br>频率过高的无法通过信道原因：震动过快，接收端无法辨别波形的界限。码间串扰</p>
 </blockquote>
 <p>码元传输频率对应的是信号传输频率。</p>
-<h2 id="奈式准则（奈奎斯特定理）"><a href="#奈式准则（奈奎斯特定理）" class="headerlink" title="奈式准则（奈奎斯特定理）"></a>奈式准则（奈奎斯特定理）</h2><p>为了解决码间串扰问题，提出的奈式准则。<br><strong>奈式准则</strong>：在理想（无噪声）低通（带宽受限，低通-低于最高频率可以通过信道）条件下，为了避免码间串扰，极限码元传输速率为2W Baud，W是信道带宽，单位是Hz。</p>
+<h2 id="奈式准则（奈奎斯特定理）"><a href="#奈式准则（奈奎斯特定理）" class="headerlink" title="奈式准则（奈奎斯特定理）"></a>奈式准则（奈奎斯特定理）</h2><p>为了解决码间串扰问题，提出的奈式准则。<br><strong>奈式准则</strong>：在理想（无噪声）低通（带宽受限，低通-低于最高频率可以通过信道）条件下，为了避免码间串扰，极限<strong>码元传输速率</strong>为2W Baud，W是信道带宽，单位是Hz。</p>
 <blockquote>
 <p>注意，带宽的单位一般是b/s，只有在奈式准则和香农定理中采用Hz作为单位。</p>
 </blockquote>
@@ -380,7 +388,7 @@
 <li><strong>在任何信道中，码元传输的速率是有上限的</strong>。若传输速率超过此上限，就会出现严重的码间串扰问题，使接收端对码元的完全正确识别成为不可能。</li>
 <li>信道的<strong>频带越宽</strong>（即能通过的信号高频分量越多)，就可以用<strong>更高的速率</strong>进行码元的有效传输。</li>
 <li><strong>奈氏准则</strong>给出了码元传输速率的限制，但并<strong>没有对信息传输速率给出限制。</strong></li>
-<li>由于码元的传输速率受奈氏准则的制约，所以**要提高==数据的传输速率==**，就必须设法使每个码元能携带更多个比特的信息量，这就需要==<strong>采用多元制的调制方法</strong>==。或者通过提高==<strong>带宽</strong>==。<br><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213340793.png" alt="奈式准则题1"><br><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213533423.png" alt="奈式准则题1解"><h2 id="香农定理"><a href="#香农定理" class="headerlink" title="香农定理"></a>香农定理</h2>奈式准则只提供了码元传输速率的最高限制，没有提出数据传输率的限制，而香农定理提出这两个的最高值，还考虑了信道中实际存在的噪声干扰。<br>噪声存在于所有的电子设备和通信信道中。由于噪声随机产生，它的瞬时值有时会很大，因此噪声会使接收端对码元的判决产生错误。但是噪声的影响是相对的，若信号较强，那么噪声影响相对较小。因此，<strong>信噪比</strong>就很重要。<br>信噪比 = 信号的平均功率/噪声的平均功率，常记为S/N，并用分贝（dB）作为度量单位，即：<br>$$<br>\text{信噪比}(dB) = 10\log_{10}(S/N)<br>$$<br>公式前后数值等价，前者有单位dB，后者没有单位</li>
+<li>由于码元的传输速率受奈氏准则的制约，所以**要提高==数据的传输速率==**，就必须设法使每个码元能携带更多个比特的信息量，这就需要==<strong>采用多元制的调制方法</strong>==。或者通过提高==<strong>带宽</strong>==。<br><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213340793.png" alt="奈式准则题1"><br><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317213533423.png" alt="奈式准则题1解"><h2 id="香农定理"><a href="#香农定理" class="headerlink" title="香农定理"></a>香农定理</h2>奈式准则只提供了码元传输速率的最高限制，没有提出数据传输率的限制，而香农定理提出这两个的最高值，还考虑了信道中实际存在的噪声干扰。<br>噪声存在于所有的电子设备和通信信道中。由于噪声随机产生，它的瞬时值有时会很大，因此噪声会使接收端对码元的判决产生错误。但是噪声的影响是相对的，若信号较强，那么噪声影响相对较小。因此，<strong>信噪比</strong>就很重要。<br>信噪比 = 信号的平均功率/噪声的平均功率，常记为S/N，并用分贝（dB）作为度量单位，即：<br>$$<br>\text{信噪比}(dB) = 10\log_{10}(S/N)<br>$$<br>公式前后数值等价，前者有单位dB，后者没有单位</li>
 </ol>
 <p><strong>香农定理</strong>：在带宽受限且有噪声的信道中，为了不产生误差，信息的<strong>数据传输速率</strong>有上限值。<br>$$<br>\text{信道的极限数据传播速率} = W\log_2(1+S/N)(b/s)<br>$$<br>信噪比S/N，S是信道所传信号的平均功率，N是信道内的高斯噪声功率</p>
 <blockquote>
@@ -393,25 +401,45 @@
 <li>香农定理得出的为极限信息传输速率，实际信道能达到的传输速率要比它低不少。</li>
 <li>从香农定理可以看出，若信道带宽W或信噪比S/N没有上限（不可能)，那么信道的极限信息传输速率也就没有上限。</li>
 </ol>
-<p><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215125830.png" alt="香农定理题1"><br><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215305315.png" alt="香农定理题1解"></p>
+<p><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215125830.png" alt="香农定理题1"><br><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317215305315.png" alt="香农定理题1解"></p>
 <blockquote>
-<p>如果题目中既给了信噪比，又给了码元对应的比特V，则两个公式都要计算一下，然后求最小值。<br><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317220140106.png" alt="题2"></p>
+<p>如果题目中既给了信噪比，又给了码元对应的比特V，则两个公式都要计算一下，然后求最小值。<br><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317220140106.png" alt="题2"></p>
 </blockquote>
-<h1 id="2-5-编码与调制"><a href="#2-5-编码与调制" class="headerlink" title="2.5 编码与调制"></a>2.5 编码与调制</h1><h2 id="基带信号与宽带信号"><a href="#基带信号与宽带信号" class="headerlink" title="基带信号与宽带信号"></a>基带信号与宽带信号</h2><p>信道：信号的传输媒介。<br>信道上传输的信号可以分为模拟信号和数字信号，也可以划分为基带信号和宽带信号。<br><strong>基带信号</strong><br>将数字信号1和0直接用两种不同的电压表示，然后再送到==数字信道==上去传输（基带传输）。</p>
+<h1 id="2-5-编码与调制"><a href="#2-5-编码与调制" class="headerlink" title="2.5 编码与调制"></a>2.5 编码与调制</h1><p><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220329211319383.png"><br>数据：运送消息的实体<br>信号：数据的电磁表现<br>基带信号：<strong>信源发出</strong>的原始电信号。基带信号分为数字基带信号和模拟基带信号。<br>信道：信号通过信道传输。信道可分为数字信道和模拟信道。<br>编码：不改变信号的性质，仅对数字基带信号的波形进行变换，称为编码。以太网采用曼彻斯特编码、4B/5B、8B/10B等编码。<br>调制：把数字频段搬移到较高的范围，并转换为模拟信号，称为调制。</p>
+<h2 id="基带信号与宽带信号"><a href="#基带信号与宽带信号" class="headerlink" title="基带信号与宽带信号"></a>基带信号与宽带信号</h2><p>信道：信号的传输媒介。<br>信道上传输的信号可以分为模拟信号和数字信号，也可以划分为基带信号和宽带信号。<br><strong>基带信号</strong><br>将数字信号1和0直接用两种不同的电压表示，然后再送到==数字信道==上去传输（基带传输）。</p>
 <blockquote>
 <p>==来自信源==的信号，像计算机输出的代表各种文字和图像文件的数据信号都属于基带信号。基带信号就是<strong>直接表达了要传输的信息的信号</strong>，比如我们说话的声波就是基带信号。<br>基带信号可以是数字信号，也可以是模拟信号，但是在计算机中一般指数字信号。</p>
 </blockquote>
-<p><strong>宽带信号</strong><br>将基带信号进行调制后形成的频分复用模拟信号，再传送到==模拟信道==上去传输（宽带传输）。<br>把基带信号进行<strong>载波调制</strong>后，把信号的<strong>频率范围</strong>搬移到<strong>较高的频段</strong>以便于在信道上传输，因为仅在一段频率范围内信号能够通过信道，较低频率信号衰减过快，不能在信道上传播。</p>
+<p><strong>宽带信号</strong><br>将基带信号进行<strong>调制</strong>后形成的频分复用模拟信号，再传送到==模拟信道==上去传输（宽带传输）。<br>把基带信号进行<strong>载波调制</strong>后，把信号的<strong>频率范围</strong>搬移到<strong>较高的频段</strong>以便于在信道上传输，因为仅在一段频率范围内信号能够通过信道，较低频率信号衰减过快，不能在信道上传播。</p>
 <ul>
 <li>在传输距离较近时，计算机网络采用<strong>基带传输</strong>方式（近距离衰减小，从而信号内容不易发生改变）</li>
 <li>在传输距离较远时，计算机网络采用<strong>宽带传输</strong>方式（远距离衰减大，即使信号变化大也能最后过滤出来基带信号）<h2 id="编码与调制"><a href="#编码与调制" class="headerlink" title="编码与调制"></a>编码与调制</h2></li>
 <li><em>信息</em>*<br>是数据的内容和解释。  </li>
-<li><em>信号</em>*<br>是数据的电子或电磁编码。对应于模拟数据和数字数据,信号也可分为模拟信号和数字信号。<br>模拟信号是随时间连续变化的电流、电压或电磁波,可以利用其某个参量(如幅度、频率或相位等)来表示要传输的数据;数字信号则是一系列离散的电脉冲,可以利用其某一瞬间的状态来表示要传输的数据  </li>
-<li><em>数据</em>*<br>可定义为有意义的实体,它涉及到事物的存在形式。数据可分为模拟数据和数字数据两大类。<br>模拟数据是在某个区间内连续变化的植,例如声音和视频都是幅度连续变化的波形,又如温度和压力也都是连续变化的值;数字数据是离散的值,例如文本信息和整数。<h3 id="数据与信号之间转换"><a href="#数据与信号之间转换" class="headerlink" title="数据与信号之间转换"></a>数据与信号之间转换</h3><img src="/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317222623012.png" alt="数据与信号之间转换"><blockquote>
+<li><em>信号*</em><br>是数据的<strong>电子或电磁编码</strong>。对应于模拟数据和数字数据,信号也可分为模拟信号和数字信号。<br>模拟信号是随时间连续变化的电流、电压或电磁波,可以利用其某个参量(如幅度、频率或相位等)来表示要传输的数据;数字信号则是一系列离散的电脉冲,可以利用其某一瞬间的状态来表示要传输的数据  </li>
+<li><em>数据</em>*<br>可定义为有意义的实体,它涉及到事物的存在形式。数据可分为模拟数据和数字数据两大类。<br>模拟数据是在某个区间内连续变化的植,例如声音和视频都是幅度连续变化的波形,又如温度和压力也都是连续变化的值;数字数据是离散的值,例如文本信息和整数。<h3 id="数据与信号之间转换"><a href="#数据与信号之间转换" class="headerlink" title="数据与信号之间转换"></a>数据与信号之间转换</h3><img src="/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82-image-20220317222623012.png" alt="数据与信号之间转换"><blockquote>
 <p>放大器调制器，为了将模拟数据从低频调制到高频，防止传输过程中由于噪声等影响而失真。</p>
 </blockquote>
-</li>
+<h4 id="数字数据编码为数字信号"><a href="#数字数据编码为数字信号" class="headerlink" title="数字数据编码为数字信号"></a>数字数据编码为数字信号</h4><h5 id="非归零编码【NRZ】"><a href="#非归零编码【NRZ】" class="headerlink" title="非归零编码【NRZ】"></a>非归零编码【NRZ】</h5>高1低0，不用归零</li>
 </ul>
+<ol>
+<li>编码易实现</li>
+<li>没有检错功能</li>
+<li>无法判断码元的开始和结束，以至于收发双方<strong>难以保持同步</strong><h5 id="曼彻斯特编码"><a href="#曼彻斯特编码" class="headerlink" title="曼彻斯特编码"></a>曼彻斯特编码</h5>将一个码元分为两个相等的间隔，前低后高为1，前高后低为0，也可相反。<br>每个码元中间出现一次电平跳变，跳变可以作为时钟信号，也可作为数据信号。<br>但是他所占的频带宽度是原始的基带宽度的两倍，每个码元都被调成两个电平，所以数据传输速率只有调制速率的1/2。</li>
+</ol>
+<p><strong>传统以太网10Mb/s就是采用的曼彻斯特编码。</strong><br>10BaseT：</p>
+<ul>
+<li>10表示传输速率10Mb/s</li>
+<li>Base表示基带传输</li>
+<li>T表示双绞线<h5 id="差分曼彻斯特编码"><a href="#差分曼彻斯特编码" class="headerlink" title="差分曼彻斯特编码"></a>差分曼彻斯特编码</h5>中间跳变仅表示时钟。<br>码元开始处电平是否发生变化表示数据。变化表示0，不变化表示1。<br>差分曼彻斯特编码比曼彻斯特编码变化少，更适合较高的传输速率。<h5 id="归零编码【RZ】"><a href="#归零编码【RZ】" class="headerlink" title="归零编码【RZ】"></a>归零编码【RZ】</h5>高1低0，同时信号电平在一个码元之内都要恢复到零。接收方根据跳变调整时钟基准，实现自同步机制。</li>
+</ul>
+<ol>
+<li>信号更长时间在低电平状态</li>
+<li>归零需要占用一部分带宽，因此传输速率受到限制。<h5 id="反向不归零编码【NRZI】"><a href="#反向不归零编码【NRZI】" class="headerlink" title="反向不归零编码【NRZI】"></a>反向不归零编码【NRZI】</h5>码元开始处信号电平翻转表示0，信号电平不变表示1</li>
+<li>可以同步，但是对于全1的信号不好同步<blockquote>
+<p>USB 2.0通信的编码方式</p>
+</blockquote>
+<h5 id="4B-5B编码"><a href="#4B-5B编码" class="headerlink" title="4B/5B编码"></a>4B/5B编码</h5></li>
+</ol>
 
     </div>
 
@@ -457,7 +485,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://lightink2020.github.io/2022/03/17/%E7%8E%8B%E9%81%93%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/" title="王道考研-计算机网络02物理层">https://lightink2020.github.io/2022/03/17/王道考研_计算机网络02物理层/</a>
+    <a href="https://lightink2020.github.io/2022/03/17/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02%E7%89%A9%E7%90%86%E5%B1%82/" title="考研-计算机网络02物理层">https://lightink2020.github.io/2022/03/17/考研_计算机网络02物理层/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -473,6 +501,7 @@
               <a href="/tags/%E8%80%83%E7%A0%94/" rel="tag"><i class="fa fa-tag"></i> 考研</a>
               <a href="/tags/408/" rel="tag"><i class="fa fa-tag"></i> 408</a>
               <a href="/tags/%E7%8E%8B%E9%81%93/" rel="tag"><i class="fa fa-tag"></i> 王道</a>
+              <a href="/tags/%E6%B9%96%E7%A7%91%E5%A4%A7/" rel="tag"><i class="fa fa-tag"></i> 湖科大</a>
           </div>
 
         
@@ -548,7 +577,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-text">2.1 物理层基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E6%8E%A5%E5%8F%A3%E7%89%B9%E6%80%A7"><span class="nav-text">物理层接口特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E6%A2%B0%E7%89%B9%E6%80%A7"><span class="nav-text">机械特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E6%B0%94%E6%8E%A5%E5%8F%A3"><span class="nav-text">电气接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7"><span class="nav-text">功能特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E7%A8%8B%E7%89%B9%E6%80%A7"><span class="nav-text">规程特性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-text">2.2 数据通信基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%A6%81%E8%80%83%E8%99%91%E7%9A%843%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="nav-text">数据通信系统要考虑的3个问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-text">三种数据通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F"><span class="nav-text">数据传输方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%90%8C%E6%AD%A5%E7%9A%84%E4%BC%A0%E8%BE%93-%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-text">实现同步的传输&#x2F;通信方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E6%9C%AF%E8%AF%AD"><span class="nav-text">数据传输速率的术语</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%81%E5%85%83"><span class="nav-text">码元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A1%A8%E8%BE%BE%E5%BD%A2%E5%BC%8F"><span class="nav-text">数字通信系统数据传输速率的两种表达形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD-Bandwidth"><span class="nav-text">带宽 Bandwidth</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-%E5%A5%88%E5%BC%8F%E5%87%86%E5%88%99%E5%92%8C%E9%A6%99%E5%86%9C%E5%AE%9A%E7%90%86"><span class="nav-text">2.3 奈式准则和香农定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%B1%E7%9C%9F"><span class="nav-text">失真</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B1%E7%9C%9F%E7%9A%84%E4%B8%80%E7%A7%8D%E7%8E%B0%E8%B1%A1%E2%80%93%E7%A0%81%E9%97%B4%E4%B8%B2%E6%89%B0"><span class="nav-text">失真的一种现象–码间串扰</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%88%E5%BC%8F%E5%87%86%E5%88%99%EF%BC%88%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%AE%9A%E7%90%86%EF%BC%89"><span class="nav-text">奈式准则（奈奎斯特定理）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%99%E5%86%9C%E5%AE%9A%E7%90%86"><span class="nav-text">香农定理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="nav-text">2.5 编码与调制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E4%B8%8E%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7"><span class="nav-text">基带信号与宽带信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="nav-text">编码与调制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%8E%E4%BF%A1%E5%8F%B7%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2"><span class="nav-text">数据与信号之间转换</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-1-%E7%89%A9%E7%90%86%E5%B1%82%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-text">2.1 物理层基础概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E6%8E%A5%E5%8F%A3%E7%89%B9%E6%80%A7"><span class="nav-text">物理层接口特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%BA%E6%A2%B0%E7%89%B9%E6%80%A7"><span class="nav-text">机械特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E6%B0%94%E6%8E%A5%E5%8F%A3"><span class="nav-text">电气接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E7%89%B9%E6%80%A7"><span class="nav-text">功能特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E7%A8%8B%E7%89%B9%E6%80%A7"><span class="nav-text">规程特性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-text">2.2 数据通信基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E8%A6%81%E8%80%83%E8%99%91%E7%9A%843%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="nav-text">数据通信系统要考虑的3个问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-text">三种数据通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E6%96%B9%E5%BC%8F"><span class="nav-text">数据传输方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E5%90%8C%E6%AD%A5%E7%9A%84%E4%BC%A0%E8%BE%93-%E9%80%9A%E4%BF%A1%E6%96%B9%E5%BC%8F"><span class="nav-text">实现同步的传输&#x2F;通信方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E6%9C%AF%E8%AF%AD"><span class="nav-text">数据传输速率的术语</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A0%81%E5%85%83"><span class="nav-text">码元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E9%80%9F%E7%8E%87%E7%9A%84%E4%B8%A4%E7%A7%8D%E8%A1%A8%E8%BE%BE%E5%BD%A2%E5%BC%8F"><span class="nav-text">数字通信系统数据传输速率的两种表达形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%A6%E5%AE%BD-Bandwidth"><span class="nav-text">带宽 Bandwidth</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-3-%E5%A5%88%E5%BC%8F%E5%87%86%E5%88%99%E5%92%8C%E9%A6%99%E5%86%9C%E5%AE%9A%E7%90%86"><span class="nav-text">2.3 奈式准则和香农定理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%B1%E7%9C%9F"><span class="nav-text">失真</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%B1%E7%9C%9F%E7%9A%84%E4%B8%80%E7%A7%8D%E7%8E%B0%E8%B1%A1%E2%80%93%E7%A0%81%E9%97%B4%E4%B8%B2%E6%89%B0"><span class="nav-text">失真的一种现象–码间串扰</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%88%E5%BC%8F%E5%87%86%E5%88%99%EF%BC%88%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%AE%9A%E7%90%86%EF%BC%89"><span class="nav-text">奈式准则（奈奎斯特定理）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A6%99%E5%86%9C%E5%AE%9A%E7%90%86"><span class="nav-text">香农定理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-5-%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="nav-text">2.5 编码与调制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E5%B8%A6%E4%BF%A1%E5%8F%B7%E4%B8%8E%E5%AE%BD%E5%B8%A6%E4%BF%A1%E5%8F%B7"><span class="nav-text">基带信号与宽带信号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E4%B8%8E%E8%B0%83%E5%88%B6"><span class="nav-text">编码与调制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E4%B8%8E%E4%BF%A1%E5%8F%B7%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2"><span class="nav-text">数据与信号之间转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81%E4%B8%BA%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7"><span class="nav-text">数字数据编码为数字信号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%9E%E5%BD%92%E9%9B%B6%E7%BC%96%E7%A0%81%E3%80%90NRZ%E3%80%91"><span class="nav-text">非归零编码【NRZ】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81"><span class="nav-text">曼彻斯特编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%AE%E5%88%86%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81"><span class="nav-text">差分曼彻斯特编码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BD%92%E9%9B%B6%E7%BC%96%E7%A0%81%E3%80%90RZ%E3%80%91"><span class="nav-text">归零编码【RZ】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%8D%E5%90%91%E4%B8%8D%E5%BD%92%E9%9B%B6%E7%BC%96%E7%A0%81%E3%80%90NRZI%E3%80%91"><span class="nav-text">反向不归零编码【NRZI】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4B-5B%E7%BC%96%E7%A0%81"><span class="nav-text">4B&#x2F;5B编码</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -564,20 +593,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">53</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">38</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -622,13 +651,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">209k</span>
+    <span title="站点总字数">255k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:10</span>
+    <span title="站点阅读时长">3:52</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
