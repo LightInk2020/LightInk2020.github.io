@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lightink2020.github.io/2022/03/28/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_13DFS_2021%E5%B9%B4%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/</loc>
+    <lastmod>2022-04-03</lastmod>
+  </url>
+  <url>
     <loc>https://lightink2020.github.io/2022/04/03/%E7%AE%97%E6%B3%95TIPS_%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%8E%8B%E4%BD%8D/</loc>
     <lastmod>2022-04-03</lastmod>
   </url>
@@ -54,10 +58,6 @@
   </url>
   <url>
     <loc>https://lightink2020.github.io/2022/03/14/%E7%AE%97%E6%B3%95TIPS_%E6%95%B4%E9%99%A4%E4%B8%8E%E5%8F%96%E6%A8%A1%E8%BF%90%E7%AE%97%E8%AE%A8%E8%AE%BA/</loc>
-    <lastmod>2022-03-28</lastmod>
-  </url>
-  <url>
-    <loc>https://lightink2020.github.io/2022/03/28/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_13DFS_2021%E5%B9%B4%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/</loc>
     <lastmod>2022-03-28</lastmod>
   </url>
   <url>
@@ -255,9 +255,5 @@
   <url>
     <loc>https://lightink2020.github.io/2021/04/12/English01/</loc>
     <lastmod>2021-04-15</lastmod>
-  </url>
-  <url>
-    <loc>https://lightink2020.github.io/2022/03/29/README/</loc>
-    <lastmod>2021-01-04</lastmod>
   </url>
 </urlset> 
