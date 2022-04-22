@@ -137,17 +137,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">38</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">64</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">81</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -210,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/03/%E7%AE%97%E6%B3%95TIPS_%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%8E%8B%E4%BD%8D/">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/21/%E8%80%83%E7%A0%94-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F02%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -224,559 +224,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/03/%E7%AE%97%E6%B3%95TIPS_%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%8E%8B%E4%BD%8D/" class="post-title-link" itemprop="url">算法TIPS-高精度计算以及压位</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-03 16:56:28 / 修改时间：16:57:24" itemprop="dateCreated datePublished" datetime="2022-04-03T16:56:28+08:00">2022-04-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95TIPS/" itemprop="url" rel="index"><span itemprop="name">算法TIPS</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/03/%E7%AE%97%E6%B3%95TIPS_%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%8E%8B%E4%BD%8D/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/03/%E7%AE%97%E6%B3%95TIPS_%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%8E%8B%E4%BD%8D/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.7k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>高精度计算，加法最多压9位（int类型），乘法最多压4位（int类型）。</p>
-<h1 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h1><h2 id="不圧位代码"><a href="#不圧位代码" class="headerlink" title="不圧位代码"></a>不圧位代码</h2>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/03/%E7%AE%97%E6%B3%95TIPS_%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%AE%A1%E7%AE%97%E4%BB%A5%E5%8F%8A%E5%8E%8B%E4%BD%8D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/02/tmux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/02/tmux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">tmux常用命令</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-02 13:09:16 / 修改时间：13:12:55" itemprop="dateCreated datePublished" datetime="2022-04-02T13:09:16+08:00">2022-04-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/tmux/" itemprop="url" rel="index"><span itemprop="name">tmux</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/02/tmux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/02/tmux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>402</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xunbaobao123/article/details/103400890">跑深度学习实验-shell脚本，tmux，pycharm小技巧_2020拯救世界的博客-CSDN博客_pycharm tmux</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/02/tmux%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/02/conda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/02/conda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">conda常用命令</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-02 12:44:32 / 修改时间：13:28:24" itemprop="dateCreated datePublished" datetime="2022-04-02T12:44:32+08:00">2022-04-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/conda/" itemprop="url" rel="index"><span itemprop="name">conda</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/02/conda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/02/conda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>635</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="conda常用命令"><a href="#conda常用命令" class="headerlink" title="conda常用命令"></a>conda常用命令</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># conda版本查看</span></span><br><span class="line">conda -V</span><br><span class="line">conda --version</span><br><span class="line"><span class="comment">#更新         </span></span><br><span class="line">conda update conda            <span class="comment">#更新conda</span></span><br><span class="line">conda update anaconda        <span class="comment">#更新anaconda</span></span><br><span class="line">conda update anaconda-navigator    <span class="comment">#update最新版本的anaconda-navigator</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 查看已安装的虚拟环境</span></span><br><span class="line">conda env <span class="built_in">list</span> </span><br><span class="line">conda info -e</span><br><span class="line">conda info –env</span><br><span class="line"> </span><br><span class="line"><span class="comment"># conda -create -n env_name list_of_packages# env_name是需要创建的环境名称，list_of_packages是在新环境中需要安装的工具包，有多个时用空格隔开# 创建一个名为的环境，指定Python版本是3.5（conda会自动寻找3.5.x中的最新版本）</span></span><br><span class="line"> </span><br><span class="line">conda create -n xxxx python=<span class="number">3.5</span></span><br><span class="line">conda create --name xxxx python=<span class="number">3.5</span></span><br><span class="line"> </span><br><span class="line">conda activate xxxx           <span class="comment">#开启xxxx环境</span></span><br><span class="line">conda deactivate              <span class="comment">#关闭环境</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 克隆环境，我想创建一个新环境BBB，完全克隆AAA的环境配置</span></span><br><span class="line">conda create -n BBB --clone AAA</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 删除一个已有的环境</span></span><br><span class="line">conda remove -n xxxx --<span class="built_in">all</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 环境重命名# conda没有重命名的命令，所以可以先 clone 一个环境，然后删除原有的环境</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/02/conda%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/01/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C03%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/01/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C03%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="post-title-link" itemprop="url">考研-计算机网络03数据链路层</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-01 20:56:45 / 修改时间：21:24:49" itemprop="dateCreated datePublished" datetime="2022-04-01T20:56:45+08:00">2022-04-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">计算机网络</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/408/" itemprop="url" rel="index"><span itemprop="name">408</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/01/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C03%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/01/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C03%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>648</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="3-1-数据链路层概述"><a href="#3-1-数据链路层概述" class="headerlink" title="3.1 数据链路层概述"></a>3.1 数据链路层概述</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><strong>链路</strong>（Link）就是从一个结点到相邻结点的一段物理线路，而中间没有任何其他的交换结点。<br><strong>数据链路</strong>（Data Link）是指把实现通信协议的硬件和软件加到链路上，就构成了数据链路。<br>数据链路层以<strong>帧</strong>为单位传输和处理数据。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/01/%E8%80%83%E7%A0%94_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C03%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/01/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98-21%E7%BA%A2%E9%BB%91%E6%A0%91_%E5%B9%B6%E6%9F%A5%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/01/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98-21%E7%BA%A2%E9%BB%91%E6%A0%91_%E5%B9%B6%E6%9F%A5%E9%9B%86/" class="post-title-link" itemprop="url">AcWing考研算法题-21红黑树、并查集</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-04-01 15:08:52 / 修改时间：20:52:09" itemprop="dateCreated datePublished" datetime="2022-04-01T15:08:52+08:00">2022-04-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">AcWing考研算法题</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/01/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98-21%E7%BA%A2%E9%BB%91%E6%A0%91_%E5%B9%B6%E6%9F%A5%E9%9B%86/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/01/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98-21%E7%BA%A2%E9%BB%91%E6%A0%91_%E5%B9%B6%E6%9F%A5%E9%9B%86/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h1><blockquote>
-<p>408新增考点：红黑树、并查集！</p>
-</blockquote>
-<h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2><p><strong>平衡二叉树在插入时最多只需要两次旋转就会重新恢复平衡</strong>。<br>平衡二叉树在查找时有着二叉查找树的优越性，在插入时还能通过调整继续保持着。那么为什么还要使用到红黑树呢？可以从以下两个方面来考虑：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/01/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98-21%E7%BA%A2%E9%BB%91%E6%A0%91_%E5%B9%B6%E6%9F%A5%E9%9B%86/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/30/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_05%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/03/30/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_05%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">AcWing算法基础课-05动态规划</a>
+            <a href="/2022/04/21/%E8%80%83%E7%A0%94-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F02%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">考研-操作系统01操作系统概述</a>
         </h2>
 
         <div class="post-meta">
@@ -788,14 +236,241 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-03-30 15:26:54" itemprop="dateCreated datePublished" datetime="2022-03-30T15:26:54+08:00">2022-03-30</time>
+              <time title="创建时间：2022-04-21 14:23:56" itemprop="dateCreated datePublished" datetime="2022-04-21T14:23:56+08:00">2022-04-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-03 16:36:40" itemprop="dateModified" datetime="2022-04-03T16:36:40+08:00">2022-04-03</time>
+                <time title="修改时间：2022-04-22 15:42:10" itemprop="dateModified" datetime="2022-04-22T15:42:10+08:00">2022-04-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/408/" itemprop="url" rel="index"><span itemprop="name">408</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/04/21/%E8%80%83%E7%A0%94-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F02%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/21/%E8%80%83%E7%A0%94-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F02%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="2-1-进程"><a href="#2-1-进程" class="headerlink" title="2.1 进程"></a>2.1 进程</h1><h2 id="2-1-1-进程的定义、组成、组织方式、特征"><a href="#2-1-1-进程的定义、组成、组织方式、特征" class="headerlink" title="2.1.1 进程的定义、组成、组织方式、特征"></a>2.1.1 进程的定义、组成、组织方式、特征</h2><h3 id="进程的定义"><a href="#进程的定义" class="headerlink" title="进程的定义"></a>进程的定义</h3><p>==程序：就是一个指令序列==<br>早期的计算机只支持<strong>单道</strong>程序。程序的代码放在程序段内，程序运行过程处理的数据放在数据段内。由于内存只有一个程序，所以程序段和数据段可以放到内存固定位置，这样操作系统很容易找到，比如程序段放到低地址，数据段放到高地址等。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/21/%E8%80%83%E7%A0%94-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F02%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/20/LaTex%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/20/LaTex%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/" class="post-title-link" itemprop="url">LaTex基础用法</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-20 10:12:53 / 修改时间：10:13:29" itemprop="dateCreated datePublished" datetime="2022-04-20T10:12:53+08:00">2022-04-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/LaTex/" itemprop="url" rel="index"><span itemprop="name">LaTex</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/04/20/LaTex%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/20/LaTex%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在线Latex工具：<a target="_blank" rel="noopener" href="https://www.overleaf.com/">Overleaf, Online LaTeX Editor</a></p>
+<h1 id="newcommand"><a href="#newcommand" class="headerlink" title="newcommand"></a>newcommand</h1><p>有时候我们在用latex写文档的时候不想写很长的命令，那么我们自己定义一个新的命令来替换一段代码。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/20/LaTex%E5%9F%BA%E7%A1%80%E7%94%A8%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">AcWing算法基础课-02数据结构</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-16 16:37:27" itemprop="dateCreated datePublished" datetime="2022-04-16T16:37:27+08:00">2022-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-19 14:15:39" itemprop="dateModified" datetime="2022-04-19T14:15:39+08:00">2022-04-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -820,8 +495,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/03/30/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_05%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/30/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_05%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -831,14 +506,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>9.1k</span>
+              <span>4.4k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>8 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -850,15 +525,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="动态规划模型"><a href="#动态规划模型" class="headerlink" title="动态规划模型"></a>动态规划模型</h1><p>关键找状态表示和状态计算。<br>先从最朴素的角度出发写出状态方程，然后再考虑优化，优化实际上就是状态方程的等价变化。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/30/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_05%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h1 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h1><p>机试中一般采用数组模拟链表的方式实现链表功能，因为new操作太慢了所以一般不采用结构体形式实现链表。<br><strong>单链表</strong>一般用来实现<strong>邻接表</strong>，邻接表一般用来实现<strong>存储图和树</strong>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// head存储链表头结点下标</span></span><br><span class="line"><span class="comment">// e[]存储节点的值</span></span><br><span class="line"><span class="comment">// ne[]存储节点的next指针（下一个结点的下标）</span></span><br><span class="line"><span class="comment">// idx表示当前用到了哪个节点</span></span><br><span class="line"><span class="keyword">int</span> head, e[N], ne[N], idx;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = <span class="number">-1</span>;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在链表头插入一个数a</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = a, ne[idx] = head, head = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入一个数a到链表中下标为k的结点后面</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert_node</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = a, ne[idx] = ne[k], ne[k] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将头结点删除，需要保证头结点存在</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = ne[head];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将下标为k的结点的下一个结点删除</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove_node</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ne[k] = ne[ne[k]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="双链表"><a href="#双链表" class="headerlink" title="双链表"></a>双链表</h1><p><strong>双链表</strong>一般用来<strong>优化</strong>某些问题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// e[]表示节点的值，l[]表示节点的左指针，r[]表示节点的右指针，idx表示当前用到了哪个节点</span></span><br><span class="line"><span class="keyword">int</span> e[N], l[N], r[N], idx;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 0是左端点，1是右端点  也可以用两个int类型表示</span></span><br><span class="line">    r[<span class="number">0</span>] = <span class="number">1</span>, l[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    idx = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在节点a的右边插入一个数x</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    l[idx] = a, r[idx] = r[a];</span><br><span class="line">    l[r[a]] = idx, r[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除节点a</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    l[r[a]] = l[a];</span><br><span class="line">    r[l[a]] = r[a];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-image-20220419141534715.png"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m;</span><br><span class="line"><span class="keyword">int</span> e[N], l[N], r[N], idx;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在节点a的右边插入一个数x</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    l[idx] = a, r[idx] = r[a];</span><br><span class="line">    l[r[a]] = idx, r[a] = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除节点a</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    l[r[a]] = l[a];</span><br><span class="line">    r[l[a]] = r[a];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 0是左端点，1是右端点</span></span><br><span class="line">    r[<span class="number">0</span>] = <span class="number">1</span>, l[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    idx = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (m -- )</span><br><span class="line">    &#123;</span><br><span class="line">        string op;</span><br><span class="line">        cin &gt;&gt; op;</span><br><span class="line">        <span class="keyword">int</span> k, x;</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="string">&quot;L&quot;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            <span class="built_in">insert</span>(<span class="number">0</span>, x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="string">&quot;R&quot;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            <span class="built_in">insert</span>(l[<span class="number">1</span>], x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="string">&quot;D&quot;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k;</span><br><span class="line">            <span class="built_in">remove</span>(k + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="string">&quot;IL&quot;</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k &gt;&gt; x;</span><br><span class="line">            <span class="built_in">insert</span>(l[k + <span class="number">1</span>], x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; k &gt;&gt; x;</span><br><span class="line">            <span class="built_in">insert</span>(k + <span class="number">1</span>, x);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = r[<span class="number">0</span>]; i != <span class="number">1</span>; i = r[i]) cout &lt;&lt; e[i] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// tt表示栈顶</span></span><br><span class="line"><span class="keyword">int</span> stk[N], tt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向栈顶插入一个数</span></span><br><span class="line">stk[ ++ tt] = x;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从栈顶弹出一个数</span></span><br><span class="line">tt -- ;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 栈顶的值</span></span><br><span class="line">stk[tt];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断栈是否为空</span></span><br><span class="line"><span class="keyword">if</span> (tt &gt; <span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><ol>
+<li>普通队列：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hh 表示队头，tt表示队尾</span></span><br><span class="line"><span class="keyword">int</span> q[N], hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向队尾插入一个数</span></span><br><span class="line">q[ ++ tt] = x;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从队头弹出一个数</span></span><br><span class="line">hh ++ ;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 队头的值</span></span><br><span class="line">q[hh];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断队列是否为空</span></span><br><span class="line"><span class="keyword">if</span> (hh &lt;= tt)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>循环队列<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hh 表示队头，tt表示队尾的后一个位置</span></span><br><span class="line"><span class="keyword">int</span> q[N], hh = <span class="number">0</span>, tt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向队尾插入一个数</span></span><br><span class="line">q[tt ++ ] = x;</span><br><span class="line"><span class="keyword">if</span> (tt == N) tt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从队头弹出一个数</span></span><br><span class="line">hh ++ ;</span><br><span class="line"><span class="keyword">if</span> (hh == N) hh = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 队头的值</span></span><br><span class="line">q[hh];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断队列是否为空</span></span><br><span class="line"><span class="keyword">if</span> (hh != tt)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1>常见模型：<strong>找出每个数左边离它最近的比它大/小的数</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> tt = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (tt &amp;&amp; <span class="built_in">check</span>(stk[tt], i)) tt -- ;</span><br><span class="line">    stk[ ++ tt] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-image-20220418102025327.png"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100010</span>;</span><br><span class="line"><span class="keyword">int</span> stk[N], tt;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>); <span class="comment">// 可以加速cout cin</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    cin &gt;&gt; m;</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="keyword">int</span> x;</span><br><span class="line">        cin&gt;&gt;x;</span><br><span class="line">        <span class="keyword">while</span>(tt &amp;&amp; x &lt;= stk[tt])&#123;</span><br><span class="line">            tt --;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(tt)&#123;</span><br><span class="line">            cout&lt;&lt;stk[tt]&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            cout&lt;&lt;<span class="number">-1</span>&lt;&lt;<span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        stk[++tt] = x;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h1>常见模型：<strong>找出滑动窗口中的最大值/最小值</strong><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; <span class="built_in">check_out</span>(q[hh])) hh ++ ;  <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">    <span class="keyword">while</span> (hh &lt;= tt &amp;&amp; <span class="built_in">check</span>(q[tt], i)) tt -- ;</span><br><span class="line">    q[ ++ tt] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+步骤：</li>
+<li>先找暴力求解的方式，模拟栈/队列中的元素</li>
+<li>看栈/队列中无用元素删除后是否存在单调性，进行优化<br><img src="/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-image-20220418103521359.png"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, k;</span><br><span class="line"><span class="keyword">int</span> a[N], q[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 判断队头是否已经滑出窗口，是则后移队头</span></span><br><span class="line">		<span class="keyword">if</span>(hh &lt;= tt &amp;&amp; i - k + <span class="number">1</span> &gt; q[hh]) ++ hh;</span><br><span class="line">		<span class="comment">// 判断队列中元素是否小于新加入的元素</span></span><br><span class="line">		<span class="keyword">while</span>(hh &lt;= tt &amp;&amp; a[q[tt]] &gt;= a[i]) -- tt;</span><br><span class="line">		<span class="comment">// 插入新的元素   先插入元素，然后再输出，防止新的元素是满足条件的元素</span></span><br><span class="line">		q[++ tt] = i;</span><br><span class="line">		<span class="keyword">if</span>(i &gt;= k - <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[q[hh]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">	hh = <span class="number">0</span>, tt = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++ i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">// 判断队头是否已经滑出窗口，是则后移队头</span></span><br><span class="line">		<span class="keyword">if</span>(hh &lt;= tt &amp;&amp; i - k + <span class="number">1</span> &gt; q[hh]) ++ hh;</span><br><span class="line">		<span class="comment">// 判断队列中元素是否小于新加入的元素</span></span><br><span class="line">		<span class="keyword">while</span>(hh &lt;= tt &amp;&amp; a[q[tt]] &lt;= a[i]) -- tt;</span><br><span class="line">		<span class="comment">// 插入新的元素   先插入元素，然后再输出，防止新的元素是满足条件的元素</span></span><br><span class="line">		q[++ tt] = i;</span><br><span class="line">		<span class="keyword">if</span>(i &gt;= k - <span class="number">1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, a[q[hh]]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h1><img src="/2022/04/16/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_02%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-image-20220418112512546.png"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> ne[N];</span><br><span class="line"><span class="keyword">char</span> s[M], p[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; p + <span class="number">1</span> &gt;&gt; m &gt;&gt; s + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// next数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>, j = <span class="number">0</span>; i &lt;= n; ++ i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(j &amp;&amp; p[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">		<span class="keyword">if</span>(p[i] == p[j + <span class="number">1</span>]) ++ j;</span><br><span class="line">		ne[i] = j;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// kmp匹配</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= m; ++ i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">while</span>(j &amp;&amp; s[i] != p[j + <span class="number">1</span>]) j = ne[j];</span><br><span class="line">		<span class="keyword">if</span>(s[i] == p[j + <span class="number">1</span>]) ++ j;</span><br><span class="line">		<span class="keyword">if</span>(j == n)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, i - n);</span><br><span class="line">			j = ne[j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
       
     </div>
 
@@ -880,7 +565,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/29/%E7%AE%97%E6%B3%95_09%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/14/%E9%9D%A2%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -894,7 +579,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/29/%E7%AE%97%E6%B3%95_09%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">算法-09贪心算法</a>
+            <a href="/2022/04/14/%E9%9D%A2%E8%AF%95/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -905,28 +590,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-03-29 17:16:41" itemprop="dateCreated datePublished" datetime="2022-03-29T17:16:41+08:00">2022-03-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-31 11:53:33" itemprop="dateModified" datetime="2022-03-31T11:53:33+08:00">2022-03-31</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">代码随想录</span></a>
-                </span>
+              <time title="创建时间：2022-04-14 09:58:10 / 修改时间：09:58:18" itemprop="dateCreated datePublished" datetime="2022-04-14T09:58:10+08:00">2022-04-14</time>
             </span>
 
           
@@ -938,8 +604,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/03/29/%E7%AE%97%E6%B3%95_09%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/29/%E7%AE%97%E6%B3%95_09%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/04/14/%E9%9D%A2%E8%AF%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/14/%E9%9D%A2%E8%AF%95/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -949,7 +615,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>592</span>
+              <span>0</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -968,19 +634,121 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>参考：</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://www.programmercarl.com/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E4%BB%80%E4%B9%88%E6%98%AF%E8%B4%AA%E5%BF%83">代码随想录 (programmercarl.com)-贪心算法</a></li>
-</ol>
-</blockquote>
-<h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p><strong>贪心的本质是选择每一阶段的局部最优，从而达到全局最优。</strong><br>何时选用贪心算法？<br><strong>最好用的策略就是举反例，如果想不到反例，那么就试一试贪心吧</strong>。<br>一般数学证明有如下两种方法：</p>
-<ul>
-<li>数学归纳法</li>
-<li>反证法</li></ul>
+          <p><img src="/2022/04/14/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95-image-20220414095817043.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/11/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/11/Docker/" class="post-title-link" itemprop="url">Docker</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-11 21:19:52" itemprop="dateCreated datePublished" datetime="2022-04-11T21:19:52+08:00">2022-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-12 17:16:05" itemprop="dateModified" datetime="2022-04-12T17:16:05+08:00">2022-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/04/11/Docker/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/11/Docker/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Docker概述"><a href="#Docker概述" class="headerlink" title="Docker概述"></a>Docker概述</h1><h2 id="Docker为什么出现"><a href="#Docker为什么出现" class="headerlink" title="Docker为什么出现"></a>Docker为什么出现</h2><ol>
+<li>一款产品：开发和上线，需要两套环境。</li>
+<li>开发 — 运维   问题：我在我的电脑上可以运行。</li>
+<li>版本更新导致服务不可用。</li>
+<li>环境配置麻烦，每个机器都需要部署环境。</li></ol>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/03/29/%E7%AE%97%E6%B3%95_09%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/#more" rel="contents">
+              <a class="btn" href="/2022/04/11/Docker/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1007,7 +775,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/28/%E7%AE%97%E6%B3%95_08%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1021,7 +789,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/28/%E7%AE%97%E6%B3%95_08%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">算法-08回溯算法</a>
+            <a href="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">AcWing算法基础课-01基础算法</a>
         </h2>
 
         <div class="post-meta">
@@ -1033,14 +801,244 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-03-28 15:53:52" itemprop="dateCreated datePublished" datetime="2022-03-28T15:53:52+08:00">2022-03-28</time>
+              <time title="创建时间：2022-04-11 09:47:44" itemprop="dateCreated datePublished" datetime="2022-04-11T09:47:44+08:00">2022-04-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-31 10:29:00" itemprop="dateModified" datetime="2022-03-31T10:29:00+08:00">2022-03-31</time>
+                <time title="修改时间：2022-04-16 16:27:45" itemprop="dateModified" datetime="2022-04-16T16:27:45+08:00">2022-04-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">AcWing算法基础课</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>16k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>15 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序主要思想：**==分治==**<br>稳定排序    平均时间复杂度：$O(n\log n)$</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/08/%E7%AE%97%E6%B3%95TIPS-%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/08/%E7%AE%97%E6%B3%95TIPS-%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/" class="post-title-link" itemprop="url">算法TIPS-卡特兰数</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-04-08 16:59:48 / 修改时间：17:11:09" itemprop="dateCreated datePublished" datetime="2022-04-08T16:59:48+08:00">2022-04-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95TIPS/" itemprop="url" rel="index"><span itemprop="name">算法TIPS</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/04/08/%E7%AE%97%E6%B3%95TIPS-%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/08/%E7%AE%97%E6%B3%95TIPS-%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>444</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p>卡特兰数有多种推导公式。</p>
+<h2 id="递推公式"><a href="#递推公式" class="headerlink" title="递推公式"></a>递推公式</h2><p>$$<br>Catalan_{n+1} = \frac{4n + 2}{n+2}Catalan_{n}<br>$$</p>
+<blockquote>
+<p>注：这个公式代码比较容易实现，但是n = 18以后int就存储不下了，需要用long long存储。</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/04/08/%E7%AE%97%E6%B3%95TIPS-%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/08/%E7%AE%97%E6%B3%95_10%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/04/08/%E7%AE%97%E6%B3%95_10%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="post-title-link" itemprop="url">算法-10动态规划</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-08 11:24:13" itemprop="dateCreated datePublished" datetime="2022-04-08T11:24:13+08:00">2022-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-11 17:25:05" itemprop="dateModified" datetime="2022-04-11T17:25:05+08:00">2022-04-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1065,8 +1063,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/03/28/%E7%AE%97%E6%B3%95_08%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/28/%E7%AE%97%E6%B3%95_08%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/04/08/%E7%AE%97%E6%B3%95_10%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/08/%E7%AE%97%E6%B3%95_10%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1095,17 +1093,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>参考：</p>
-<ol>
-<li><a target="_blank" rel="noopener" href="https://www.programmercarl.com/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html#%E9%A2%98%E7%9B%AE%E5%88%86%E7%B1%BB%E5%A4%A7%E7%BA%B2%E5%A6%82%E4%B8%8B">代码随想录 (programmercarl.com)-回溯算法</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cy4y167mM/">带你学透回溯算法（理论篇）| 回溯法精讲！_哔哩哔哩_bilibili</a></li>
-</ol>
-</blockquote>
-<h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p>回溯法也可以叫做回溯搜索法，它是一种搜索的方式。<br>递归与回溯是相辅相成的。一般在递归函数下面进行回溯。<br>回溯本质上也是暴力搜索，效率也不是很高。但是有些暴力搜索的操作无法通过for循环实现，所以需要通过回溯来实现。<br>==核心：回溯法抽象为树形结构后，其遍历过程就是：<strong>for循环横向遍历，递归纵向遍历，回溯不断调整结果集</strong>。==</p>
+          <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p>动态规划，英文：Dynamic Programming，简称DP，如果某一问题有很多重叠子问题，使用动态规划是最有效的。<br>所以动态规划中每一个状态一定是由上一个状态推导出来的，<strong>这一点就区分于贪心</strong>，贪心没有状态推导，而是从局部直接选最优的，</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/03/28/%E7%AE%97%E6%B3%95_08%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/#more" rel="contents">
+              <a class="btn" href="/2022/04/08/%E7%AE%97%E6%B3%95_10%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1132,7 +1123,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/28/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_13DFS_2021%E5%B9%B4%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/08/%E7%AE%97%E6%B3%95TIPS_%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1146,7 +1137,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/28/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_13DFS_2021%E5%B9%B4%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" class="post-title-link" itemprop="url">AcWing考研算法题-13DFS、2021年笔试真题</a>
+            <a href="/2022/04/08/%E7%AE%97%E6%B3%95TIPS_%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="post-title-link" itemprop="url">算法TIPS-时间复杂度</a>
         </h2>
 
         <div class="post-meta">
@@ -1157,27 +1148,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-03-28 11:45:23" itemprop="dateCreated datePublished" datetime="2022-03-28T11:45:23+08:00">2022-03-28</time>
+              <time title="创建时间：2022-04-08 11:23:54 / 修改时间：11:23:31" itemprop="dateCreated datePublished" datetime="2022-04-08T11:23:54+08:00">2022-04-08</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-03 17:00:59" itemprop="dateModified" datetime="2022-04-03T17:00:59+08:00">2022-04-03</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">AcWing考研算法题</span></a>
+                  <a href="/categories/%E7%AE%97%E6%B3%95TIPS/" itemprop="url" rel="index"><span itemprop="name">算法TIPS</span></a>
                 </span>
             </span>
 
@@ -1190,8 +1171,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/03/28/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_13DFS_2021%E5%B9%B4%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/28/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_13DFS_2021%E5%B9%B4%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/04/08/%E7%AE%97%E6%B3%95TIPS_%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/08/%E7%AE%97%E6%B3%95TIPS_%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1201,14 +1182,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.1k</span>
+              <span>58</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -1220,15 +1201,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h1><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><h3 id="全排序"><a href="#全排序" class="headerlink" title="全排序"></a>全排序</h3><p><a target="_blank" rel="noopener" href="https://www.acwing.com/activity/content/problem/content/4297/">AcWing 3429. 全排列 - AcWing</a><br>DFS实现</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/03/28/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_13DFS_2021%E5%B9%B4%E7%AC%94%E8%AF%95%E7%9C%9F%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>递归的时间复杂度并不一定是$O(\log n)$，递归算法的时间复杂度本质上是要看：<strong>递归的次数 * 每次递归中的操作次数</strong>。</p>
+
       
     </div>
 
@@ -1250,7 +1224,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/03/27/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_12%E6%A1%B6%E6%8E%92%E5%BA%8F_%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F_%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F_%E5%A4%9A%E8%B7%AF%E5%BD%92%E5%B9%B6%E5%92%8C%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/06/%E7%AE%97%E6%B3%95_03%E5%93%88%E5%B8%8C%E8%A1%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -1264,7 +1238,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/03/27/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_12%E6%A1%B6%E6%8E%92%E5%BA%8F_%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F_%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F_%E5%A4%9A%E8%B7%AF%E5%BD%92%E5%B9%B6%E5%92%8C%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" class="post-title-link" itemprop="url">AcWing考研算法题-12桶排序、基数排序、外部排序，多路归并和摩尔投票法</a>
+            <a href="/2022/04/06/%E7%AE%97%E6%B3%95_03%E5%93%88%E5%B8%8C%E8%A1%A8/" class="post-title-link" itemprop="url">算法-03哈希表</a>
         </h2>
 
         <div class="post-meta">
@@ -1276,14 +1250,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-03-27 13:55:42" itemprop="dateCreated datePublished" datetime="2022-03-27T13:55:42+08:00">2022-03-27</time>
+              <time title="创建时间：2022-04-06 21:47:45" itemprop="dateCreated datePublished" datetime="2022-04-06T21:47:45+08:00">2022-04-06</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-28 11:28:03" itemprop="dateModified" datetime="2022-03-28T11:28:03+08:00">2022-03-28</time>
+                <time title="修改时间：2022-04-08 11:18:38" itemprop="dateModified" datetime="2022-04-08T11:18:38+08:00">2022-04-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1291,11 +1265,11 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
                 </span>
                   ，
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">AcWing考研算法题</span></a>
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E4%BB%A3%E7%A0%81%E9%9A%8F%E6%83%B3%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">代码随想录</span></a>
                 </span>
             </span>
 
@@ -1308,8 +1282,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2022/03/27/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_12%E6%A1%B6%E6%8E%92%E5%BA%8F_%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F_%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F_%E5%A4%9A%E8%B7%AF%E5%BD%92%E5%B9%B6%E5%92%8C%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/27/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_12%E6%A1%B6%E6%8E%92%E5%BA%8F_%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F_%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F_%E5%A4%9A%E8%B7%AF%E5%BD%92%E5%B9%B6%E5%92%8C%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/" itemprop="commentCount"></span>
+    <a title="valine" href="/2022/04/06/%E7%AE%97%E6%B3%95_03%E5%93%88%E5%B8%8C%E8%A1%A8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/06/%E7%AE%97%E6%B3%95_03%E5%93%88%E5%B8%8C%E8%A1%A8/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1319,14 +1293,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>6k</span>
+              <span>7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>5 分钟</span>
+              <span>6 分钟</span>
             </span>
 
         </div>
@@ -1338,10 +1312,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="笔试"><a href="#笔试" class="headerlink" title="笔试"></a>笔试</h1><h2 id="桶排序（计数排序）"><a href="#桶排序（计数排序）" class="headerlink" title="桶排序（计数排序）"></a>桶排序（计数排序）</h2><p>基于比较的排序的下界是O(nlogn)，而桶排序不是基于比较的排序，所以时间复杂度可以是线性的O(n+m)。<br>桶排序中，相同元素的相对顺序不变。</p>
+          <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><p>哈希表是根据关键码的值而直接进行访问对应数据的数据结构。<br><strong>一般哈希表都是用来快速判断一个元素是否出现集合里。只需要$O(1)$的时间复杂度就可以做到。</strong><br>在C++中，set 和 map 分别提供以下三种数据结构，其底层实现以及优劣如下表所示：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2022/03/27/AcWing%E8%80%83%E7%A0%94%E7%AE%97%E6%B3%95%E9%A2%98_12%E6%A1%B6%E6%8E%92%E5%BA%8F_%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F_%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F_%E5%A4%9A%E8%B7%AF%E5%BD%92%E5%B9%B6%E5%92%8C%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95/#more" rel="contents">
+              <a class="btn" href="/2022/04/06/%E7%AE%97%E6%B3%95_03%E5%93%88%E5%B8%8C%E8%A1%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1367,7 +1341,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1435,20 +1409,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">81</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-count">41</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1493,13 +1467,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">255k</span>
+    <span title="站点总字数">328k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">3:52</span>
+    <span title="站点阅读时长">4:59</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
