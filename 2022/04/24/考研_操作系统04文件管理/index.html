@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Zhi Mang Xing:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lightink2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="4.1 文件系统4.1.1 文件系统概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考研-操作系统04文件管理">
+<meta property="og:url" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="落纸浅墨">
+<meta property="og:description" content="4.1 文件系统4.1.1 文件系统概念">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424140510627.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424140552166.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424141436415.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424141747921.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424142006732.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424142050534.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424142917459.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424143032399.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424143201516.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424143249043.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424144713097.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424150235325.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424150958205.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151016200.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151039594.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151603928.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151753954.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152054453.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152154560.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152704308.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152733104.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152907698.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424153316470.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424153450140.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424154026047.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424161945046.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424162200638.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424162406440.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424163145387.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424163208296.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424163803967.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424164719576.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165017364.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165103156.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165154971.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165246907.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165420523.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165535966.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165810409.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425154914769.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155551405.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155628350.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155841497.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155959800.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425160352701.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425160647564.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162003976.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162115257.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162629080.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162916225.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163133627.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163213903.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163310499.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163434563.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163611484.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163757193.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425170233014.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425171631107.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425171735741.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425171907471.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172211461.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172251642.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172440940.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172625994.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172855894.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173005762.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173043591.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173127062.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173154440.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173250293.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174230130.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174438446.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174523281.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174649801.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174806178.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174855566.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175046403.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175121410.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175245726.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175633959.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175807997.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175925674.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175954546.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180030461.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180039616.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180117544.png">
+<meta property="og:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180249820.png">
+<meta property="article:published_time" content="2022-04-24T06:03:47.000Z">
+<meta property="article:modified_time" content="2022-04-25T10:03:09.189Z">
+<meta property="article:author" content="浅墨">
+<meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="考研">
+<meta property="article:tag" content="408">
+<meta property="article:tag" content="王道">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424140510627.png">
+
+<link rel="canonical" href="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>考研-操作系统04文件管理 | 落纸浅墨</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <!-- 右上github跳转-->
+    <a target="_blank" rel="noopener" href="https://github.com/LightInk2020" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      </svg>
+    </a>
+    <style>
+      .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+    </style>
+    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">落纸浅墨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">笔落生墨，纸上留痕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">34</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">83</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <!-- 设置首页头部图片 暂时做成这样，之后改成halo主题的 一行三个推荐页-->
+          <div class="post-block" style="opacity: 1;display: block; padding:0px">
+            <img src="/images/bg.png" alt="头部图片" style="border-radius:5px; height:300px;width:100%;opacity:0.65;">
+          </div>
+
+          
+
+          <div class="content post posts-expand" style="padding-top: 10px;">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          考研-操作系统04文件管理
+        </h1>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-24 14:03:47" itemprop="dateCreated datePublished" datetime="2022-04-24T14:03:47+08:00">2022-04-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-25 18:03:09" itemprop="dateModified" datetime="2022-04-25T18:03:09+08:00">2022-04-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/408/" itemprop="url" rel="index"><span itemprop="name">408</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="4-1-文件系统"><a href="#4-1-文件系统" class="headerlink" title="4.1 文件系统"></a>4.1 文件系统</h1><h2 id="4-1-1-文件系统概念"><a href="#4-1-1-文件系统概念" class="headerlink" title="4.1.1 文件系统概念"></a>4.1.1 文件系统概念</h2><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424140510627.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424140552166.png"></p>
+<span id="more"></span>
+<h3 id="文件的属性"><a href="#文件的属性" class="headerlink" title="文件的属性"></a>文件的属性</h3><p>一个文件有哪些属性?<br><strong>文件名</strong>：由创建文件的用户决定文件名，主要是为了方便用户找到文件，同一目录下不允许有重名文件。<br><strong>标识符</strong>：一个系统内的各文件标识符唯一，对用户来说毫无可读性,因此标识符只是操作系统用于区分各个文件的一种内部名称。<br><strong>类型</strong>：指明文件的类型<br><strong>位置</strong>：文件存放的路径（让用户使用）、在外存中的地址（操作系统使用，对用户不可见）<br><strong>大小</strong>：指明文件大小<br><strong>创建时间</strong>、<strong>上次修改时间</strong><br><strong>文件所有者信息</strong><br><strong>保护信息</strong>：对文件进行保护的访问控制信息</p>
+<h3 id="文件内部的数据应该怎样组织起来"><a href="#文件内部的数据应该怎样组织起来" class="headerlink" title="文件内部的数据应该怎样组织起来"></a>文件内部的数据应该怎样组织起来</h3><p><strong>无结构文件</strong>（如文本文件）–由一些二进制或字符流组成，又称“<strong>流式文件</strong>”。<br><strong>有结构文件</strong>（如数据库表）–由一组相似的记录组成，又称“<strong>记录式文件</strong>”，而每条记录是一组相关数据项的集合。<strong>数据项</strong>是文件系统中最基本的数据单位。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424141436415.png"></p>
+<h3 id="文件之间应该怎样组织起来"><a href="#文件之间应该怎样组织起来" class="headerlink" title="文件之间应该怎样组织起来"></a>文件之间应该怎样组织起来</h3><p>文件通过目录形式组织起来。目录本质是一种特殊的<strong>有结构文件</strong>。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424141747921.png"></p>
+<h3 id="操作系统应该向上提供哪些文件相关功能"><a href="#操作系统应该向上提供哪些文件相关功能" class="headerlink" title="操作系统应该向上提供哪些文件相关功能"></a>操作系统应该向上提供哪些文件相关功能</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424142006732.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424142050534.png"></p>
+<blockquote>
+<p>这里的打开和关闭文件与平时双击打开文件和叉关闭文件不同。</p>
+</blockquote>
+<h3 id="从上往下看，文件应如何存放在外存"><a href="#从上往下看，文件应如何存放在外存" class="headerlink" title="从上往下看，文件应如何存放在外存"></a>从上往下看，文件应如何存放在外存</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424142917459.png"><br>操作系统<strong>以“块”为单位</strong>为文件<strong>分配存储空间</strong>，因此即使一个文件大小只有10B，但它依然需要占用1KB的磁盘块。外存中的数据<strong>读入内存</strong>时同样<strong>以块为单位</strong><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424143032399.png"></p>
+<h3 id="其他操作系统需要实现的文件管理功能"><a href="#其他操作系统需要实现的文件管理功能" class="headerlink" title="其他操作系统需要实现的文件管理功能"></a>其他操作系统需要实现的文件管理功能</h3><p><strong>文件共享</strong>：使多个用户可以共享使用一个文件<br><strong>文件保护</strong>：如何保证不同的用户对文件有不同的操作权限</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424143201516.png"></p>
+<h2 id="4-1-2-文件的逻辑结构"><a href="#4-1-2-文件的逻辑结构" class="headerlink" title="4.1.2 文件的逻辑结构"></a>4.1.2 文件的逻辑结构</h2><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424143249043.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424144713097.png"></p>
+<h3 id="无结构文件"><a href="#无结构文件" class="headerlink" title="无结构文件"></a>无结构文件</h3><p>按文件是否有结构分类，可以分为无结构文件、有结构文件两种。<br><strong>无结构文件</strong>：文件内部的数据就是一系列二进制流或字符流组成。又称“流式文件”。如：Windows操作系统中的.txt文件。</p>
+<h3 id="有结构文件"><a href="#有结构文件" class="headerlink" title="有结构文件"></a>有结构文件</h3><p><strong>有结构文件</strong>：由一组相似的记录组成，又称“记录式文件”。每条记录又若干个数据项组成。如：数据库表文件。一般来说，每条记录有一个数据项可作为<strong>关键字</strong>（作为识别不同记录的ID)<br>根据文件各条记录的长度（占用的存储空间）是否相等，又可以分为<strong>定长记录</strong>和<strong>可变长记录</strong>两种。</p>
+<h3 id="有结构文件的逻辑结构"><a href="#有结构文件的逻辑结构" class="headerlink" title="有结构文件的逻辑结构"></a>有结构文件的逻辑结构</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424150235325.png"></p>
+<h4 id="顺序文件"><a href="#顺序文件" class="headerlink" title="顺序文件"></a>顺序文件</h4><p><strong>顺序文件</strong>：文件中的记录一个接一个地顺序排列（逻辑上)，记录可以是<strong>定长的</strong>或<strong>可变长的</strong>。各个记录在物理上可以<strong>顺序存储</strong>或<strong>链式存储</strong>。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424150958205.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151016200.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151039594.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151603928.png"></p>
+<h4 id="索引文件"><a href="#索引文件" class="headerlink" title="索引文件"></a>索引文件</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424151753954.png"></p>
+<h4 id="索引顺序文件"><a href="#索引顺序文件" class="headerlink" title="索引顺序文件"></a>索引顺序文件</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152054453.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152154560.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152704308.png"></p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152733104.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424152907698.png"></p>
+<h3 id="4-1-3-文件目录"><a href="#4-1-3-文件目录" class="headerlink" title="4.1.3 文件目录"></a>4.1.3 文件目录</h3><p>目录结构对于用户而言，文件之间<strong>组织结构清晰</strong>，易于查找，编程时也可以很方便用文件路径访问一个文件。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424153316470.png"></p>
+<h3 id="文件控制块"><a href="#文件控制块" class="headerlink" title="文件控制块"></a>文件控制块</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424153450140.png"><br>目录文件中的一条<strong>记录</strong>就是一个“<strong>文件控制块（FCB）</strong>”<br>FCB中包含了文件的<strong>基本信息</strong>（<strong>文件名</strong>、<strong>物理地址</strong>、逻辑结构、物理结构等），存取控制信息（是否可读/可写、禁止访问的用户名单等），使用信息（如文件的建立时间、修改时间等）。<br>FCB实现了文件名和文件之间的映射，使用户（用户程序）可以实现“按名存取”。<br><strong>需要对目录进行哪些操作?</strong><br><strong>搜索</strong>：当用户要使用一个文件时，系统要根据文件名搜索目录，找到该文件对应的目录项<br><strong>创建文件</strong>：创建一个新文件时，需要在其所属的目录中增加一个目录项<br><strong>删除文件</strong>：当删除一个文件时，需要在目录中删除相应的目录项<br><strong>显示目录</strong>：用户可以请求显示目录的内容，如显示该目录中的所有文件及相应属性<br><strong>修改目录</strong>：某些文件属性保存在目录中，因此这些属性变化时需要修改相应的目录项(如:文件重命名)</p>
+<h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><h4 id="单级目录结构"><a href="#单级目录结构" class="headerlink" title="单级目录结构"></a>单级目录结构</h4><p>早期操作系统并不支持多级目录，<strong>整个系统中只建立一张目录表</strong>，每个文件占一个目录项.<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424154026047.png"><br>单级目录实现了“按名存取”，但是<strong>不允许文件重名</strong>。<br>在创建一个文件时，需要先检查目录表中有没有重名文件，确定不重名后才能允许建立文件，并将新文件对应的目录项插入目录表中。<br>显然，单级目录结构<strong>不适用于多用户操作系统</strong>。</p>
+<h4 id="两级目录结构"><a href="#两级目录结构" class="headerlink" title="两级目录结构"></a>两级目录结构</h4><p>早期的多用户操作系统，采用两级目录结构。分为<strong>主文件目录</strong>（MFD，Master File Directory）和<strong>用户文件目录</strong>（UFD，User Flie Directory）。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424161945046.png"><br>缺点：用户不可以将自己的文件进一步分类存放。</p>
+<h4 id="多级目录结构"><a href="#多级目录结构" class="headerlink" title="多级目录结构"></a>多级目录结构</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424162200638.png"><br>很多时候，用户会连续访问同一目录内的多个文件（比如:接连查看”2015-08”目录内的多个照片文件）,显然，每次都从根目录开始查找，是很低效的。因此可以设置一个“<strong>当前目录</strong>”。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424162406440.png"><br>可见，引入“当前目录”和“相对路径”后，磁盘I/o的次数减少了。这就提升了访问文件的效率。<br>树形目录结构可以很方便地对文件进行分类，层次结构清晰，也能够更有效地进行文件的管理和保护。但是，**==树形结构不便于实现文件的共享==**。为此，提出了“无环图目录结构”。</p>
+<h4 id="无环图目录结构"><a href="#无环图目录结构" class="headerlink" title="无环图目录结构"></a>无环图目录结构</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424163145387.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424163208296.png"></p>
+<h3 id="索引节点（FCB的改进）"><a href="#索引节点（FCB的改进）" class="headerlink" title="索引节点（FCB的改进）"></a>索引节点（FCB的改进）</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424163803967.png"><br>当找到文件名对应的目录项时，<strong>才需要将索引结点调入内存</strong>，索引结点中记录了文件的各种信息，包括文件在外存中的存放位置，根据“存放位置”即可找到文件。<br>存放在外存中的索引结点称为“<strong>磁盘索引结点</strong>”，当索引结点放入内存后称为“<strong>内存索引结点</strong>”。<br>相比之下<strong>内存索引结点中需要增加一些信息</strong>，比如：文件是否被修改、此时有几个进程正在访问该文件等。</p>
+<h3 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424164719576.png"></p>
+<h2 id="4-1-4-文件的物理结构（文件分配方式）"><a href="#4-1-4-文件的物理结构（文件分配方式）" class="headerlink" title="4.1.4 文件的物理结构（文件分配方式）"></a>4.1.4 文件的物理结构（文件分配方式）</h2><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165017364.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165103156.png"></p>
+<h3 id="文件快、磁盘块"><a href="#文件快、磁盘块" class="headerlink" title="文件快、磁盘块"></a>文件快、磁盘块</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165154971.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165246907.png"></p>
+<h3 id="文件分配方式-顺序分配"><a href="#文件分配方式-顺序分配" class="headerlink" title="文件分配方式-顺序分配"></a>文件分配方式-顺序分配</h3><p><strong>优点</strong>：</p>
+<ol>
+<li>优点1：既可以顺序访问又可以随机访问。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165420523.png"></li>
+<li>优点2：移动磁头距离短，顺序读写时速度最快<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165535966.png"></li>
+</ol>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>缺点1：物理上采用连续分配的文件不方便进行拓展。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220424165810409.png"></li>
+<li>缺点2：会产生磁盘碎片<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425154914769.png"></li>
+</ol>
+<p><strong>连续分配方式</strong>要求每个文件在磁盘上占有一组连续的块。<br><strong>优点</strong>：支持顺序访问和直接访问（即随机访问)﹔连续分配的文件在顺序访问时速度最快<br><strong>缺点</strong>：不方便文件拓展;存储空间利用率低，会产生磁盘碎片</p>
+<h3 id="文件分配方式-链接分配"><a href="#文件分配方式-链接分配" class="headerlink" title="文件分配方式-链接分配"></a>文件分配方式-链接分配</h3><p><strong>链接分配</strong>采取离散分配的方式，可以为文件分配离散的磁盘块。分为<strong>隐式链接</strong>和<strong>显式链接</strong>两种。</p>
+<h4 id="链接分配-隐式链接"><a href="#链接分配-隐式链接" class="headerlink" title="链接分配-隐式链接"></a>链接分配-隐式链接</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155551405.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155628350.png"><br><strong>隐式链接</strong>――除文件的最后一个盘块之外，每个盘块中都存有指向下一个盘块的指针。文件目录包括文件第一块的指针和最后一块的指针。<br><strong>优点</strong>：很方便文件拓展，不会有碎片问题，外存利用率高。<br><strong>缺点</strong>：只支持顺序访问，不支持随机访问，查找效率低，指向下一个盘块的指针也需要耗费少量的存储空间。</p>
+<h4 id="链接分配-显式链接"><a href="#链接分配-显式链接" class="headerlink" title="链接分配-显式链接"></a>链接分配-显式链接</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155841497.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425155959800.png"></p>
+<blockquote>
+<p>这里随机访问指的是直接访问对应物理块，顺序查FAT表不影响。</p>
+</blockquote>
+<p><strong>显式链接</strong>――把用于链接文件各物理块的指针显式地存放在<strong>一张</strong>表中，即文件分配表（FAT，FileAllocation Table)。一个磁盘只会建立一张文件分配表。<strong>开机时文件分配表放入内存，并常驻内存。</strong><br><strong>优点</strong>：很方便文件拓展，不会有碎片问题，外存利用率高，并且<strong>支持随机访问</strong>。相比于隐式链接来说，地址转换时不需要访问磁盘，因此文件的<strong>访问效率更高</strong>。<br><strong>缺点</strong>：文件分配表的需要占用一定的存储空间。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425160352701.png"></p>
+<h3 id="文件分配方式-索引分配"><a href="#文件分配方式-索引分配" class="headerlink" title="文件分配方式-索引分配"></a>文件分配方式-索引分配</h3><p><strong>索引分配</strong>允许文件离散地分配在各个磁盘块中，系统会<strong>为每个文件建立一张索引表</strong>，索引表中记录了文件的各个逻辑块对应的物理块（索引表的功能类似于内存管理中的页表――建立逻辑页面到物理页之间的映射关系）。索引表存放的磁盘块称为<strong>索引块</strong>。文件数据存放的磁盘块称为<strong>数据块</strong>。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425160647564.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162003976.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162115257.png"></p>
+<h4 id="链接方案"><a href="#链接方案" class="headerlink" title="链接方案"></a>链接方案</h4><p><strong>链接方案</strong>：如果索引表太大，一个索引块装不下，那么可以将多个索引块链接起来存放。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162629080.png"></p>
+<h4 id="多层索引"><a href="#多层索引" class="headerlink" title="多层索引"></a>多层索引</h4><p><strong>多层索引</strong>：建立多层索引（原理类似于多级页表）。使第一层索引块指向第二层的索引块。还可根据文件大小的要求再建立第三层、第四层索引块。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425162916225.png"><br>问题：如果文件比较小，但是读取数据时还是需要k+1次读磁盘操作。</p>
+<h4 id="混合索引"><a href="#混合索引" class="headerlink" title="混合索引"></a>混合索引</h4><p><strong>混合索引</strong>：多种索引分配方式的结合。例如，一个文件的顶级索引表中，既包含直接地址索引（直接指向数据块），又包含一级间接索引（指向单层索引表）、还包含两级间接索引（指向两层索引表）。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163133627.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163213903.png"><br><strong>==总结==</strong><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163310499.png"></p>
+<h3 id="小结-3"><a href="#小结-3" class="headerlink" title="小结"></a>小结</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163434563.png"></p>
+<h2 id="4-1-5-文件存储空间管理"><a href="#4-1-5-文件存储空间管理" class="headerlink" title="4.1.5 文件存储空间管理"></a>4.1.5 文件存储空间管理</h2><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163611484.png"></p>
+<h3 id="存储空间的划分与初始化"><a href="#存储空间的划分与初始化" class="headerlink" title="存储空间的划分与初始化"></a>存储空间的划分与初始化</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425163757193.png"><br>一个物理磁盘可以划分为多个文件卷；多个物理磁盘也可以合并作为一个文件卷。</p>
+<h3 id="存储空间管理-空闲表法"><a href="#存储空间管理-空闲表法" class="headerlink" title="存储空间管理-空闲表法"></a>存储空间管理-空闲表法</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425170233014.png"></p>
+<h3 id="存储空间管理-空闲链表法"><a href="#存储空间管理-空闲链表法" class="headerlink" title="存储空间管理-空闲链表法"></a>存储空间管理-空闲链表法</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425171631107.png"></p>
+<h4 id="空闲盘块链"><a href="#空闲盘块链" class="headerlink" title="空闲盘块链"></a>空闲盘块链</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425171735741.png"></p>
+<h4 id="空闲盘区链"><a href="#空闲盘区链" class="headerlink" title="空闲盘区链"></a>空闲盘区链</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425171907471.png"></p>
+<h3 id="存储空间管理-位示图法"><a href="#存储空间管理-位示图法" class="headerlink" title="存储空间管理-位示图法"></a>存储空间管理-位示图法</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172211461.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172251642.png"></p>
+<h3 id="存储空间管理-成组链接法"><a href="#存储空间管理-成组链接法" class="headerlink" title="存储空间管理-成组链接法"></a>存储空间管理-成组链接法</h3><p><strong>空闲表法、空闲链表法不适用于大型文件系统</strong>，因为空闲表或空闲链表可能过大。<strong>UNIX系统中采用了成组链接法对磁盘空闲块进行管理</strong>。<br><strong>文件卷的目录区</strong>中专门用一个磁盘块作为“<strong>超级块</strong>”，当系统启动时需要将<strong>超级块读入内存</strong>。并且要保证内存与外存中的“超级块”数据一致。<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172440940.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172625994.png"><br>成组链接法中每个分组的块数有上限。最后一个分组的最大盘块数比其他分组少一个，因为有个“-1”标识。<br><strong>如何分配：</strong><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425172855894.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173005762.png"><br><strong>如何回收：</strong><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173043591.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173127062.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173154440.png"></p>
+<h3 id="小结-4"><a href="#小结-4" class="headerlink" title="小结"></a>小结</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425173250293.png"></p>
+<h2 id="4-1-6-文件的基本操作"><a href="#4-1-6-文件的基本操作" class="headerlink" title="4.1.6 文件的基本操作"></a>4.1.6 文件的基本操作</h2><p>操作系统所提供的文件的基本操作：<br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174230130.png"></p>
+<h3 id="创建文件-create系统调用"><a href="#创建文件-create系统调用" class="headerlink" title="创建文件 create系统调用"></a>创建文件 create系统调用</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174438446.png"></p>
+<h3 id="删除文件-delete系统调用"><a href="#删除文件-delete系统调用" class="headerlink" title="删除文件 delete系统调用"></a>删除文件 delete系统调用</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174523281.png"></p>
+<h3 id="打开文件-open系统调用"><a href="#打开文件-open系统调用" class="headerlink" title="打开文件 open系统调用"></a>打开文件 open系统调用</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174649801.png"></p>
+<h4 id="打开文件表"><a href="#打开文件表" class="headerlink" title="打开文件表"></a>打开文件表</h4><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174806178.png"></p>
+<h3 id="关闭文件-close系统调用"><a href="#关闭文件-close系统调用" class="headerlink" title="关闭文件 close系统调用"></a>关闭文件 close系统调用</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425174855566.png"></p>
+<h3 id="读文件-read系统调用"><a href="#读文件-read系统调用" class="headerlink" title="读文件 read系统调用"></a>读文件 read系统调用</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175046403.png"></p>
+<h3 id="写文件-write系统调用"><a href="#写文件-write系统调用" class="headerlink" title="写文件 write系统调用"></a>写文件 write系统调用</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175121410.png"></p>
+<h3 id="小结-5"><a href="#小结-5" class="headerlink" title="小结"></a>小结</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175245726.png"><br>打开文件时并不会把文件数据读入到内存，而是将目录项复制到内存的打开文件表。</p>
+<h2 id="4-1-7-文件共享"><a href="#4-1-7-文件共享" class="headerlink" title="4.1.7 文件共享"></a>4.1.7 文件共享</h2><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175633959.png"></p>
+<h3 id="基于索引结点的共享方式（硬链接）"><a href="#基于索引结点的共享方式（硬链接）" class="headerlink" title="基于索引结点的共享方式（硬链接）"></a>基于索引结点的共享方式（硬链接）</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175807997.png"></p>
+<h3 id="基于符号链的共享方式（软链接）"><a href="#基于符号链的共享方式（软链接）" class="headerlink" title="基于符号链的共享方式（软链接）"></a>基于符号链的共享方式（软链接）</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175925674.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425175954546.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180030461.png"><br><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180039616.png"></p>
+<h3 id="小结-6"><a href="#小结-6" class="headerlink" title="小结"></a>小结</h3><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180117544.png"></p>
+<h2 id="4-1-8-文件保护"><a href="#4-1-8-文件保护" class="headerlink" title="4.1.8 文件保护"></a>4.1.8 文件保护</h2><p><img src="/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86-image-20220425180249820.png"></p>
+<h3 id="口令保护"><a href="#口令保护" class="headerlink" title="口令保护"></a>口令保护</h3><h3 id="加密保护"><a href="#加密保护" class="headerlink" title="加密保护"></a>加密保护</h3><h3 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h3>
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:18px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+      </div>
+    
+        <div class="reward-container">
+  <div>你的打赏会让我的钱包不那么孤单~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="浅墨 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="浅墨 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>浅墨
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lightink2020.github.io/2022/04/24/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F04%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/" title="考研-操作系统04文件管理">https://lightink2020.github.io/2022/04/24/考研_操作系统04文件管理/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 操作系统</a>
+              <a href="/tags/%E8%80%83%E7%A0%94/" rel="tag"><i class="fa fa-tag"></i> 考研</a>
+              <a href="/tags/408/" rel="tag"><i class="fa fa-tag"></i> 408</a>
+              <a href="/tags/%E7%8E%8B%E9%81%93/" rel="tag"><i class="fa fa-tag"></i> 王道</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/04/23/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F03%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" rel="prev" title="考研-操作系统03内存管理">
+      <i class="fa fa-chevron-left"></i> 考研-操作系统03内存管理
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#4-1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-text">4.1 文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-1-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5"><span class="nav-text">4.1.1 文件系统概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%B1%9E%E6%80%A7"><span class="nav-text">文件的属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E9%83%A8%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E7%BB%84%E7%BB%87%E8%B5%B7%E6%9D%A5"><span class="nav-text">文件内部的数据应该怎样组织起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B9%8B%E9%97%B4%E5%BA%94%E8%AF%A5%E6%80%8E%E6%A0%B7%E7%BB%84%E7%BB%87%E8%B5%B7%E6%9D%A5"><span class="nav-text">文件之间应该怎样组织起来</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%BA%94%E8%AF%A5%E5%90%91%E4%B8%8A%E6%8F%90%E4%BE%9B%E5%93%AA%E4%BA%9B%E6%96%87%E4%BB%B6%E7%9B%B8%E5%85%B3%E5%8A%9F%E8%83%BD"><span class="nav-text">操作系统应该向上提供哪些文件相关功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E4%B8%8A%E5%BE%80%E4%B8%8B%E7%9C%8B%EF%BC%8C%E6%96%87%E4%BB%B6%E5%BA%94%E5%A6%82%E4%BD%95%E5%AD%98%E6%94%BE%E5%9C%A8%E5%A4%96%E5%AD%98"><span class="nav-text">从上往下看，文件应如何存放在外存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E9%9C%80%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD"><span class="nav-text">其他操作系统需要实现的文件管理功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-2-%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-text">4.1.2 文件的逻辑结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BB%93%E6%9E%84%E6%96%87%E4%BB%B6"><span class="nav-text">无结构文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%BB%93%E6%9E%84%E6%96%87%E4%BB%B6"><span class="nav-text">有结构文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%BB%93%E6%9E%84%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-text">有结构文件的逻辑结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="nav-text">顺序文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6"><span class="nav-text">索引文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E9%A1%BA%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="nav-text">索引顺序文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-1"><span class="nav-text">小结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-3-%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="nav-text">4.1.3 文件目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="nav-text">文件控制块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-text">目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E7%BA%A7%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-text">单级目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%A4%E7%BA%A7%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-text">两级目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E7%BA%A7%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-text">多级目录结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A0%E7%8E%AF%E5%9B%BE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-text">无环图目录结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E8%8A%82%E7%82%B9%EF%BC%88FCB%E7%9A%84%E6%94%B9%E8%BF%9B%EF%BC%89"><span class="nav-text">索引节点（FCB的改进）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-2"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-4-%E6%96%87%E4%BB%B6%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84%EF%BC%88%E6%96%87%E4%BB%B6%E5%88%86%E9%85%8D%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="nav-text">4.1.4 文件的物理结构（文件分配方式）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%BF%AB%E3%80%81%E7%A3%81%E7%9B%98%E5%9D%97"><span class="nav-text">文件快、磁盘块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E9%85%8D%E6%96%B9%E5%BC%8F-%E9%A1%BA%E5%BA%8F%E5%88%86%E9%85%8D"><span class="nav-text">文件分配方式-顺序分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E9%85%8D%E6%96%B9%E5%BC%8F-%E9%93%BE%E6%8E%A5%E5%88%86%E9%85%8D"><span class="nav-text">文件分配方式-链接分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%88%86%E9%85%8D-%E9%9A%90%E5%BC%8F%E9%93%BE%E6%8E%A5"><span class="nav-text">链接分配-隐式链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%88%86%E9%85%8D-%E6%98%BE%E5%BC%8F%E9%93%BE%E6%8E%A5"><span class="nav-text">链接分配-显式链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%88%86%E9%85%8D%E6%96%B9%E5%BC%8F-%E7%B4%A2%E5%BC%95%E5%88%86%E9%85%8D"><span class="nav-text">文件分配方式-索引分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%96%B9%E6%A1%88"><span class="nav-text">链接方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%9A%E5%B1%82%E7%B4%A2%E5%BC%95"><span class="nav-text">多层索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%B7%E5%90%88%E7%B4%A2%E5%BC%95"><span class="nav-text">混合索引</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-3"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-5-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86"><span class="nav-text">4.1.5 文件存储空间管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E5%88%92%E5%88%86%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">存储空间的划分与初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86-%E7%A9%BA%E9%97%B2%E8%A1%A8%E6%B3%95"><span class="nav-text">存储空间管理-空闲表法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86-%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8%E6%B3%95"><span class="nav-text">存储空间管理-空闲链表法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E9%97%B2%E7%9B%98%E5%9D%97%E9%93%BE"><span class="nav-text">空闲盘块链</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E9%97%B2%E7%9B%98%E5%8C%BA%E9%93%BE"><span class="nav-text">空闲盘区链</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86-%E4%BD%8D%E7%A4%BA%E5%9B%BE%E6%B3%95"><span class="nav-text">存储空间管理-位示图法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%AE%A1%E7%90%86-%E6%88%90%E7%BB%84%E9%93%BE%E6%8E%A5%E6%B3%95"><span class="nav-text">存储空间管理-成组链接法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-4"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-6-%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="nav-text">4.1.6 文件的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6-create%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">创建文件 create系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6-delete%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">删除文件 delete系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6-open%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">打开文件 open系统调用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E8%A1%A8"><span class="nav-text">打开文件表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E6%96%87%E4%BB%B6-close%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">关闭文件 close系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%BB%E6%96%87%E4%BB%B6-read%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">读文件 read系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%99%E6%96%87%E4%BB%B6-write%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8"><span class="nav-text">写文件 write系统调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-5"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-7-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB"><span class="nav-text">4.1.7 文件共享</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%B4%A2%E5%BC%95%E7%BB%93%E7%82%B9%E7%9A%84%E5%85%B1%E4%BA%AB%E6%96%B9%E5%BC%8F%EF%BC%88%E7%A1%AC%E9%93%BE%E6%8E%A5%EF%BC%89"><span class="nav-text">基于索引结点的共享方式（硬链接）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%AC%A6%E5%8F%B7%E9%93%BE%E7%9A%84%E5%85%B1%E4%BA%AB%E6%96%B9%E5%BC%8F%EF%BC%88%E8%BD%AF%E9%93%BE%E6%8E%A5%EF%BC%89"><span class="nav-text">基于符号链的共享方式（软链接）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93-6"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-8-%E6%96%87%E4%BB%B6%E4%BF%9D%E6%8A%A4"><span class="nav-text">4.1.8 文件保护</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A3%E4%BB%A4%E4%BF%9D%E6%8A%A4"><span class="nav-text">口令保护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E4%BF%9D%E6%8A%A4"><span class="nav-text">加密保护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6"><span class="nav-text">访问控制</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="浅墨"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">浅墨</p>
+  <div class="site-description" itemprop="description">点点滴滴，汇聚人生</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LightInk2020" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LightInk2020" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-04 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">浅墨</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">346k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:15</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+<!-- 不蒜子计算浏览量 -->
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv"><span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>与你擦肩而过<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv"><span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>你是我的第<span id="busuanzi_value_site_uv"></span>个朋友</span>
+    
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+
+<!--浏览器搞笑标题-->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+<!-- 🌸飘落 -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js"></script>
+<!-- 雪花飘落 -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/Yafine/cdn@2.5/source/js/snow1.js"></script> -->
+<!-- 样式一 连线 -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
+<!-- 样式二（飘动的彩带） -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/piao.js" type="text/javascript"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'K46o2NCWKcdduRzLxsjdmu9E-gzGzoHsz',
+      appKey     : 'ilTccl33w3v2Fvw5swGISSju',
+      placeholder: "如果有任何建议、想法和问题，欢迎您的留言！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
