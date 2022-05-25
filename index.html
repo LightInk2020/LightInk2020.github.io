@@ -137,17 +137,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">43</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">44</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">36</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">37</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">85</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">87</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -210,6 +210,261 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" class="post-title-link" itemprop="url">考研-操作系统05IO设备管理</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-25 11:27:12 / 修改时间：20:42:15" itemprop="dateCreated datePublished" datetime="2022-05-25T11:27:12+08:00">2022-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/408/" itemprop="url" rel="index"><span itemprop="name">408</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="5-1-I-O设备的基本概念和分类"><a href="#5-1-I-O设备的基本概念和分类" class="headerlink" title="5.1 I/O设备的基本概念和分类"></a>5.1 I/O设备的基本概念和分类</h1><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525114209584.png"></p>
+<h2 id="什么是I-O设备"><a href="#什么是I-O设备" class="headerlink" title="什么是I/O设备"></a>什么是I/O设备</h2><p>“I/O”就是“输入/输出”( Input/Output)<br>I/o设备就是可以将数据输入到计算机，或者可以接收计算机输出数据的外部设备，属于计算机中的硬件部件。<br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525114558680.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525114620923.png"></p>
+<h2 id="I-O设备的分类-按使用特性"><a href="#I-O设备的分类-按使用特性" class="headerlink" title="I/O设备的分类-按使用特性"></a>I/O设备的分类-按使用特性</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525114907220.png"></p>
+<h2 id="I-O设备的分类-按传输速率分类"><a href="#I-O设备的分类-按传输速率分类" class="headerlink" title="I/O设备的分类-按传输速率分类"></a>I/O设备的分类-按传输速率分类</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525115140253.png"></p>
+<h2 id="I-O设备的分类-按信息交换的单位分类"><a href="#I-O设备的分类-按信息交换的单位分类" class="headerlink" title="I/O设备的分类-按信息交换的单位分类"></a>I/O设备的分类-按信息交换的单位分类</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525115236063.png"></p>
+<h1 id="5-2-I-O控制器"><a href="#5-2-I-O控制器" class="headerlink" title="5.2 I/O控制器"></a>5.2 I/O控制器</h1><h2 id="I-O设备的机械部件"><a href="#I-O设备的机械部件" class="headerlink" title="I/O设备的机械部件"></a>I/O设备的机械部件</h2><p>I/O设备的<strong>机械部件</strong>主要用来执行具体的I/O操作<br>如我们鼠标/键盘的按钮，显示屏的LED屏，移动硬盘的磁臂、磁盘盘面等。</p>
+<h2 id="I-O设备的电子部件（I-O控制器）"><a href="#I-O设备的电子部件（I-O控制器）" class="headerlink" title="I/O设备的电子部件（I/O控制器）"></a>I/O设备的电子部件（I/O控制器）</h2><p>I/O设备的<strong>电子部件</strong>通常是一块插入主板拓展槽的印刷电路板<br>CPU无法直接控制I/O设备的机械部件，因此I/O设备还要有一个电子部件作为CPU和I/O设备机械部件之间的“中介”，用于实现CPU对设备的控制<br>这个电子部件就是I/O控制器，又称设备控制器。CPU可控制I/O控制器，又由I/O控制器来控制设备的机械部件<br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525134446147.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525134730947.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525134807845.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525134936926.png"></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525135022814.png"></p>
+<h1 id="5-3-I-O控制方式"><a href="#5-3-I-O控制方式" class="headerlink" title="5.3 I/O控制方式"></a>5.3 I/O控制方式</h1><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525135123973.png"></p>
+<h2 id="程序直接控制方式"><a href="#程序直接控制方式" class="headerlink" title="程序直接控制方式"></a>程序直接控制方式</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525135457515.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525135934319.png"></p>
+<h2 id="中断驱动方式"><a href="#中断驱动方式" class="headerlink" title="中断驱动方式"></a>中断驱动方式</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525140122816.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525140218915.png"></p>
+<h2 id="DMA方式"><a href="#DMA方式" class="headerlink" title="DMA方式"></a>DMA方式</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525140344933.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525140624986.png"><br>DMA将<strong>整个块或多个块</strong>传送到内存之后，才会向CPU发送中断信号，而DMA内部磁盘向内存中传送也是<strong>一个字一个字读入</strong>的。<br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525140907592.png"></p>
+<h2 id="通道控制方式"><a href="#通道控制方式" class="headerlink" title="通道控制方式"></a>通道控制方式</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525141052495.png"><br>通道程序由通道指令构成<br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525141155119.png"></p>
+<h2 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525141240591.png"><br>一个通道可以控制多个I/O控制器，而一个I/O设备控制器又可以控制多个I/O设备</p>
+<h1 id="5-4-I-O软件层次结构"><a href="#5-4-I-O软件层次结构" class="headerlink" title="5.4 I/O软件层次结构"></a>5.4 I/O软件层次结构</h1><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180437848.png"></p>
+<h2 id="用户层软件"><a href="#用户层软件" class="headerlink" title="用户层软件"></a>用户层软件</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180633615.png"></p>
+<h2 id="设备独立性软件"><a href="#设备独立性软件" class="headerlink" title="设备独立性软件"></a>设备独立性软件</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180712118.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180739024.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180751633.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180805568.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180817261.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525180902559.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525181117963.png"></p>
+<h2 id="设备驱动程序"><a href="#设备驱动程序" class="headerlink" title="设备驱动程序"></a>设备驱动程序</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525181329871.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525181416602.png"><br>可以发现，设备驱动程序可能会直接和硬件打交道</p>
+<h3 id="为什么不同的设备需要不同设备驱动程序"><a href="#为什么不同的设备需要不同设备驱动程序" class="headerlink" title="为什么不同的设备需要不同设备驱动程序"></a>为什么不同的设备需要不同设备驱动程序</h3><p>原因：各式各样的设备，外形不同，其内部的电子部件（I/O控制器）也有可能不同<br>不同设备的内部硬件特性也不同，这些特性只有厂家才知道，因此厂家须提供与设备相对应的驱动程序，CPU执行驱动程序的指令序列，来完成设置设备寄存器，检查设备状态等工作</p>
+<h2 id="中断处理程序"><a href="#中断处理程序" class="headerlink" title="中断处理程序"></a>中断处理程序</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525181629109.png"></p>
+<h2 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525181747860.png"><br>设备驱动程序、中断处理程序是直接和硬件打交道的</p>
+<h1 id="5-5-核心子程序"><a href="#5-5-核心子程序" class="headerlink" title="5.5 核心子程序"></a>5.5 核心子程序</h1><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525194245638.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525194351545.png"></p>
+<h2 id="I-O调度"><a href="#I-O调度" class="headerlink" title="I/O调度"></a>I/O调度</h2><p>I/O调度：<strong>用某种算法确定一个好的顺序来处理各个I/O请求。</strong><br>如：磁盘调度（先来先服务算法、最短寻道优先算法、SCAN算法、C-SCAN算法、LOOK算法、C-LOoK算法)。当多个磁盘I/o请求到来时，用某种调度算法确定满足l/o请求的顺序。<br>同理，打印机等设备也可以用先来先服务算法、优先级算法、短作业优先等算法来确定I/o调度顺序。</p>
+<h2 id="设备保护"><a href="#设备保护" class="headerlink" title="设备保护"></a>设备保护</h2><p>操作系统需要实现<strong>文件保护功能</strong>，不同的用户对各个文件有不同的访问权限（如:只读、读和写等)。<br>在UNIX系统中，设备被看做是一种特殊的文件，每个设备也会有对应的FCB。当用户请求访问某个设备时，系统根据FCB中记录的信息来判断该用户是否有相应的访问权限，以此实现“设备保护”的功能。（参考“文件保护”小节)</p>
+<h1 id="5-6-假脱机技术SPOOLing"><a href="#5-6-假脱机技术SPOOLing" class="headerlink" title="5.6 假脱机技术SPOOLing"></a>5.6 假脱机技术SPOOLing</h1><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525194609436.png"></p>
+<h2 id="什么是脱机技术"><a href="#什么是脱机技术" class="headerlink" title="什么是脱机技术"></a>什么是脱机技术</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525194758428.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195024616.png"></p>
+<h2 id="假脱机技术–输入井和输出井"><a href="#假脱机技术–输入井和输出井" class="headerlink" title="假脱机技术–输入井和输出井"></a>假脱机技术–输入井和输出井</h2><p>“假脱机技术”，又称“SPOOLing技术”是用<strong>软件的方式模拟脱机技术</strong>。SPOOLing系统的组成如下:<br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195249663.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195307635.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195434849.png"></p>
+<h2 id="共享打印机原理分析"><a href="#共享打印机原理分析" class="headerlink" title="共享打印机原理分析"></a>共享打印机原理分析</h2><p>独占式设备—<strong>只允许各个进程串行使用的设备</strong>。一段时间内只能满足一个进程的请求。<br>共享设备—<strong>允许多个进程“同时”使用的设备</strong>（宏观同时使用，微观上可能是交替使用）。可以同时满足多个进程的使用请求。<br> <img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195603349.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195719104.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195813007.png"></p>
+<h2 id="小结-3"><a href="#小结-3" class="headerlink" title="小结"></a>小结</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525195839505.png"></p>
+<h2 id="5-7-设备的分配和回收"><a href="#5-7-设备的分配和回收" class="headerlink" title="5.7 设备的分配和回收"></a>5.7 设备的分配和回收</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525200726622.png"></p>
+<h2 id="设备分配时应考虑的因素"><a href="#设备分配时应考虑的因素" class="headerlink" title="设备分配时应考虑的因素"></a>设备分配时应考虑的因素</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525200838915.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525200852153.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201023827.png"></p>
+<h2 id="静态分配和动态分配"><a href="#静态分配和动态分配" class="headerlink" title="静态分配和动态分配"></a>静态分配和动态分配</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201131321.png"></p>
+<h2 id="设备分配管理中的数据结构"><a href="#设备分配管理中的数据结构" class="headerlink" title="设备分配管理中的数据结构"></a>设备分配管理中的数据结构</h2><p>一个机器可以有多个通道<br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201150678.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201446468.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201541888.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201613207.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201635855.png"></p>
+<h2 id="设备分配的步骤"><a href="#设备分配的步骤" class="headerlink" title="设备分配的步骤"></a>设备分配的步骤</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201745455.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201758021.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201818072.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201827789.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201842058.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525201926815.png"></p>
+<h2 id="设备分配步骤的改进"><a href="#设备分配步骤的改进" class="headerlink" title="设备分配步骤的改进"></a>设备分配步骤的改进</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525202137316.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525202227448.png"></p>
+<h2 id="小结-4"><a href="#小结-4" class="headerlink" title="小结"></a>小结</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525202357123.png"></p>
+<h2 id="5-8-缓冲区管理"><a href="#5-8-缓冲区管理" class="headerlink" title="5.8 缓冲区管理"></a>5.8 缓冲区管理</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525202515660.png"></p>
+<h2 id="什么是缓冲区？有什么作用"><a href="#什么是缓冲区？有什么作用" class="headerlink" title="什么是缓冲区？有什么作用"></a>什么是缓冲区？有什么作用</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525202555082.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525202710039.png"></p>
+<h2 id="单缓冲"><a href="#单缓冲" class="headerlink" title="单缓冲"></a>单缓冲</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525202934876.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203059510.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203151387.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203157010.png"></p>
+<h2 id="双缓冲"><a href="#双缓冲" class="headerlink" title="双缓冲"></a>双缓冲</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203214354.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203327969.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203521603.png"></p>
+<blockquote>
+<p>这种情况下，很难找到一个和初始状态一样的情况。但是观察发现，每M + C个时间段即可处理完一个数据。</p>
+</blockquote>
+<p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203627954.png"></p>
+<h2 id="使用单-双缓冲在通信时的区别"><a href="#使用单-双缓冲在通信时的区别" class="headerlink" title="使用单/双缓冲在通信时的区别"></a>使用单/双缓冲在通信时的区别</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203748613.png"><br><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203815191.png"></p>
+<h2 id="循环缓冲区"><a href="#循环缓冲区" class="headerlink" title="循环缓冲区"></a>循环缓冲区</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525203927286.png"></p>
+<h2 id="缓冲池"><a href="#缓冲池" class="headerlink" title="缓冲池"></a>缓冲池</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525204152723.png"></p>
+<h2 id="小结-5"><a href="#小结-5" class="headerlink" title="小结"></a>小结</h2><p><img src="/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86-image-20220525204213358.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/05/21/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/05/21/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" class="post-title-link" itemprop="url">软件工程</a>
+        </h2>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-05-21 13:59:48 / 修改时间：11:42:54" itemprop="dateCreated datePublished" datetime="2022-05-21T13:59:48+08:00">2022-05-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件工程</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/05/21/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/05/21/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>472</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="用例图两种关系辨别"><a href="#用例图两种关系辨别" class="headerlink" title="用例图两种关系辨别"></a>用例图两种关系辨别</h2><h3 id="解析《include》"><a href="#解析《include》" class="headerlink" title="解析《include》"></a>解析《include》</h3><p>当两个或多个用例中共用一组相同的动作，这时可以将这组相同的动作抽取出来作为一个独立的子用例，供多个基用例所共享，因为子用例被抽出，基用例并非一个完整的用例，所以include关系中的基用例必须和子用例一起使用才能够完整， <mark style="background: #FF5582A6;">子用例必须被执行！</mark><br><img src="/2022/05/21/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-image-20220521114119472.png"><br>如上图，管理员有两个功能，分别是查看上机记录与结账，二者之间都包含一个用例，那就是登录，意思就是要想完成查看上机记录和结账，那么必须先要登录！ 所以 将登录抽离出来！登录必须要先执行，这就是包含关系！</p>
+<h3 id="解析《extend》"><a href="#解析《extend》" class="headerlink" title="解析《extend》"></a>解析《extend》</h3><p>《extend》 与《include》正好相反，就是说extend关系是对基本用例的扩展，基用例是一个完整的用例，即使没有子用例的参与，也可以完成一个完整的功能，extend的基本用例存在一个扩展点，<mark style="background: #FF5582A6;">只有当扩展点被激活时，子用例才会被执行！</mark><br><img src="/2022/05/21/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-image-20220521114206931.png"><br>如上图所示，如果借书人按照规定时间内归还图书，那么归还图书就好，但是如果超期，那么就要执行扩展用例，此时它的超期归还扩展点被激活！</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>include必须要执行，extend不必须执行，只有将扩展点激活才可以执行！</p>
+
+      
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/05/20/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -235,10 +490,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-05-20 13:59:48 / 修改时间：14:06:32" itemprop="dateCreated datePublished" datetime="2022-05-20T13:59:48+08:00">2022-05-20</time>
+              <time title="创建时间：2022-05-20 13:59:48" itemprop="dateCreated datePublished" datetime="2022-05-20T13:59:48+08:00">2022-05-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-23 13:08:21" itemprop="dateModified" datetime="2022-05-23T13:08:21+08:00">2022-05-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -269,14 +530,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.6k</span>
+              <span>18k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>17 分钟</span>
             </span>
 
         </div>
@@ -290,81 +551,16 @@
       
           <h1 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h1><h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><p>一、选择题  15题 单选题  每题2分，30分</p>
 <ul>
-<li><input disabled type="checkbox"> 慕课题目多过几遍，多选题也要看</li>
-<li><input disabled type="checkbox"> <strong>==敏捷开发PPT的小概念 + excel 大部分的选择题目==</strong><br>二、综合应用题 6道题 70分<br>10分 10分  10分   10分  15分  15分<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2></li>
-<li><input disabled type="checkbox"> 系统分析部分是重点</li>
-<li><input disabled type="checkbox"> 网络图PPT</li>
-<li><input disabled type="checkbox"> 用例图、类图、数据流图不考<h3 id="系统分析-系统设计"><a href="#系统分析-系统设计" class="headerlink" title="系统分析 系统设计"></a>系统分析 系统设计</h3>系统分析包含哪些 什么是系统分析 最终形成什么（系统分析报告）<br>系统设计包含哪些（系统设计报告 有哪些内容）<h3 id="系统规划-网络图-关键路线（路径）最早完成时间"><a href="#系统规划-网络图-关键路线（路径）最早完成时间" class="headerlink" title="系统规划 网络图 关键路线（路径）最早完成时间"></a>系统规划 网络图 关键路线（路径）最早完成时间</h3>给定紧前工作，然后让绘制<strong>网络图</strong><h3 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h3>给定E-R模型（不用绘制），<strong>三范式</strong>（给定一个表，然后将其转换为符合三范式 课堂上的工程例题，考研今年也出现了）<h3 id="工程伦理、自主知识产权"><a href="#工程伦理、自主知识产权" class="headerlink" title="工程伦理、自主知识产权"></a>工程伦理、自主知识产权</h3><h3 id="实际需求（敏捷）"><a href="#实际需求（敏捷）" class="headerlink" title="实际需求（敏捷）"></a>实际需求（敏捷）</h3>估算工期  抢工期 采用哪些方法 怎么去保证项目的质量与进度<br>给定实际需求，做需求分析，比如要做一个项目，时间很紧张、人员紧张，同时有些员工没有解除过这种项目。如何估算工期。如果想要抢工期，采用哪些方法？这些方法是怎么做的？怎么保证项目的质量和进度？ —注意基本上都要往敏捷上靠<br>敏捷开发（资源、deadline一定不能变，需求可以变）。<br>课堂上酒店的例子（怎么解决？ 列一个优先级，加了权重，解决方法，约束）<h3 id="软件几种开发模式-，哪种好哪种差？"><a href="#软件几种开发模式-，哪种好哪种差？" class="headerlink" title="软件几种开发模式 ，哪种好哪种差？"></a>软件几种开发模式 ，哪种好哪种差？</h3><h3 id="代码检查，怎么检查？有哪些错误？"><a href="#代码检查，怎么检查？有哪些错误？" class="headerlink" title="代码检查，怎么检查？有哪些错误？"></a>代码检查，怎么检查？有哪些错误？</h3></li>
-</ul>
-<h2 id="分章节知识点"><a href="#分章节知识点" class="headerlink" title="分章节知识点"></a>分章节知识点</h2><h3 id="Ch1"><a href="#Ch1" class="headerlink" title="Ch1"></a>Ch1</h3><p>这个系统分析设计是什么样的过程？系统分析报告的目的是什么？（展示什么内容）、内容            — 主观题 </p>
-<h3 id="Ch2"><a href="#Ch2" class="headerlink" title="Ch2"></a>Ch2</h3><p>下列哪些工作不是系统规划做的？— 小题</p>
-<ul>
-<li>比如需求分析、数据库绘制ER图就不属于系统规划<br>业务流程图，在做所有需求分析之前，第一件事是关于<strong>业务</strong>的。（而不是数据流图、ER图等），业务属于较高层次的需求。  — 小题<h3 id="Ch3"><a href="#Ch3" class="headerlink" title="Ch3"></a>Ch3</h3>软件需求是多层次的：业务需求（企业、客户高层次需求）、系统需求、用户需求等<br>需求分析方法<h3 id="Ch4"><a href="#Ch4" class="headerlink" title="Ch4"></a>Ch4</h3></li>
-<li>*DevCloud敏捷项目管理PPT重点看+ Excel**（9/15道）<br>mooc所有单元的选择题<h3 id="Ch5"><a href="#Ch5" class="headerlink" title="Ch5"></a>Ch5</h3>各种图，<strong>网络图</strong>，不仅要画，还有怎么优化工期 — 大题<br>网络图将老师的PPT例题过一下（紧前工作）  页数：25、27、28、30，与考题相似度很大<br>计算完关键路径后，问：现在技术不行，如何提高工期？<h3 id="Ch6"><a href="#Ch6" class="headerlink" title="Ch6"></a>Ch6</h3></li>
-<li><em>3NF</em>* 将PPT上公司的例子写一下  — 大题<br>题目：给一个不符合3NF的表，然后要求拆分成3NF，并画出关键字<h3 id="Ch7"><a href="#Ch7" class="headerlink" title="Ch7"></a>Ch7</h3>框架设计   总体设计<br>设计包含总体设计和详细设计，详细设计包括数据库设计、输入输出设计、界面设计等<br>什么是B/S架构，什么是C/S架构？概念，判断<h3 id="Ch8"><a href="#Ch8" class="headerlink" title="Ch8"></a>Ch8</h3>Git有一道小题。克隆一个项目用哪个命令 git clone                — 小题</li>
-</ul>
-<p>1.git clone 2.commit 3.git tag 4.git push 5.git checkout  分别作用是什么？</p>
-<h3 id="Ch9"><a href="#Ch9" class="headerlink" title="Ch9"></a>Ch9</h3><p>非重点</p>
-<h3 id="Ch10、Ch11"><a href="#Ch10、Ch11" class="headerlink" title="Ch10、Ch11"></a>Ch10、Ch11</h3><p><strong>主观题</strong>       — 大题<br>丁谓修皇宫，古代人的智慧。<br>当前技术被封锁，怎么打破技术封锁？<br>人类命运共同体。正面向上都能满分</p>
-<h2 id="大题"><a href="#大题" class="headerlink" title="大题"></a>大题</h2><p>网络图是为了进度计划来帮助确认工期的<br>估算工期还有哪些方法，网络图关键路径、一点估算、三点估算、甘特图。说一种就对<br>怎么压缩工期：提高效率、增加人手等<br>怎么跟踪项目进度，确保项目按期完成：绘制甘特图、开迭代回溯会议等 — 大题<br>怎么交付<br>工期缩短怎么办？工期延长怎么办？</p>
-<p>阐述不同方案的优缺点，自主开发、租用还是外包，优缺点？ — 大题<br>自己干：</p>
-<ol>
-<li>成本高，项目管理经验不足</li>
-<li>保密性机密性强；同时有自己的产权，修改容易<br>租用优缺点：</li>
-<li>建造成本低，同时很快能投入运行</li>
-<li>无知识产权，通用性太强，缺少针对性<br>外包优缺点：</li>
-<li>风险较低，外包公司项目管理经验丰富</li>
-<li>需求了解不准确，同时投产后更改需求还要继续找外包，同时涉及机密、产权等问题</li>
-</ol>
-<p><strong>系统分析报告</strong>目的是什么？内容包括什么？看看PPT（系统分析报告文件）  — 大题</p>
-<ul>
-<li>项目概述</li>
-<li>线性系统概述</li>
-<li>需求系统说明</li>
-<li>逻辑方案</li>
-<li>系统实施计划</li>
-</ul>
-<p>系统分析的步骤<br><img src="/2022/05/20/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0-image-20220520125544821.png"><br>（下面这个徐博老师没说）<br><img src="/2022/05/20/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0-image-20220520125650751.png"></p>
-<h1 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h1><h2 id="ch1"><a href="#ch1" class="headerlink" title="ch1"></a>ch1</h2><ul>
-<li>缺乏管理软件过程的能力，主要体现在：延时、超出成本、新的技术和工具的好处难以体现<ul>
-<li>很少有这样的领域，最佳实践和一般实践之间有如此大鸿沟</li>
-</ul>
-</li>
-<li>软件没有银弹：软件工程中的根本和次要问题</li>
-<li>现代软件系统中无法规避的内在特性：复杂性、一致性、可变性和不可见性，其中复杂性和可变性是根本问题。</li>
-<li>云计算时代软件的变化：<ul>
-<li>可以归纳到三方面：开发理念及团队组织的革新、架构的创新、商业模式的创新<br>软件由卖license变为service（hosting）方式<br>软件部署由过去分散小规模，转为集中大规模<br>软件子系统关注点转为精、专业、以及接口的标准化<br>软件的子系统之间、服务与服务之间进一步解耦合</li>
-</ul>
-</li>
-<li>DevOps<ul>
-<li>五要素：文化、自动化、精益、度量、分享<ul>
-<li>DevOps中 <strong>度量</strong> 这一要素贯穿其整个生命周期</li>
-<li><strong>构建到运维阶段</strong> 要做到自动化</li>
-</ul>
-</li>
-<li>DevOps是敏捷理念从开发领域向运维领域的延伸</li>
-<li>DevOps生命周期过程中的常用工具包含以下哪几个类别？（ABCE）<br>  A、SCM源代码配置管理  B、Deploy部署  C、Build构建  D、Chat聊天  E、CI持续集成</li>
-<li>DevOps兴起的驱动因素<ul>
-<li>业务诉求：业务负责人要求加快产品交付的诉求</li>
-<li><strong>能力基础：大规模使用敏捷软件开发过程与方法</strong></li>
-<li>技术基础：虚拟化和云计算基础设施日益普遍</li>
-<li>工程基础：数据中心自动化技术和配置管理工具的普及</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>在瀑布模型中，以下哪些环节属于计划时期（<strong>问题定义、可行性研究</strong>）<br>  瀑布模型将软件生命周期分为8个阶段3个时期，其中问题定义、可行性研究属于计划期；需求分析、总体设计、详细设计程序编制属于开发期；测试和运行、维护属于运行期。</li>
-<li>软件工程这一概念的提出是为了解决<strong>软件危机</strong>的问题。</li>
-<li>以下哪些属于是软件工程中的主要方法？（Agile、WaterFall、DevOps等）</li>
-<li>1970年，温斯顿·罗伊斯提出了（<strong>瀑布模型</strong>），直到80年代早期一直是唯一被广泛采用的软件开发模式，他倡导了两次迭代的模型。</li>
-<li>基础设施即代码属于DevOps关键模式与实践的哪个分类？（<strong>技术</strong>）<br>  <img src="/2022/05/20/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0-image-20220520135342809.png"><h2 id="华为敏捷开发"><a href="#华为敏捷开发" class="headerlink" title="华为敏捷开发"></a>华为敏捷开发</h2></li>
-<li>“软件开发应该不断地根据经验调整，最终交付达到业务目标的产品”，这句话属于华为敏捷理念的哪条？（ ）<br>  A、Adapting<br>  B、Team<br>  C、Value<br>  D、Process<br>  答案：Adapting</li>
-<li>华为软件开发云包含哪些核心特性？（ ）<br>A、项目管理  B、软件编程  C、编译构建  D、部署发布<br>答案：项目管理；编译构建；部署发布</li>
-</ul>
-<h2 id="ch2"><a href="#ch2" class="headerlink" title="ch2"></a>ch2</h2><ul>
-<li>SWOT分析法：S（strengths）是优势、W（weaknesses）是劣势、O（opportunities）是机会、T（threats）是威胁。</li>
-</ul>
-
+<li><input checked disabled type="checkbox"> 慕课题目多过几遍，多选题也要看</li>
+<li><input disabled type="checkbox"> <strong>==敏捷开发PPT的小概念 + excel 大部分的选择题目==</strong><br>二、综合应用题 6道题 70分<br>10分 10分  10分   10分  15分  15分</li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -560,7 +756,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-25 18:03:09" itemprop="dateModified" datetime="2022-04-25T18:03:09+08:00">2022-04-25</time>
+                <time title="修改时间：2022-05-25 11:26:56" itemprop="dateModified" datetime="2022-05-25T11:26:56+08:00">2022-05-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -596,14 +792,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
+              <span>6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>5 分钟</span>
             </span>
 
         </div>
@@ -1133,10 +1329,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-04-14 09:58:10 / 修改时间：09:58:18" itemprop="dateCreated datePublished" datetime="2022-04-14T09:58:10+08:00">2022-04-14</time>
+              <time title="创建时间：2022-04-14 09:58:10" itemprop="dateCreated datePublished" datetime="2022-04-14T09:58:10+08:00">2022-04-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-21 11:42:29" itemprop="dateModified" datetime="2022-05-21T11:42:29+08:00">2022-05-21</time>
+              </span>
 
           
   
@@ -1177,244 +1379,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="/2022/04/14/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95-image-20220414095817043.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/11/Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2022/04/11/Docker/" class="post-title-link" itemprop="url">Docker</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-11 21:19:52" itemprop="dateCreated datePublished" datetime="2022-04-11T21:19:52+08:00">2022-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-12 17:16:05" itemprop="dateModified" datetime="2022-04-12T17:16:05+08:00">2022-04-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/11/Docker/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/11/Docker/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>7.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>7 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Docker概述"><a href="#Docker概述" class="headerlink" title="Docker概述"></a>Docker概述</h1><h2 id="Docker为什么出现"><a href="#Docker为什么出现" class="headerlink" title="Docker为什么出现"></a>Docker为什么出现</h2><ol>
-<li>一款产品：开发和上线，需要两套环境。</li>
-<li>开发 — 运维   问题：我在我的电脑上可以运行。</li>
-<li>版本更新导致服务不可用。</li>
-<li>环境配置麻烦，每个机器都需要部署环境。</li></ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/11/Docker/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-    <!-- 结尾文字-->
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="浅墨">
-      <meta itemprop="description" content="点点滴滴，汇聚人生">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="落纸浅墨">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">AcWing算法基础课-01基础算法</a>
-        </h2>
-
-        <div class="post-meta">
-          <!-- 置顶 -->
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-11 09:47:44" itemprop="dateCreated datePublished" datetime="2022-04-11T09:47:44+08:00">2022-04-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-16 16:27:45" itemprop="dateModified" datetime="2022-04-16T16:27:45+08:00">2022-04-16</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">算法刷题</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95%E5%88%B7%E9%A2%98/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/" itemprop="url" rel="index"><span itemprop="name">AcWing算法基础课</span></a>
-                </span>
-            </span>
-
-          
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>16k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>15 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序主要思想：**==分治==**<br>稳定排序    平均时间复杂度：$O(n\log n)$</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/04/11/AcWing%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE_01%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
@@ -1503,20 +1468,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">87</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-count">44</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1561,13 +1526,13 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">355k</span>
+    <span title="站点总字数">375k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">5:23</span>
+    <span title="站点阅读时长">5:41</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
