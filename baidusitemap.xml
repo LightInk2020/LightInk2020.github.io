@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_CRF_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/20/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_%E5%8F%98%E5%88%86%E6%8E%A8%E6%96%AD_EM_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/16/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GCNII_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/11/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GCN_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/13/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GAT_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/07/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GCN_Code_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/13/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GAT_Code_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
+    <loc>https://lightink2020.github.io/2021/09/11/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_Coding_Note/</loc>
+    <lastmod>2022-05-25</lastmod>
+  </url>
+  <url>
     <loc>https://lightink2020.github.io/2022/05/25/%E8%80%83%E7%A0%94_%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F05IO%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/</loc>
     <lastmod>2022-05-25</lastmod>
   </url>

@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Zhi Mang Xing:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lightink2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="GAT_Code_Note 参考： [GitHub源码]GAT GAT图注意力网络论文源码pytorch版_ZJF的博客-CSDN博客  模型中的各个数据维度变化情况">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GNN代码笔记-GAT Code Note">
+<meta property="og:url" content="https://lightink2020.github.io/2021/09/13/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GAT_Code_Note/index.html">
+<meta property="og:site_name" content="落纸浅墨">
+<meta property="og:description" content="GAT_Code_Note 参考： [GitHub源码]GAT GAT图注意力网络论文源码pytorch版_ZJF的博客-CSDN博客  模型中的各个数据维度变化情况">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-13T13:32:53.000Z">
+<meta property="article:modified_time" content="2022-05-25T13:41:18.098Z">
+<meta property="article:author" content="浅墨">
+<meta property="article:tag" content="Python Code">
+<meta property="article:tag" content="Pytorch">
+<meta property="article:tag" content="GNN代码笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://lightink2020.github.io/2021/09/13/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GAT_Code_Note/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>GNN代码笔记-GAT Code Note | 落纸浅墨</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <!-- 右上github跳转-->
+    <a target="_blank" rel="noopener" href="https://github.com/LightInk2020" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      </svg>
+    </a>
+    <style>
+      .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+    </style>
+    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">落纸浅墨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">笔落生墨，纸上留痕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">49</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">96</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <!-- 设置首页头部图片 暂时做成这样，之后改成halo主题的 一行三个推荐页-->
+          <div class="post-block" style="opacity: 1;display: block; padding:0px">
+            <img src="/images/bg.png" alt="头部图片" style="border-radius:5px; height:300px;width:100%;opacity:0.65;">
+          </div>
+
+          
+
+          <div class="content post posts-expand" style="padding-top: 10px;">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2021/09/13/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GAT_Code_Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GNN代码笔记-GAT Code Note
+        </h1>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-13 21:32:53" itemprop="dateCreated datePublished" datetime="2021-09-13T21:32:53+08:00">2021-09-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-25 21:41:18" itemprop="dateModified" datetime="2022-05-25T21:41:18+08:00">2022-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DL%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">DL代码笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/DL%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">GNN代码笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/09/13/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GAT_Code_Note/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/13/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GAT_Code_Note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>18k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="GAT-Code-Note"><a href="#GAT-Code-Note" class="headerlink" title="GAT_Code_Note"></a>GAT_Code_Note</h1><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Diego999/pyGAT">[GitHub源码]GAT</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43476533/article/details/107229242">GAT图注意力网络论文源码pytorch版_ZJF的博客-CSDN博客</a></p>
+</blockquote>
+<h2 id="模型中的各个数据维度变化情况"><a href="#模型中的各个数据维度变化情况" class="headerlink" title="模型中的各个数据维度变化情况"></a>模型中的各个数据维度变化情况</h2><span id="more"></span>
+
+<blockquote>
+<p>假定各参数是训练时默认default的取值，cora数据集为例</p>
+</blockquote>
+<h3 id="cora数据集"><a href="#cora数据集" class="headerlink" title="cora数据集"></a>cora数据集</h3><h4 id="cora-cites"><a href="#cora-cites" class="headerlink" title="cora.cites"></a>cora.cites</h4><p>数据类型：每行&lt;paper_id 1&gt;&lt;word_attributes 1433&gt;&lt;class_label 1&gt;</p>
+<p>文件：总共2708*1435，即图有2708个节点</p>
+<h4 id="cora-content"><a href="#cora-content" class="headerlink" title="cora.content"></a>cora.content</h4><p>数据类型：每行&lt;ID of cited paper 1&gt; &lt;ID of citing paper 1&gt;</p>
+<p>文件：总共5429*2，即图有5429个边</p>
+<h3 id="load-data"><a href="#load-data" class="headerlink" title="load_data()"></a>load_data()</h3><p>load_data()最后输出的数据维度情况：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>adj</td>
+<td>$\tilde D^{-\frac{1}{2}}\tilde A\tilde D^{-\frac{1}{2}}$</td>
+<td>N(节点数), N</td>
+<td>2708, 2708</td>
+</tr>
+<tr>
+<td>features</td>
+<td>节点特征值</td>
+<td>N, nfeat</td>
+<td>2708, 1433</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>节点标签OneHot结果值</td>
+<td>N, nclass(标签个数)</td>
+<td>2708, 7</td>
+</tr>
+<tr>
+<td>idx_train</td>
+<td>训练集对应id [0-140)</td>
+<td>140</td>
+<td>140</td>
+</tr>
+<tr>
+<td>idx_val</td>
+<td>验证集对应id [200-500)</td>
+<td>300</td>
+<td>300</td>
+</tr>
+<tr>
+<td>idx_test</td>
+<td>测试集对应id [500-1500)</td>
+<td>1000</td>
+<td>1000</td>
+</tr>
+</tbody></table>
+<h3 id="Model（GAT）的输入"><a href="#Model（GAT）的输入" class="headerlink" title="Model（GAT）的输入"></a>Model（GAT）的输入</h3><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nfeat</td>
+<td>特征值数量</td>
+<td></td>
+<td>1433</td>
+</tr>
+<tr>
+<td>nhid</td>
+<td>隐藏单元数</td>
+<td></td>
+<td>8</td>
+</tr>
+<tr>
+<td>nclass</td>
+<td>labels的数量</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>dropout</td>
+<td>dropout的概率</td>
+<td></td>
+<td>0.6</td>
+</tr>
+<tr>
+<td>nheads</td>
+<td>attention head数量</td>
+<td></td>
+<td>8</td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>leakyReLu的负值区域斜率</td>
+<td></td>
+<td>0.2</td>
+</tr>
+</tbody></table>
+<h3 id="GAT第一层网络"><a href="#GAT第一层网络" class="headerlink" title="GAT第一层网络"></a>GAT第一层网络</h3><p>第一层网络由nheads个attention head为输入，每个attention head的输出为nhid的数量</p>
+<h4 id="GALayer中数据维度变化"><a href="#GALayer中数据维度变化" class="headerlink" title="GALayer中数据维度变化"></a>GALayer中数据维度变化</h4><p>输入：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nfeat</td>
+<td>特征值数量</td>
+<td></td>
+<td>1433</td>
+</tr>
+<tr>
+<td>nhid</td>
+<td>隐藏单元数</td>
+<td></td>
+<td>8</td>
+</tr>
+</tbody></table>
+<h5 id="def-init"><a href="#def-init" class="headerlink" title="def __init__"></a>def __init__</h5><table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>self.W</td>
+<td>权重矩阵W</td>
+<td>in_feat(该层输入feature数量), out_feat(输出)</td>
+<td>1433, 8</td>
+</tr>
+<tr>
+<td>self.a</td>
+<td>求e公式的a</td>
+<td>2*out_feat, 1</td>
+<td>16, 1</td>
+</tr>
+</tbody></table>
+<h5 id="def-forward"><a href="#def-forward" class="headerlink" title="def forward"></a>def forward</h5><p>输入：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>x</td>
+<td>输入特征</td>
+<td>N, in_feat</td>
+<td>2708, 1433</td>
+</tr>
+<tr>
+<td>adj</td>
+<td>$\tilde D^{-\frac{1}{2}}\tilde A\tilde D^{-\frac{1}{2}}$</td>
+<td>N(节点数), N</td>
+<td>2708, 2708</td>
+</tr>
+</tbody></table>
+<p>过程：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Wh</td>
+<td>公式$z_i^{(l)}=W^{(l)}h_i^{(l)}$</td>
+<td>N, nhid</td>
+<td>2708, 8</td>
+</tr>
+<tr>
+<td>Wh1</td>
+<td>$a^{(l)T}([z_i^{(l)}</td>
+<td></td>
+<td>z_j^{(l)}])$的前半段$a^{(l)T}z_i^{(l)}$</td>
+</tr>
+<tr>
+<td>Wh2</td>
+<td>$a^{(l)T}([z_i^{(l)}</td>
+<td></td>
+<td>z_j^{(l)}])$的后半段$a^{(l)T}z_j^{(l)}$</td>
+</tr>
+<tr>
+<td>e</td>
+<td>所有节点与节点之间e取值（即使两个节点没有相连）</td>
+<td>N, N</td>
+<td>2708, 2708</td>
+</tr>
+<tr>
+<td>attention</td>
+<td>所有节点与节点之间注意力系数取值</td>
+<td>N, N</td>
+<td>2708, 2708</td>
+</tr>
+<tr>
+<td>h_prime</td>
+<td>卷积操作求解的下一层数据</td>
+<td>N, nhid</td>
+<td>2708, 8</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意attention矩阵中，每一个attention系数都符合GAT的attention系数的求解公式。</p>
+<p>但是注意$attention_{ij}$与$attention_{ji}$的值不一样，因为他们公式中求解时是不一致的，含义也不同。</p>
+</blockquote>
+<p>输出：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h_prime</td>
+<td>卷积操作求解的下一层数据</td>
+<td>N, nhid</td>
+<td>2708, 8</td>
+</tr>
+</tbody></table>
+<h3 id="GAT第二层网络"><a href="#GAT第二层网络" class="headerlink" title="GAT第二层网络"></a>GAT第二层网络</h3><p>第二层网络由上一层nhid个隐藏节点的nheads个attention head的输出结果为输入，输出为nclass的概率</p>
+<p>输入：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nhid*nheads</td>
+<td>特征值数量</td>
+<td>nhid*nheads</td>
+<td>64</td>
+</tr>
+<tr>
+<td>nclass</td>
+<td>labels的数量</td>
+<td></td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>输出：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>含义</th>
+<th>维度</th>
+<th>default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>h_prime</td>
+<td>每个节点为labels的概率</td>
+<td>N, nclass</td>
+<td>2708, 7</td>
+</tr>
+</tbody></table>
+<h2 id="重要疑问！"><a href="#重要疑问！" class="headerlink" title="==重要疑问！=="></a>==重要疑问！==</h2><h3 id="1-GCN、GAT都是以整个图为训练的基础，将图的所有数据都计入，最后out也是整个图的结果？"><a href="#1-GCN、GAT都是以整个图为训练的基础，将图的所有数据都计入，最后out也是整个图的结果？" class="headerlink" title="1. GCN、GAT都是以整个图为训练的基础，将图的所有数据都计入，最后out也是整个图的结果？"></a>1. GCN、GAT都是以整个图为训练的基础，将图的所有数据都计入，最后out也是整个图的结果？</h3><p>然后计算loss时都是从out中选取出train、evl和test的范围求解loss，那划分train、evl和test还有什么意义？这训练出来的模型还有拓展性吗？（比如加入新的节点、边，那参数不都需要重新计算？）</p>
+<h3 id="2-能不能模仿CNN，训练的卷积核是为了目标而训练的？"><a href="#2-能不能模仿CNN，训练的卷积核是为了目标而训练的？" class="headerlink" title="2. 能不能模仿CNN，训练的卷积核是为了目标而训练的？"></a>2. 能不能模仿CNN，训练的卷积核是为了目标而训练的？</h3><p>就比如说：卷积核固定选取T*T的矩形，然后像CNN一样依此对所有节点进行卷积，训练小的可迁移的filter，而不是训练对于全图而言的W。</p>
+<h2 id="utils-py"><a href="#utils-py" class="headerlink" title="utils.py"></a>utils.py</h2><p>包含数据加载，数据处理等内容，与GCN一致</p>
+<h3 id="tilde-A-的normalize"><a href="#tilde-A-的normalize" class="headerlink" title="$\tilde A$的normalize"></a>$\tilde A$的normalize</h3><p>其中对于$\tilde A$的normalize的代码应该如下：（$\tilde D^{-\frac {1}{2}}\tilde A\tilde D^{-\frac {1}{2}}$）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normalize_adj</span>(<span class="params">mx</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Row-normalize sparse matrix&quot;&quot;&quot;</span></span><br><span class="line">    rowsum = np.array(mx.<span class="built_in">sum</span>(<span class="number">1</span>))  <span class="comment"># 对每行求和</span></span><br><span class="line">    r_inv_sqrt = np.power(rowsum, -<span class="number">0.5</span>).flatten()  <span class="comment"># 行每个元素求-1/2次幂，然后展平</span></span><br><span class="line">    r_inv_sqrt[np.isinf(r_inv_sqrt)] = <span class="number">0.</span>  <span class="comment"># 将r_inv_sqrt中INF数据变为0</span></span><br><span class="line">    r_mat_inv_sqrt = sp.diags(r_inv_sqrt)  <span class="comment"># 将r_inv_sqrt变为对角矩阵</span></span><br><span class="line">    <span class="keyword">return</span> mx.dot(r_mat_inv_sqrt).transpose().dot(r_mat_inv_sqrt)  <span class="comment"># 对应公式 \tilde D^&#123;-1/2&#125;\tilde A\tilde D^&#123;-1/2&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="One-hot"><a href="#One-hot" class="headerlink" title="One_hot"></a>One_hot</h3><p><strong>get_dummies</strong> 是利用pandas实现one hot encode的方式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandas.get_dummies(data, prefix=<span class="literal">None</span>, prefix_sep=’_’, dummy_na=<span class="literal">False</span>, columns=<span class="literal">None</span>, sparse=<span class="literal">False</span>, drop_first=<span class="literal">False</span>)[source]</span><br></pre></td></tr></table></figure>
+
+<p>参数说明：</p>
+<ul>
+<li>data : array-like, Series, or DataFrame 输入的数据</li>
+<li>prefix : string, list of strings, or dict of strings, default None。get_dummies转换后，列名的前缀</li>
+<li>columns : list-like, default None。指定需要实现类别转换的列名</li>
+<li>dummy_na : bool, default False，增加一列表示空缺值，如果False就忽略空缺值</li>
+<li>drop_first : bool, default False，获得k中的k-1个类别值，去除第一个。</li>
+</ul>
+<h3 id="set-使用注意-array切片问题"><a href="#set-使用注意-array切片问题" class="headerlink" title="set()使用注意/array切片问题"></a>set()使用注意/array切片问题</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>idx_features_labels.view()</span><br><span class="line">Out[<span class="number">12</span>]: </span><br><span class="line">array([[<span class="string">&#x27;31336&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, ..., <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;Neural_Networks&#x27;</span>],</span><br><span class="line">       [<span class="string">&#x27;1061127&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, ..., <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;Rule_Learning&#x27;</span>],</span><br><span class="line">       [<span class="string">&#x27;1106406&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, ..., <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;Reinforcement_Learning&#x27;</span>],</span><br><span class="line">       ...,</span><br><span class="line">       [<span class="string">&#x27;1128978&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, ..., <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;Genetic_Algorithms&#x27;</span>],</span><br><span class="line">       [<span class="string">&#x27;117328&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, ..., <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;Case_Based&#x27;</span>],</span><br><span class="line">       [<span class="string">&#x27;24043&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, ..., <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;0&#x27;</span>, <span class="string">&#x27;Neural_Networks&#x27;</span>]],</span><br><span class="line">      dtype=<span class="string">&#x27;&lt;U22&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>idx_features_labels[:, -<span class="number">1</span>]  <span class="comment"># 切片之后格式为(2708,)</span></span><br><span class="line">Out[<span class="number">13</span>]: </span><br><span class="line">array([<span class="string">&#x27;Neural_Networks&#x27;</span>, <span class="string">&#x27;Rule_Learning&#x27;</span>, <span class="string">&#x27;Reinforcement_Learning&#x27;</span>, ...,</span><br><span class="line">       <span class="string">&#x27;Genetic_Algorithms&#x27;</span>, <span class="string">&#x27;Case_Based&#x27;</span>, <span class="string">&#x27;Neural_Networks&#x27;</span>],</span><br><span class="line">      dtype=<span class="string">&#x27;&lt;U22&#x27;</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>idx_features_labels[:, -<span class="number">1</span>].shape</span><br><span class="line">Out[<span class="number">16</span>]: (<span class="number">2708</span>,)</span><br></pre></td></tr></table></figure>
+
+<p><code>set()</code>函数的输入必须是hashable type，需要是一维的数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这个是不行的</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>labels=np.array(labels,dtype=np.dtype(<span class="built_in">str</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>labels.shape  <span class="comment"># 这是两维的</span></span><br><span class="line">Out[<span class="number">9</span>]: (<span class="number">20</span>, <span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>encode_onehot(labels)</span><br><span class="line"><span class="comment"># TypeError: unhashable type: &#x27;numpy.ndarray&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="encode-onehot-函数的一些细节补充"><a href="#encode-onehot-函数的一些细节补充" class="headerlink" title="encode_onehot()函数的一些细节补充"></a>encode_onehot()函数的一些细节补充</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode_onehot</span>(<span class="params">labels</span>):</span></span><br><span class="line">    <span class="comment"># The classes must be sorted before encoding to enable static class encoding.</span></span><br><span class="line">    <span class="comment"># In other words, make sure the first class always maps to index 0.</span></span><br><span class="line">    classes = <span class="built_in">sorted</span>(<span class="built_in">list</span>(<span class="built_in">set</span>(labels)))</span><br><span class="line">    classes_dict = &#123;c: np.identity(<span class="built_in">len</span>(classes))[i, :] <span class="keyword">for</span> i, c <span class="keyword">in</span> <span class="built_in">enumerate</span>(classes)&#125;</span><br><span class="line">    labels_onehot = np.array(<span class="built_in">list</span>(<span class="built_in">map</span>(classes_dict.get, labels)), dtype=np.int32)</span><br><span class="line">    <span class="keyword">return</span> labels_onehot</span><br></pre></td></tr></table></figure>
+
+<p>其中各个数据格式（输入为load_data函数中的输入）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>classes</span><br><span class="line">Out[<span class="number">23</span>]: </span><br><span class="line">[<span class="string">&#x27;Case_Based&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Genetic_Algorithms&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Neural_Networks&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Probabilistic_Methods&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Reinforcement_Learning&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Rule_Learning&#x27;</span>,</span><br><span class="line"> <span class="string">&#x27;Theory&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>classes_dict</span><br><span class="line">Out[<span class="number">25</span>]: </span><br><span class="line">&#123;<span class="string">&#x27;Case_Based&#x27;</span>: array([<span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> <span class="string">&#x27;Genetic_Algorithms&#x27;</span>: array([<span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> <span class="string">&#x27;Neural_Networks&#x27;</span>: array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> <span class="string">&#x27;Probabilistic_Methods&#x27;</span>: array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> <span class="string">&#x27;Reinforcement_Learning&#x27;</span>: array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> <span class="string">&#x27;Rule_Learning&#x27;</span>: array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>]),</span><br><span class="line"> <span class="string">&#x27;Theory&#x27;</span>: array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>])&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">list</span>(<span class="built_in">map</span>(classes_dict.get, labels))  </span><br><span class="line"><span class="comment"># map()的数据生成在一维的list中，保持原类型</span></span><br><span class="line">Out[<span class="number">27</span>]: </span><br><span class="line">[array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>]),</span><br><span class="line"> array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> array([<span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">0.</span>, <span class="number">0.</span>, <span class="number">0.</span>]),</span><br><span class="line"> ...]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.array(<span class="built_in">list</span>(<span class="built_in">map</span>(classes_dict.get, labels)), dtype=np.int32)</span><br><span class="line"><span class="comment"># np.array()中list的单个元素发生类型的改变</span></span><br><span class="line">Out[<span class="number">28</span>]: </span><br><span class="line">array([[<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, ..., <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, ..., <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, ..., <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       ...,</span><br><span class="line">       [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, ..., <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, ..., <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">       [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, ..., <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]])</span><br></pre></td></tr></table></figure>
+
+<h2 id="layer-py"><a href="#layer-py" class="headerlink" title="layer.py"></a>layer.py</h2><h3 id="class-GraphAttentionLayer-nn-Module-Tensor版本的GALayer"><a href="#class-GraphAttentionLayer-nn-Module-Tensor版本的GALayer" class="headerlink" title="class GraphAttentionLayer(nn.Module)-Tensor版本的GALayer"></a>class GraphAttentionLayer(nn.Module)-Tensor版本的GALayer</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GraphAttentionLayer</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Simple GAT layer, similar to https://arxiv.org/abs/1710.10903</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, in_features, out_features, dropout, alpha, concat=<span class="literal">True</span></span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        concat 参数表示是否拼接 即 ||  据论文，最后一层求平均，其他层拼接</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">super</span>(GraphAttentionLayer, self).__init__()</span><br><span class="line">        self.dropout = dropout</span><br><span class="line">        self.in_features = in_features</span><br><span class="line">        self.out_features = out_features</span><br><span class="line">        self.alpha = alpha  <span class="comment"># 控制修正ReLU激活函数在负值范围的斜率角度</span></span><br><span class="line">        self.concat = concat</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 设置学习参数</span></span><br><span class="line">        self.W = nn.Parameter(torch.empty(size=(in_features, out_features)))  <span class="comment"># 建立都是0的矩阵</span></span><br><span class="line">        nn.init.xavier_uniform_(self.W.data, gain=<span class="number">1.414</span>)  <span class="comment"># xavier初始化 gain\times\sqrt&#123;\frac&#123;6&#125;&#123;&#123;fan\_in&#125;+&#123;fan\_out&#125;&#125;&#125;</span></span><br><span class="line">        self.a = nn.Parameter(torch.empty(size=(<span class="number">2</span>*out_features, <span class="number">1</span>)))  <span class="comment"># 对应公式中concat中的a 所以行数是2倍out_features</span></span><br><span class="line">        nn.init.xavier_uniform_(self.a.data, gain=<span class="number">1.414</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># nn.LeakyReLU(negative_slope)   创建修正ReLU激活函数对象</span></span><br><span class="line">        <span class="comment"># negative_slope是超参数，控制x为负数时斜率的角度</span></span><br><span class="line">        self.leakyrelu = nn.LeakyReLU(self.alpha)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, h, adj</span>):</span></span><br><span class="line">        <span class="comment"># h.shape: (N, in_features),W.shape:(in_features, out_features) Wh.shape: (N, out_features)</span></span><br><span class="line">        Wh = torch.mm(h, self.W)  <span class="comment"># 对应公式： Z^&#123;(l)&#125;=W^&#123;(l)&#125;H^&#123;(l)&#125;    Wh.shape: (N, out_features)</span></span><br><span class="line">        e = self._prepare_attentional_mechanism_input(Wh)  <span class="comment"># 对应公式：e_&#123;ij&#125;^&#123;(l)&#125;=\vec a^&#123;(l)T&#125;([z_i^&#123;(l)&#125;||z_j^&#123;(l)&#125;])</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># torch.ones_like():返回一个填充了标量值1的张量，其大小与input(这里是e)相同。</span></span><br><span class="line">        zero_vec = -<span class="number">9e15</span>*torch.ones_like(e)  <span class="comment"># -9e15表示-9000000000000000.0</span></span><br><span class="line">        attention = torch.where(adj &gt; <span class="number">0</span>, e, zero_vec)  <span class="comment"># 这里是为了将没有边相连的两节点对应的e值置为近似0，方便下面的softmax求解</span></span><br><span class="line">        attention = F.softmax(attention, dim=<span class="number">1</span>)  <span class="comment"># 计算出注意力系数  dim=1 表示每一行作为一组进行softmax</span></span><br><span class="line">        <span class="comment"># 这里和论文是相符合的，因为i行中的非零值就是i节点相连的所有邻居节点</span></span><br><span class="line">        attention = F.dropout(attention, self.dropout, training=self.training)</span><br><span class="line">        h_prime = torch.matmul(attention, Wh)  <span class="comment"># 进行卷积操作，求解下一层数据</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.concat:</span><br><span class="line">            <span class="keyword">return</span> F.elu(h_prime)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> h_prime</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_prepare_attentional_mechanism_input</span>(<span class="params">self, Wh</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        对应公式：e_&#123;ij&#125;^&#123;(l)&#125;=\vec a^&#123;(l)T&#125;([z_i^&#123;(l)&#125;||z_j^&#123;(l)&#125;])</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># Wh.shape (N, out_feature)</span></span><br><span class="line">        <span class="comment"># self.a.shape (2 * out_feature, 1)</span></span><br><span class="line">        <span class="comment"># Wh1&amp;2.shape (N, 1)</span></span><br><span class="line">        <span class="comment"># e.shape (N, N)</span></span><br><span class="line">        Wh1 = torch.matmul(Wh, self.a[:self.out_features, :])</span><br><span class="line">        Wh2 = torch.matmul(Wh, self.a[self.out_features:, :])</span><br><span class="line">        <span class="comment"># broadcast add</span></span><br><span class="line">        e = Wh1 + Wh2.T</span><br><span class="line">        <span class="comment"># 返回的最后结果是N*N的矩阵 每个元素e_&#123;ij&#125;都符合\vec a^&#123;(l)T&#125;([z_i^&#123;(l)&#125;||z_j^&#123;(l)&#125;])</span></span><br><span class="line">        <span class="keyword">return</span> self.leakyrelu(e)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__class__.__name__ + <span class="string">&#x27; (&#x27;</span> + <span class="built_in">str</span>(self.in_features) + <span class="string">&#x27; -&gt; &#x27;</span> + <span class="built_in">str</span>(self.out_features) + <span class="string">&#x27;)&#x27;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="Xavier初始化方法"><a href="#Xavier初始化方法" class="headerlink" title="Xavier初始化方法"></a>Xavier初始化方法</h4><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_35479108/article/details/90694800">深度学习之参数初始化——Xavier初始化</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27919794">深度前馈网络与Xavier初始化原理 - 知乎 (zhihu.com)</a></p>
+</blockquote>
+<p>根据文章《激活函数》，整个大型前馈神经网络无非就是一个超级大映射，将原始样本<strong>稳定的</strong>映射成它的类别。也就是将样本空间映射到类别空间。</p>
+<p>试想，如果样本空间与类别空间的分布差异很大，比如说类别空间特别稠密，样本空间特别稀疏辽阔，那么在类别空间得到的用于反向传播的误差丢给样本空间后简直变得微不足道，也就是会导致模型的训练非常缓慢。同样，如果类别空间特别稀疏，样本空间特别稠密，那么在类别空间算出来的误差丢给样本空间后简直是爆炸般的存在，即导致模型发散震荡，无法收敛。</p>
+<p>因此，我们要让样本空间与类别空间的分布差异（密度差别）不要太大，<strong>就是要让它们的方差尽可能相等</strong>。</p>
+<p><strong>所以Xavier初始化：为了使得网络中信息更好的流动，每一层输出的方差应该尽量相等。</strong>即满足Glorot条件：<br>$$<br>\forall(i,j),Var(h^i)=Var(h^j)\<br>\forall(i,j),Var(\frac{\partial Cost}{\partial z^i})=Var(\frac{\partial Cost}{\partial z^j})<br>$$<br><strong>Xavier初始化公式：</strong><br>$$<br>W\sim U[-\frac {\sqrt{6}}{\sqrt{n_i+n_{i+1}}},\frac {\sqrt{6}}{\sqrt{n_i+n_{i+1}}}]<br>$$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 代码演示：</span></span><br><span class="line">nn.init.xavier_uniform_(self.W.data, gain=<span class="number">1.414</span>)  </span><br><span class="line"><span class="comment"># xavier初始化 gain\times\sqrt&#123;\frac&#123;6&#125;&#123;&#123;fan\_in&#125;+&#123;fan\_out&#125;&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>==TODO：Xavier初始化不是很明白，特别是对于pytorch源码的实现方式不是很了解，公式其中的n_i和n_{i+1}含义不是很清晰。==</p>
+<h3 id="稀疏矩阵版本的GALayer"><a href="#稀疏矩阵版本的GALayer" class="headerlink" title="稀疏矩阵版本的GALayer"></a>稀疏矩阵版本的GALayer</h3><h2 id="models-py"><a href="#models-py" class="headerlink" title="models.py"></a>models.py</h2><h3 id="class-GAT-nn-Module"><a href="#class-GAT-nn-Module" class="headerlink" title="class GAT(nn.Module)"></a>class GAT(nn.Module)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GAT</span>(<span class="params">nn.Module</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, nfeat, nhid, nclass, dropout, alpha, nheads</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;Dense version of GAT.&quot;&quot;&quot;</span></span><br><span class="line">        <span class="built_in">super</span>(GAT, self).__init__()</span><br><span class="line">        self.dropout = dropout</span><br><span class="line"></span><br><span class="line">        self.attentions = [GraphAttentionLayer(nfeat, nhid, dropout=dropout, alpha=alpha, concat=<span class="literal">True</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(nheads)]</span><br><span class="line">        <span class="keyword">for</span> i, attention <span class="keyword">in</span> <span class="built_in">enumerate</span>(self.attentions):</span><br><span class="line">            self.add_module(<span class="string">&#x27;attention_&#123;&#125;&#x27;</span>.<span class="built_in">format</span>(i), attention)  <span class="comment"># 将8个注意力header作为当前模型的子模型</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输出层：</span></span><br><span class="line">        self.out_att = GraphAttentionLayer(nhid * nheads, nclass, dropout=dropout, alpha=alpha, concat=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, adj</span>):</span></span><br><span class="line">        <span class="comment"># x为输入  第一层x=feature</span></span><br><span class="line">        x = F.dropout(x, self.dropout, training=self.training)</span><br><span class="line">        x = torch.cat([att(x, adj) <span class="keyword">for</span> att <span class="keyword">in</span> self.attentions], dim=<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># torch.cat() 会将多头的输出结果拼接为tensor([[att(x, adj), att(x, adj),...]])</span></span><br><span class="line">        x = F.dropout(x, self.dropout, training=self.training)</span><br><span class="line">        x = F.elu(self.out_att(x, adj))</span><br><span class="line">        <span class="keyword">return</span> F.log_softmax(x, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="class-SpGAT-nn-Module"><a href="#class-SpGAT-nn-Module" class="headerlink" title="class SpGAT(nn.Module)"></a>class SpGAT(nn.Module)</h3><p>与GAT无区别，只是调用的是SpGraphAttentionLayer。</p>
+<h3 id="functional-elu"><a href="#functional-elu" class="headerlink" title="functional.elu()"></a>functional.elu()</h3><p>ELU激活函数<a target="_blank" rel="noopener" href="https://blog.csdn.net/heifan2014/article/details/79237479">ELU激活函数  CSDN博客_elu激活函数</a></p>
+<p>论文下载：<a target="_blank" rel="noopener" href="http://download.csdn.net/detail/mao_xiao_feng/9688079">FAST AND ACCURATE DEEP NETWORK LEARNING BY EXPONENTIAL LINEAR UNITS (ELUS)（2016，Djork-Arn´e Clevert, Thomas Unterthiner &amp; Sepp Hochreiter）</a></p>
+<p>ELU（Exponential linear unit）的表达式：$\alpha&gt;0$<br>$$<br>f(x)=\begin{cases}<br>x;;;;;;;;;;;;;;;;;;;;;;;;;if;x&gt;0\<br>\alpha(\exp(x)-1);;;;; if;x\leq0<br>\end{cases}\<br>f’(x)=\begin{cases}<br>1;;;;;;;;;;;;;;;;;;;;;;;;;if;x&gt;0\<br>f(x)+\alpha;;;;;;;;;;;;; if;x\leq0<br>\end{cases}<br>$$</p>
+<h3 id="pytorch-repeat-解析"><a href="#pytorch-repeat-解析" class="headerlink" title="pytorch repeat 解析"></a>pytorch repeat 解析</h3><p>pytorch 中 <code>Tensor.repeat</code> 函数，能够将一个 tensor 从不同的维度上进行重复。这个能力在 <code>Graph Attention Networks</code> 中，有着应用。现在来看下，repeat 的能力是如何工作的？</p>
+<p><code>repeat(*sizes) → Tensor</code><br> * sizes (torch.Size or int…) – The number of times to repeat this tensor along each dimension</p>
+<p>翻译过来:</p>
+<p><code>repeat</code> 会将Tensor 在指定的维度方向上进行重复。比如设置参数是 <code>2, 3, 4</code>: 表示在 0 维方向上 重复2次，1 维方向上重复 3次， 2 维方向上重复4次。</p>
+<h3 id="pytorch中view-用法"><a href="#pytorch中view-用法" class="headerlink" title="pytorch中view()用法"></a>pytorch中view()用法</h3><p>在pytorch中view函数的作用为重构张量的维度，相当于numpy中resize（）的功能，但是用法可能不太一样。如下例所示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tt1=torch.tensor([-<span class="number">0.3623</span>, -<span class="number">0.6115</span>,  <span class="number">0.7283</span>,  <span class="number">0.4699</span>,  <span class="number">2.3261</span>,  <span class="number">0.1599</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>result=tt1.view(<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>result</span><br><span class="line">tensor([[-<span class="number">0.3623</span>, -<span class="number">0.6115</span>],</span><br><span class="line">        [ <span class="number">0.7283</span>,  <span class="number">0.4699</span>],</span><br><span class="line">        [ <span class="number">2.3261</span>,  <span class="number">0.1599</span>]])</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>torch.view(参数a，参数b，…)</li>
+</ol>
+<p>在上面例子中参数a=3和参数b=2决定了将一维的tt1重构成3x2维的张量。</p>
+<ol start="2">
+<li>有的时候会出现torch.view(-1)或者torch.view(参数a，-1)这种情况。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tt2=torch.tensor([[-<span class="number">0.3623</span>, -<span class="number">0.6115</span>],</span><br><span class="line"><span class="meta">... </span>        [ <span class="number">0.7283</span>,  <span class="number">0.4699</span>],</span><br><span class="line"><span class="meta">... </span>        [ <span class="number">2.3261</span>,  <span class="number">0.1599</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>result=tt2.view(-<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>result</span><br><span class="line">tensor([-<span class="number">0.3623</span>, -<span class="number">0.6115</span>,  <span class="number">0.7283</span>,  <span class="number">0.4699</span>,  <span class="number">2.3261</span>,  <span class="number">0.1599</span>])</span><br></pre></td></tr></table></figure>
+
+<p>由上面的案例可以看到，如果是torch.view(-1)，则原张量会变成一维的结构。</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import torch</span><br><span class="line">&gt;&gt;&gt; tt3=torch.tensor(<span class="string">[[-0.3623, -0.6115],</span></span><br><span class="line"><span class="string">...[ 0.7283,  0.4699],</span></span><br><span class="line"><span class="string">...[ 2.3261,  0.1599]]</span>)</span><br><span class="line">&gt;&gt;&gt; result=tt3.view(<span class="number">2</span>,<span class="number">-1</span>)</span><br><span class="line">&gt;&gt;&gt; result</span><br><span class="line">tensor(<span class="string">[[-0.3623, -0.6115,  0.7283],</span></span><br><span class="line"><span class="string">        [ 0.4699,  2.3261,  0.1599]]</span>)</span><br></pre></td></tr></table></figure>
+
+<p>由上面的案例可以看到，如果是torch.view(参数a，-1)，则表示在参数b未知，参数a已知的情况下自动补齐列向量长度，在这个例子中a=2，tt3总共由6个元素，则b=6/2=3。torch.view(-1，参数a同理)</p>
+<h2 id="train-py"><a href="#train-py" class="headerlink" title="train.py"></a>train.py</h2><h3 id="理解optimizer-zero-grad-loss-backward-optimizer-step-的作用及原理"><a href="#理解optimizer-zero-grad-loss-backward-optimizer-step-的作用及原理" class="headerlink" title="理解optimizer.zero_grad(), loss.backward(), optimizer.step()的作用及原理"></a>理解optimizer.zero_grad(), loss.backward(), optimizer.step()的作用及原理</h3><p><strong>总得来说，这三个函数的作用是先将梯度归零（optimizer.zero_grad()），然后反向传播计算得到每个参数的梯度值（loss.backward()），最后通过梯度下降执行一步参数更新（optimizer.step()）。</strong></p>
+<p>具体介绍如下。其中一些参数：</p>
+<p><strong>param_groups：</strong>Optimizer类在实例化时会在构造函数中创建一个param_groups列表，列表中有num_groups个长度为6的param_group字典（num_groups取决于你定义optimizer时传入了几组参数），每个param_group包含了 [‘params’, ‘lr’, ‘momentum’, ‘dampening’, ‘weight_decay’, ‘nesterov’] 这6组键值对。</p>
+<p><strong>param_group[‘params’]：</strong>由传入的模型参数组成的列表，即实例化Optimizer类时传入该group的参数，如果参数没有分组，则为整个模型的参数model.parameters()，每个参数是一个torch.nn.parameter.Parameter对象。</p>
+<h4 id="optimizer-zero-grad"><a href="#optimizer-zero-grad" class="headerlink" title="optimizer.zero_grad()"></a>optimizer.zero_grad()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">zero_grad</span>(<span class="params">self</span>):</span></span><br><span class="line">       <span class="string">r&quot;&quot;&quot;Clears the gradients of all optimized :class:`torch.Tensor` s.&quot;&quot;&quot;</span></span><br><span class="line">       <span class="keyword">for</span> group <span class="keyword">in</span> self.param_groups:</span><br><span class="line">           <span class="keyword">for</span> p <span class="keyword">in</span> group[<span class="string">&#x27;params&#x27;</span>]:</span><br><span class="line">               <span class="keyword">if</span> p.grad <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">                   p.grad.detach_()</span><br><span class="line">                   p.grad.zero_()</span><br></pre></td></tr></table></figure>
+
+<p>optimizer.zero_grad()函数会遍历模型的所有参数，通过p.grad.detach_()方法截断反向传播的梯度流，再通过p.grad.zero_()函数将每个参数的梯度值设为0，即上一次的梯度记录被清空。</p>
+<p><strong>因为训练的过程通常使用mini-batch方法，所以如果不将梯度清零的话，梯度会与上一个batch的数据相关，因此该函数要写在反向传播和梯度下降之前。</strong></p>
+<h4 id="loss-backward"><a href="#loss-backward" class="headerlink" title="loss.backward()"></a>loss.backward()</h4><p>PyTorch的反向传播(即tensor.backward())是通过autograd包来实现的，autograd包会根据tensor进行过的数学运算来自动计算其对应的梯度。</p>
+<p>具体来说，torch.tensor是autograd包的基础类，如果你设置tensor的requires_grads为True，就会开始跟踪这个tensor上面的所有运算，<strong>如果你做完运算后使用tensor.backward()，所有的梯度就会自动运算，tensor的梯度将会累加到它的.grad属性里面去。</strong></p>
+<p>更具体地说，损失函数loss是由模型的所有权重w经过一系列运算得到的，若某个w的requires_grads为True，则w的所有上层参数（后面层的权重w）的.grad_fn属性中就保存了对应的运算，然后在使用loss.backward()后，会一层层的反向传播计算每个w的梯度值，并保存到该w的.grad属性中。</p>
+<p><strong>如果没有进行tensor.backward()的话，梯度值将会是None，因此loss.backward()要写在optimizer.step()之前。</strong></p>
+<h3 id="optimizer-step-："><a href="#optimizer-step-：" class="headerlink" title="optimizer.step()："></a>optimizer.step()：</h3><p>以SGD为例，torch.optim.SGD().step()源码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">step</span>(<span class="params">self, closure=<span class="literal">None</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Performs a single optimization step.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">            Arguments:</span></span><br><span class="line"><span class="string">                closure (callable, optional): A closure that reevaluates the model</span></span><br><span class="line"><span class="string">                    and returns the loss.</span></span><br><span class="line"><span class="string">            &quot;&quot;&quot;</span></span><br><span class="line">    loss = <span class="literal">None</span></span><br><span class="line">    <span class="keyword">if</span> closure <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        loss = closure()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> group <span class="keyword">in</span> self.param_groups:</span><br><span class="line">            weight_decay = group[<span class="string">&#x27;weight_decay&#x27;</span>]</span><br><span class="line">            momentum = group[<span class="string">&#x27;momentum&#x27;</span>]</span><br><span class="line">            dampening = group[<span class="string">&#x27;dampening&#x27;</span>]</span><br><span class="line">            nesterov = group[<span class="string">&#x27;nesterov&#x27;</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> group[<span class="string">&#x27;params&#x27;</span>]:</span><br><span class="line">                <span class="keyword">if</span> p.grad <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                    d_p = p.grad.data</span><br><span class="line">                    <span class="keyword">if</span> weight_decay != <span class="number">0</span>:</span><br><span class="line">                        d_p.add_(weight_decay, p.data)</span><br><span class="line">                        <span class="keyword">if</span> momentum != <span class="number">0</span>:</span><br><span class="line">                            param_state = self.state[p]</span><br><span class="line">                            <span class="keyword">if</span> <span class="string">&#x27;momentum_buffer&#x27;</span> <span class="keyword">not</span> <span class="keyword">in</span> param_state:</span><br><span class="line">                                buf = param_state[<span class="string">&#x27;momentum_buffer&#x27;</span>] = torch.clone(d_p).detach()</span><br><span class="line">                                <span class="keyword">else</span>:</span><br><span class="line">                                    buf = param_state[<span class="string">&#x27;momentum_buffer&#x27;</span>]</span><br><span class="line">                                    buf.mul_(momentum).add_(<span class="number">1</span> - dampening, d_p)</span><br><span class="line">                                    <span class="keyword">if</span> nesterov:</span><br><span class="line">                                        d_p = d_p.add(momentum, buf)</span><br><span class="line">                                        <span class="keyword">else</span>:</span><br><span class="line">                                            d_p = buf</span><br><span class="line"></span><br><span class="line">                                            p.data.add_(-group[<span class="string">&#x27;lr&#x27;</span>], d_p)</span><br><span class="line"></span><br><span class="line">                                            <span class="keyword">return</span> loss</span><br></pre></td></tr></table></figure>
+
+<p>step()函数的作用是执行一次优化步骤，通过梯度下降法来更新参数的值。因为梯度下降是基于梯度的，所以<strong>在执行optimizer.step()函数前应先执行loss.backward()函数来计算梯度。</strong></p>
+<p><strong>注意：optimizer只负责通过梯度下降进行优化，而不负责产生梯度，梯度是tensor.backward()方法产生的。</strong></p>
+<h3 id="理解model-train-和model-eval"><a href="#理解model-train-和model-eval" class="headerlink" title="理解model.train()和model.eval()"></a>理解model.train()和model.eval()</h3><p><strong>model.train()和model.eval()的区别主要在于Batch Normalization和Dropout两层。</strong></p>
+<p>如果模型中有BN层(Batch Normalization）和Dropout，需要在训练之前使用model.train()切换模型到train模式，在测试时添加model.eval()切换模型到eval模式。</p>
+<ol>
+<li><p>其中model.train()是保证BN层用每一批数据的均值和方差，而model.eval()是保证BN用全部训练数据的均值和方差；</p>
+</li>
+<li><p>而对于Dropout，model.train()是随机取一部分网络连接来训练更新参数，而model.eval()是利用到了所有网络连接。</p>
+</li>
+</ol>
+<h4 id="学习率调整"><a href="#学习率调整" class="headerlink" title="学习率调整"></a>学习率调整</h4><blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41786536/article/details/98106932">pytorch学习系列（1）：学习率调整_churh的博客-CSDN博客</a></p>
+</blockquote>
+<ol>
+<li><h5 id="等间隔调整："><a href="#等间隔调整：" class="headerlink" title="等间隔调整："></a>等间隔调整：</h5> 以SGD优化算法为例，初始学习率为0.001。</li>
+</ol>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line">scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size = <span class="number">20</span>, gamma = <span class="number">0.1</span>, last_epoch=-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">60</span>):</span><br><span class="line">	scheduler.step()</span><br><span class="line">	train()</span><br></pre></td></tr></table></figure>
+
+<p>  其中gamma为调整倍数，20指的是调整的间隔，即0-20、21-40、41-60的epoch内的学习率分别为0.001、0.0001、0.00001.<br>  last_epoch为上一个epoch数，一般默认为-1初始值。如果需要断点续训，则将其改为续接的点的epoch。</p>
+<ol start="2">
+<li><h5 id="按需间隔调整"><a href="#按需间隔调整" class="headerlink" title="按需间隔调整"></a>按需间隔调整</h5></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line">   scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer,  milestones = [<span class="number">50</span>, <span class="number">80</span>], gamma = <span class="number">0.1</span>, last_epoch=-<span class="number">1</span>)</span><br><span class="line">   <span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">     scheduler.step()</span><br><span class="line">     train()</span><br></pre></td></tr></table></figure>
+
+<p>0-50、51-80、81-100的epochs的学习率分别为0.001、0.0001、0.00001.</p>
+<ol start="3">
+<li><h5 id="指数衰减调整"><a href="#指数衰减调整" class="headerlink" title="指数衰减调整"></a>指数衰减调整</h5> 其调整方式为<br>$$<br>本次学习率=上一epoch的学习率*gamma^{epoch}<br>$$</li>
+</ol>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line">scheduler = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma = <span class="number">0.1</span>, last_epoch=-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">	scheduler.step()</span><br><span class="line">	train()</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><h5 id="余弦退火调整"><a href="#余弦退火调整" class="headerlink" title="余弦退火调整"></a>余弦退火调整</h5><p>  以余弦函数的周期为周期，在每个周期的最大值时重新设置学习率，初始学习率为最大学习率，以2*T_max为周期，周期内先下降后上升。</p>
+<p>  公式是：<br>  $$</p>
+<pre><code>\eta_t=\eta_&#123;min&#125;+\frac&#123;1&#125;&#123;2&#125;(\eta_&#123;max&#125;-\eta_&#123;min&#125;)(1+cos(\frac&#123;T_&#123;cur&#125;&#125;&#123;T_&#123;max&#125;&#125;\pi))
+</code></pre>
+<p>  $$<br>  其中$\eta_t$为设定的最小的学习率，$\eta_{max}$为初始学习率（也是最大学习率）。</p>
+<pre><code><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line">scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max = <span class="number">10</span>, eta_min=<span class="number">0</span>, last_epoch=-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">	scheduler.step()</span><br><span class="line">	train()</span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>  T_max个epoch之后重新设置学习率<br>  eta_min为最小学习率，即周期内学习率最小下降的下限，默认为0</p>
+<h6 id="余弦退火学习率衰减与模型集成方法"><a href="#余弦退火学习率衰减与模型集成方法" class="headerlink" title="余弦退火学习率衰减与模型集成方法"></a>余弦退火学习率衰减与模型集成方法</h6><p>  余弦退火学习率衰减的损失函数曲线一般也是具有一定的周期性反复上下波动，例如：</p>
+<pre><code>![余弦退火学习率衰减](GAT_Code_Note/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTc4NjUzNg==,size_16,color_FFFFFF,t_70.png)
+</code></pre>
+<p>  为什么这种方法会有用呢？其实这种方式可以使用模型集成。每次收敛到极小值其实都算是一个局部最小值，在训练的最后阶段，选择其中若干个损失最小时的模型，也就是不同的局部最小值，对这几个模型进行集成便可以综合了这些局部最小值的优势。</p>
+</li>
+<li><h5 id="自适应调整学习率"><a href="#自适应调整学习率" class="headerlink" title="自适应调整学习率"></a>自适应调整学习率</h5>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line">scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=<span class="string">&#x27;min&#x27;</span>, factor=<span class="number">0.1</span>, patience=<span class="number">10</span>, verbose=<span class="literal">False</span>, threshold=<span class="number">0.0001</span>, threshold_mode=<span class="string">&#x27;rel&#x27;</span>, cooldown=<span class="number">0</span>, min_lr=<span class="number">0</span>, eps=<span class="number">1e-08</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    train()</span><br><span class="line">    val_loss = val()</span><br><span class="line">    scheduler.step(val_loss)</span><br></pre></td></tr></table></figure>
+
+<p>  这种方式较为复杂，是当某些指标不再发生变化时使用的策略，如损失函数和精度等。</p>
+<ul>
+<li>mode:  模式，min：当指标（如损失）不再降低；</li>
+<li>max：当指标（如精度）不再上升</li>
+<li>factor：学习率调整倍数，相当于gamma</li>
+<li>patience：当10个epoch后指标不再发生变化时，调整学习率</li>
+<li>verbose：是否打印学习率信息</li>
+<li>threshold_mode：判断指标是否达到最优的模式</li>
+<li>rel：当mode=max，dynami_threshold=best*(1+threshold)；当mode=min,dynamic_threshold=best*(1-threshold)</li>
+<li>abs:  当mode=max,dynamic_threshold=best+threshold；当mode=min,dynamic_threshold=best-threshold</li>
+<li>threshold:  与threshold_mode相关</li>
+<li>cooldown:  调整学习率后，原来额学习率仍然保持cooldown个epoch后再调整学习率</li>
+<li>min_lr:  学习率降低的下限</li>
+<li>eps:  学习率变化小于该值时，不调整学习率</li>
+</ul>
+<p>  要注意的是，scheduler.step(val_loss)需要定义一个参数，即需要衡量的指标，一般选择验证集上的损失。<br>  咋一看这种学习率下降的方式似乎是最好的，但是在实际应用中我发现存在很多问题，比如当patience太小的时候，学习率很快就下降到了最小值。这是因为就算是在合适的学习率时损失函数依然会存在一定时间的不下降的情况，不会一直下降的，所以patience的大小不应该太小。</p>
+</li>
+<li><h5 id="自定义学习率调整"><a href="#自定义学习率调整" class="headerlink" title="自定义学习率调整"></a>自定义学习率调整</h5>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">optimizer = torch.optim.SGD(model.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line">scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda, last_epoch=-<span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> epoch <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">100</span>):</span><br><span class="line">    scheduler.step()</span><br><span class="line">    train()</span><br></pre></td></tr></table></figure>
+
+<p>  lr_lambda为函数，学习率=初始学习率*lr_lambda(last_epoch）</p>
+</li>
+</ol>
+<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><h4 id="为什么GCN中没有设置features-adj-labels为variable？"><a href="#为什么GCN中没有设置features-adj-labels为variable？" class="headerlink" title="为什么GCN中没有设置features, adj, labels为variable？"></a>为什么GCN中没有设置features, adj, labels为variable？</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在pytorch中的Variable就是一个存放会变化值的地理位置，里面的值会不停发生变化</span></span><br><span class="line"><span class="comment"># 这正好就符合了反向传播，参数更新的属性。  注：tensor不能反向传播，variable可以反向传播。</span></span><br><span class="line">features, adj, labels = Variable(features), Variable(adj), Variable(labels)</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:18px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+      </div>
+    
+        <div class="reward-container">
+  <div>你的打赏会让我的钱包不那么孤单~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="浅墨 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="浅墨 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>浅墨
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lightink2020.github.io/2021/09/13/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0_GAT_Code_Note/" title="GNN代码笔记-GAT Code Note">https://lightink2020.github.io/2021/09/13/GNN代码笔记_GAT_Code_Note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Python-Code/" rel="tag"><i class="fa fa-tag"></i> Python Code</a>
+              <a href="/tags/Pytorch/" rel="tag"><i class="fa fa-tag"></i> Pytorch</a>
+              <a href="/tags/GNN%E4%BB%A3%E7%A0%81%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> GNN代码笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/13/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GAT_Note/" rel="prev" title="GNN论文笔记-GAT Note">
+      <i class="fa fa-chevron-left"></i> GNN论文笔记-GAT Note
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/16/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GCNII_Note/" rel="next" title="GNN论文笔记-GCNII Note">
+      GNN论文笔记-GCNII Note <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GAT-Code-Note"><span class="nav-text">GAT_Code_Note</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%90%84%E4%B8%AA%E6%95%B0%E6%8D%AE%E7%BB%B4%E5%BA%A6%E5%8F%98%E5%8C%96%E6%83%85%E5%86%B5"><span class="nav-text">模型中的各个数据维度变化情况</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cora%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">cora数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#cora-cites"><span class="nav-text">cora.cites</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cora-content"><span class="nav-text">cora.content</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load-data"><span class="nav-text">load_data()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model%EF%BC%88GAT%EF%BC%89%E7%9A%84%E8%BE%93%E5%85%A5"><span class="nav-text">Model（GAT）的输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GAT%E7%AC%AC%E4%B8%80%E5%B1%82%E7%BD%91%E7%BB%9C"><span class="nav-text">GAT第一层网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GALayer%E4%B8%AD%E6%95%B0%E6%8D%AE%E7%BB%B4%E5%BA%A6%E5%8F%98%E5%8C%96"><span class="nav-text">GALayer中数据维度变化</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#def-init"><span class="nav-text">def __init__</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#def-forward"><span class="nav-text">def forward</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GAT%E7%AC%AC%E4%BA%8C%E5%B1%82%E7%BD%91%E7%BB%9C"><span class="nav-text">GAT第二层网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E7%96%91%E9%97%AE%EF%BC%81"><span class="nav-text">&#x3D;&#x3D;重要疑问！&#x3D;&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-GCN%E3%80%81GAT%E9%83%BD%E6%98%AF%E4%BB%A5%E6%95%B4%E4%B8%AA%E5%9B%BE%E4%B8%BA%E8%AE%AD%E7%BB%83%E7%9A%84%E5%9F%BA%E7%A1%80%EF%BC%8C%E5%B0%86%E5%9B%BE%E7%9A%84%E6%89%80%E6%9C%89%E6%95%B0%E6%8D%AE%E9%83%BD%E8%AE%A1%E5%85%A5%EF%BC%8C%E6%9C%80%E5%90%8Eout%E4%B9%9F%E6%98%AF%E6%95%B4%E4%B8%AA%E5%9B%BE%E7%9A%84%E7%BB%93%E6%9E%9C%EF%BC%9F"><span class="nav-text">1. GCN、GAT都是以整个图为训练的基础，将图的所有数据都计入，最后out也是整个图的结果？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E8%83%BD%E4%B8%8D%E8%83%BD%E6%A8%A1%E4%BB%BFCNN%EF%BC%8C%E8%AE%AD%E7%BB%83%E7%9A%84%E5%8D%B7%E7%A7%AF%E6%A0%B8%E6%98%AF%E4%B8%BA%E4%BA%86%E7%9B%AE%E6%A0%87%E8%80%8C%E8%AE%AD%E7%BB%83%E7%9A%84%EF%BC%9F"><span class="nav-text">2. 能不能模仿CNN，训练的卷积核是为了目标而训练的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#utils-py"><span class="nav-text">utils.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tilde-A-%E7%9A%84normalize"><span class="nav-text">$\tilde A$的normalize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#One-hot"><span class="nav-text">One_hot</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F-array%E5%88%87%E7%89%87%E9%97%AE%E9%A2%98"><span class="nav-text">set()使用注意&#x2F;array切片问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#encode-onehot-%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%86%E8%8A%82%E8%A1%A5%E5%85%85"><span class="nav-text">encode_onehot()函数的一些细节补充</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#layer-py"><span class="nav-text">layer.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class-GraphAttentionLayer-nn-Module-Tensor%E7%89%88%E6%9C%AC%E7%9A%84GALayer"><span class="nav-text">class GraphAttentionLayer(nn.Module)-Tensor版本的GALayer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Xavier%E5%88%9D%E5%A7%8B%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-text">Xavier初始化方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E7%89%88%E6%9C%AC%E7%9A%84GALayer"><span class="nav-text">稀疏矩阵版本的GALayer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#models-py"><span class="nav-text">models.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#class-GAT-nn-Module"><span class="nav-text">class GAT(nn.Module)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-SpGAT-nn-Module"><span class="nav-text">class SpGAT(nn.Module)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#functional-elu"><span class="nav-text">functional.elu()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pytorch-repeat-%E8%A7%A3%E6%9E%90"><span class="nav-text">pytorch repeat 解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pytorch%E4%B8%ADview-%E7%94%A8%E6%B3%95"><span class="nav-text">pytorch中view()用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#train-py"><span class="nav-text">train.py</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3optimizer-zero-grad-loss-backward-optimizer-step-%E7%9A%84%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%8E%9F%E7%90%86"><span class="nav-text">理解optimizer.zero_grad(), loss.backward(), optimizer.step()的作用及原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#optimizer-zero-grad"><span class="nav-text">optimizer.zero_grad()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#loss-backward"><span class="nav-text">loss.backward()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#optimizer-step-%EF%BC%9A"><span class="nav-text">optimizer.step()：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3model-train-%E5%92%8Cmodel-eval"><span class="nav-text">理解model.train()和model.eval()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%B0%83%E6%95%B4"><span class="nav-text">学习率调整</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AD%89%E9%97%B4%E9%9A%94%E8%B0%83%E6%95%B4%EF%BC%9A"><span class="nav-text">等间隔调整：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%89%E9%9C%80%E9%97%B4%E9%9A%94%E8%B0%83%E6%95%B4"><span class="nav-text">按需间隔调整</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E8%A1%B0%E5%87%8F%E8%B0%83%E6%95%B4"><span class="nav-text">指数衰减调整</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E8%B0%83%E6%95%B4"><span class="nav-text">余弦退火调整</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BD%99%E5%BC%A6%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%A1%B0%E5%87%8F%E4%B8%8E%E6%A8%A1%E5%9E%8B%E9%9B%86%E6%88%90%E6%96%B9%E6%B3%95"><span class="nav-text">余弦退火学习率衰减与模型集成方法</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E9%80%82%E5%BA%94%E8%B0%83%E6%95%B4%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="nav-text">自适应调整学习率</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%A6%E4%B9%A0%E7%8E%87%E8%B0%83%E6%95%B4"><span class="nav-text">自定义学习率调整</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-text">问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88GCN%E4%B8%AD%E6%B2%A1%E6%9C%89%E8%AE%BE%E7%BD%AEfeatures-adj-labels%E4%B8%BAvariable%EF%BC%9F"><span class="nav-text">为什么GCN中没有设置features, adj, labels为variable？</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="浅墨"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">浅墨</p>
+  <div class="site-description" itemprop="description">点点滴滴，汇聚人生</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LightInk2020" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LightInk2020" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-04 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">浅墨</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">446k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">6:46</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+<!-- 不蒜子计算浏览量 -->
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv"><span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>与你擦肩而过<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv"><span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>你是我的第<span id="busuanzi_value_site_uv"></span>个朋友</span>
+    
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+
+<!--浏览器搞笑标题-->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+<!-- 🌸飘落 -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js"></script>
+<!-- 雪花飘落 -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/Yafine/cdn@2.5/source/js/snow1.js"></script> -->
+<!-- 样式一 连线 -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
+<!-- 样式二（飘动的彩带） -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/piao.js" type="text/javascript"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'K46o2NCWKcdduRzLxsjdmu9E-gzGzoHsz',
+      appKey     : 'ilTccl33w3v2Fvw5swGISSju',
+      placeholder: "如果有任何建议、想法和问题，欢迎您的留言！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>

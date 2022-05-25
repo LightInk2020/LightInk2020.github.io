@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Zhi Mang Xing:300,300italic,400,400italic,700,700italic|Source Code Pro:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-mac-osx.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"lightink2020.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="GMNN Note 参考： Paper: GMNN: Graph Markov Neural Networks (arxiv.org)  PaperMotivation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GNN论文笔记-GMNN Note">
+<meta property="og:url" content="https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/index.html">
+<meta property="og:site_name" content="落纸浅墨">
+<meta property="og:description" content="GMNN Note 参考： Paper: GMNN: Graph Markov Neural Networks (arxiv.org)  PaperMotivation">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/word-image-749.png">
+<meta property="article:published_time" content="2021-09-19T00:12:32.000Z">
+<meta property="article:modified_time" content="2022-05-25T13:42:18.673Z">
+<meta property="article:author" content="浅墨">
+<meta property="article:tag" content="GNN">
+<meta property="article:tag" content="论文笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/word-image-749.png">
+
+<link rel="canonical" href="https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>GNN论文笔记-GMNN Note | 落纸浅墨</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+    <!-- 右上github跳转-->
+    <a target="_blank" rel="noopener" href="https://github.com/LightInk2020" class="github-corner" aria-label="View source on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+      </svg>
+    </a>
+    <style>
+      .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+    </style>
+    
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">落纸浅墨</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">笔落生墨，纸上留痕</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">49</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">40</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">96</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <!-- 设置首页头部图片 暂时做成这样，之后改成halo主题的 一行三个推荐页-->
+          <div class="post-block" style="opacity: 1;display: block; padding:0px">
+            <img src="/images/bg.png" alt="头部图片" style="border-radius:5px; height:300px;width:100%;opacity:0.65;">
+          </div>
+
+          
+
+          <div class="content post posts-expand" style="padding-top: 10px;">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="浅墨">
+      <meta itemprop="description" content="点点滴滴，汇聚人生">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="落纸浅墨">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          GNN论文笔记-GMNN Note
+        </h1>
+
+        <div class="post-meta">
+          <!-- 置顶 -->
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-19 08:12:32" itemprop="dateCreated datePublished" datetime="2021-09-19T08:12:32+08:00">2021-09-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-05-25 21:42:18" itemprop="dateModified" datetime="2022-05-25T21:42:18+08:00">2022-05-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">GNN论文笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="GMNN-Note"><a href="#GMNN-Note" class="headerlink" title="GMNN Note"></a>GMNN Note</h2><blockquote>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1905.06214">Paper: GMNN: Graph Markov Neural Networks (arxiv.org)</a></p>
+</blockquote>
+<h3 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h3><h4 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h4><span id="more"></span>
+
+<ul>
+<li><p>问题定义：弱监督下的关系数据中的对象分类。形式化地来说，给定一个图G，图上有结点V表示一系列对象，在对象间存在有一系列边E，且所有结点的属性集合为$x_V$。当前已知部分结点L的标签$y_L$，$L\subset V$，目的是推测出剩余结点U的标签值$y_U$，$U=V-L$。</p>
+</li>
+<li><p>该问题当前主要可以从两个方向进行研究：</p>
+<ol>
+<li><p>统计关系学习（SRL, Statistical Relational Learning）</p>
+<p>以统计模型来对关系数据进行建模，代表性的方法有条件马尔可夫网络（relational Markov networks）和马尔可夫逻辑网（Markov logic networks）。这些方法通常使用条件随机场来对对象之间的依赖关系进行建模，也正是因为这种建模的有效性，这些方法能够在弱监督的对象分类上取得不错的效果。</p>
+</li>
+</ol>
+<blockquote>
+<p>采用CRF  序列化标注算法（sequence labeling algorithm）</p>
+<ul>
+<li><p>以如下方式计算标签的联合概率分布：<br>$$<br>p(y_V|x_V)=\frac{1}{Z(x_V)}\prod_{(i,j)\in E}\psi_{i,j}(y_i,y_j,x_V) \tag{1}<br>$$</p>
+<ul>
+<li>$(i,j)$是图G上的边，$\psi_{i,j}(y_i,y_j,x_V)$是边的潜在得分，通常潜在的分数是通过一些手工功能函数（如逻辑公式）的线性组合来计算的。</li>
+</ul>
+</li>
+<li><p>这种情况下，预测未知标签任务被看做是推断问题，我们还要去计算位置标签的后验分布$p(y_U|y_L,x_V)$，然而由于标签的复杂结构关系，后验十分难求。</p>
+</li>
+</ul>
+</blockquote>
+<ol start="2">
+<li><p>图神经网络（GNN, Graph Neural Network）</p>
+<p>通过非线性的神经结构，能够以端到端的方式学习到有效的对象表示（representation），从而解决对象分类的问题。例如图卷积网络（graph convolutional networks）可以有效地将周围结点的信息学习到结点的表示当中。这类方法由于能够有效地从关系数据中学习到对象的表示，目前已经达到了SOTA的表现。</p>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li><p>与 SRL 相比，GNN 忽略掉标签的依赖关系，只关注于节点的特征表示。由于 GNN 将标签之间视为独立，那么此情况下标签的联合分布表示为：<br>$$<br>p(y_V|x_V)=\prod_{n\in V}p(y_n|x_V)<br>$$</p>
+</li>
+<li><p>因此，GNN独立地独立推断每个对象的标签分布$p(y_n|x_V)$。<br>$$<br>h=g(x_V,E),p(y_n|x_V)=Cat(y_n|softmax(Wh_n))\tag{2}<br>$$<br>其中h是|V|×d维的特征向量，W是权重，每一轮节点特征h都会通过自己的邻居进行更新。经过多层网络的学习，特征最后经过一个softmax分类器来预测最终的标签。整个工作可以看做一个端到端的训练。代表性的方法有GCN、GAT等。</p>
+</li>
+</ul>
+</blockquote>
+<p>从本质上讲，这两种方法的目标都是对已知对象属性$x_V$和图结构条件$E$下的对象标签分布进行建模，即$p(y_V|x_V,E)$。</p>
+</li>
+<li><p>存在的问题</p>
+<ul>
+<li><p>在传统的统计关系学习方法中，存在着以下缺陷：</p>
+<ol>
+<li>由于这些方法通常采用CRF进行建模，因此需要手动地构造一些特征函数来作为势函数的组成部分，而这些特征函数往往是启发式的，从而导致了模型的能力有限；</li>
+<li>由于对象之间关系结构的复杂性，导致难以推理（inference）出未知标签的结点U的后验分布（posterior distribution）。</li>
+</ol>
+</li>
+<li><p>在图神经网络的方法中，由于各个结点的标签是根据相关的表示分别预测的，因此忽略了各个结点的标签之间的依赖性</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h4><ul>
+<li><p>提出基于半监督目标分类的图马尔可夫神经网络（GMNN, Graph Markov Neural Network），结合了SRL与GNN的优点，既能够学习到有效的结点表示，也能够对结点标签之间的依赖进行建模。</p>
+<p><img src="/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/word-image-749.png" alt="GMNN"></p>
+</li>
+<li><p>GMNN利用CRF通过对象属性（节点特征）来建模标签之间的联合分布：$p(y_V|x_V)$。然后采用伪似然变分EM（Pseudolikelihood Variational EM）框架对条件随机场进行优化。在E-step中，使用GNN来学习节点特征，以便进行标签预测。在M-step中，利用另一个GNN对目标标签的局部依赖性进行建模。</p>
+</li>
+</ul>
+<h5 id="Pseudo-likelihood-Variational-EM"><a href="#Pseudo-likelihood-Variational-EM" class="headerlink" title="Pseudo-likelihood Variational EM"></a>Pseudo-likelihood Variational EM</h5><ul>
+<li><p>GMNN使用SRL方法CRF，即<br>$$<br>p_{\phi}(y_V|x_V)=\frac{1}{Z(x_V)}\prod_{(i,j)\in E}\psi_{i,j}(y_i,y_j,x_V)\tag{1}<br>$$<br>来建立基于节点特征的节点标签联合分布模型$p_{\phi}(y_V|x_V)$，其中$\phi$是模型参数。</p>
+<blockquote>
+<ul>
+<li>链式马尔科夫随机向量场CRF公式：</li>
+</ul>
+<p>$$<br>P(y|x)=\frac{\exp(w·\phi(x,y))}{Z(x)}\<br>Z(x)=\sum_y\exp(w·\phi(x,y))<br>$$</p>
+<ul>
+<li>在普遍的随机向量场</li>
+</ul>
+<p> CRF 则使用一个指数模型来表示整个标签序列的联合概率，这个概率条件依赖于给定的完整观察序列。也就是说CRF是一个以观测序列$X$为全局条件的随机场。存在函数$f(y_1,…,y_n;X)$，使得<br>$$<br> P(y_1,y_2,…,y_n|X)=\frac{\exp(f(y_1,y_2,…,y_n;X))}{Z(X)}\<br> Z(X)=\sum_{y_1,y_2,…,y_n\in S^n}e^{f(y_1,…,y_n;X)}<br>$$<br> CRF 的计算困难之处在于上式的分母项包含了所有可能路径$S^n$的求和，搜索空间非常庞大.因此做出一些简化，假设输出之间的关联仅发生在相邻位置，并且关联是指数加性的：<br>$$<br> f(y_1,…,y_n;X)=\sum_{k=1}^{n}f(y_k;X)+\sum_{k=2}^{n}g(y_{k-1},y_{k})<br>$$</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>这里，$\exp(f(y_1,…,y_n;X))$取了边的潜在得分：$\psi_{i,j}(y_i,yj,x_V)$   ==不知道为什么这么取==</li>
+</ul>
+</blockquote>
+</li>
+<li><p>我们通过最大化观测对象标签的对数似然函数，即$\log p_{\phi}(y_L|x_V)$来优化模型参数$\phi$，从而求已知标签的最大似然：$p_{\phi}(y_L|x_V)$。</p>
+</li>
+<li><p>但由于存在大量的未知标签，直接最大化对数似然很困难，因此我们通过变分推断的方法，用变分分布$q_\theta(y_U|x_V)$来最大化对数似然的证据下界（ELBO）：<br>$$<br>\log p_{\phi}(y_L|x_V)\geq\<br>\mathbb{E}<em>{q</em>{\theta}(y_U|x_V)}[\log p_{\phi}(y_L,y_U|x_V)-\log q_{\theta}(y_U|x_V)] \tag{3}<br>$$</p>
+<blockquote>
+<p>变分推断</p>
+<p>假定用$X=x_{1:n}$代表我们输入的观测值，$Z=z_{1:m}$代表模型中的隐藏变量，问题即为推断输入数据的后验条件概率分布$p(Z|X)$。</p>
+<ol>
+<li><p>我们提出关于隐藏变量的近似概率分布$Q$，希望从中找到一个与真实的后验分布的KL Divergence（KL散度）最小的分布$q^*(X)$。因此变分推断将推断问题转化为了求极值的优化问题。</p>
+</li>
+<li><p>由于<br>$$<br>\ln(P(X))=\int Q(Z)\ln({P(X,Z)})dZ-\int Q(Z)\ln(Q(Z))dZ+\int Q(Z)\ln(\frac{Q(Z)}{P(Z|X)})dZ<br>$$<br>等式的右端，ELBO是一个泛函，是Q的函数，由于KL距离是非负的，所以ELBO的上界就是lnP(X) 。</p>
+<p>我们的目标是最小化KL距离，但其中P(Z|X) 是难以得知的，但式中KL距离和ELBO是此消彼长的关系，这等价于最大化ELBO。所以我们改变优化目标为<strong>evidence lower bound（简称ELBO）</strong>：<br>$$<br>\arg\max_Q=\mathbb{E}(\ln({P(X,Z)})-\mathbb{E}(\ln(Q(Z))<br>$$</p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>接下来，根据变分EM算法(Neal &amp; Hinton, 1998)，可以通过变分E步和M步交替来优化该下界ELBO。</p>
+</li>
+<li><p>在变分E-step（又称推理程序）中，目标是固定$p_{\phi}$并更新变分分布$q_\theta(y_U|x_V)$以近似真实的后验分布$p_\phi(y_U|y_L,x_V)$，即计算最佳的变分参数。</p>
+</li>
+<li><p>在M-step（也就是学习过程）中，我们固定$q_\theta$并更新$p_{\phi}$以最大化以下似然函数:（即利用E步求出的$q_\theta(y_U|x_V)$更新模型参数）<br>$$<br>\mathscr{l}(\phi)=\mathbb{E}<em>{q</em>{\theta}(y_U|x_V)}[\log{p_\phi}(y_L,y_U|x_V)]\tag{4}<br>$$</p>
+</li>
+</ul>
+<h6 id="M-Step"><a href="#M-Step" class="headerlink" title="M-Step"></a>M-Step</h6><p>在 M-step，这等价于优化（4）式。然而，直接优化（4）式是很困难的，因为这是对整个条件随机场进行优化，需要计算$p_\phi$的配分函数（partition function），即（1）式中的分母 $Z(x_V)$。基于$p_\phi(y_V|x_V)$的独立性，我们可以将（4）式转化为优化（5）式：==？==<br>$$<br>  \begin{aligned}<br>  \ell_{P L}(\phi) &amp; \triangleq \mathbb{E}<em>{q</em>{\theta}\left(\mathbf{y}<em>{U} \mid \mathbf{x}</em>{V}\right)}\left[\sum_{n \in V} \log p_{\phi}\left(\mathbf{y}<em>{n} \mid \mathbf{y}</em>{V \backslash n}, \mathbf{x}<em>{V}\right)\right] \<br>  &amp;=\mathbb{E}</em>{q_{\theta}\left(\mathbf{y}<em>{U} \mid \mathbf{x}</em>{V}\right)}\left[\sum_{n \in V} \log p_{\phi}\left(\mathbf{y}<em>{n} \mid \mathbf{y}</em>{\mathrm{NB}(\mathrm{n})}, \mathbf{x}<em>{V}\right)\right]<br>  \end{aligned}\tag{5}<br>$$<br>其中 NB（n）是节点 n 的邻居。（5）式被称为伪似然函数（pseudo-likelihood function）。在似然函数（4）式中，某节点的标签与图上的其他所有节点有关；在伪似然函数（5）式中，某节点的标签只与其邻域节点有关；此时，通过最大化伪似然函数求取节点标签，就只需要聚合邻域的信息。<br>（5）式的意义是，聚合邻域的标签信息和特征信息，通过最大化伪似然函数求取节点标签。因为 GNN 是一个聚合邻域信息并进行消息传递的过程，所以 $p</em>{\phi}$ 可以通过一个 GNN 实现。<br>$$<br>  p_{\phi}\left(\mathbf{y}<em>{n} \mid \mathbf{y}</em>{\mathrm{NB}(n)}, \mathbf{x}<em>{V}\right)=\operatorname{Cat}\left(\mathbf{y}</em>{n} \mid \operatorname{softmax}\left(W_{\phi} \mathbf{h}_{\phi, n}\right)\right)<br>$$</p>
+<h6 id="E-Step"><a href="#E-Step" class="headerlink" title="E-Step"></a>E-Step</h6><p>然后讨论E-step中的$q_\theta$。由于具体的后验分布是难以计算的，因此引入了平均场近似（mean-field approximation）。由于其独立性，故由平均场理论有：<br>$$<br>q_{\theta}\left(\mathbf{y}<em>{U} \mid \mathbf{x}</em>{V}\right)=\prod_{n \in U} q_{\theta}\left(\mathbf{y}<em>{n} \mid \mathbf{x}</em>{V}\right)\tag{6}<br>$$<br>受摊还推断（amortized inference）的启发，同样使用一个GNN来参数化结点标签的后验分布，该GNN能够学习到有利于标签预测的结点的表示。<br>$$<br>q_{\theta}\left(\mathbf{y}<em>{n} \mid \mathbf{x}</em>{V}\right)=\operatorname{Cat}\left(\mathbf{y}<em>{n} \mid \operatorname{softmax}\left(W</em>{\phi} \mathbf{h}<em>{\phi, n}\right)\right)\tag{7}<br>$$<br>最大化似然函数：==证明==<br>$$<br>\begin{aligned}<br>&amp;\log q</em>{\theta}\left(\mathbf{y}<em>{n} \mid \mathbf{x}</em>{V}\right)= \<br>&amp;\mathbb{E}<em>{q</em>{\theta}\left(\mathbf{y}<em>{\mathrm{NB}(n) \cap U} \mid \mathbf{x}</em>{V}\right)}\left[\log p_{\phi}\left(\mathbf{y}<em>{n} \mid \mathbf{y}</em>{\mathrm{NB}(n)}, \mathbf{x}<em>{V}\right)\right]+\mathrm{const.}<br>\end{aligned}\tag{8}<br>$$<br>（8）式证明见附录，参考文献 [4] 中也给出了一个类似的式子的证明过程。在（8）式中，用采样代替求期望：<br>$$<br>\begin{aligned}<br>&amp;\mathbb{E}</em>{q_{\theta}\left(\mathbf{y}<em>{\mathrm{NB}(n) \cap U} \mid \mathbf{x}</em>{V}\right)}\left[\log p_{\phi}\left(\mathbf{y}<em>{n} \mid \mathbf{y}</em>{\mathrm{NB}(n)}, \mathbf{x}<em>{V}\right)\right] \<br>&amp;\simeq \log p</em>{\phi}\left(\mathbf{y}<em>{n} \mid \hat{\mathbf{y}}</em>{\mathrm{NB}(n)}, \mathbf{x}<em>{V}\right)<br>\end{aligned}\tag{9}<br>$$<br>在上述公式中，$\hat y</em>{NB(n)}={\hat y_k}_{k\in NB(n)}$定义如下：对于对象n的每个未标记邻域k，我们给出了$\hat y_k\sim q_\theta(y_k|x_V)$，而对于对象n每一个被标记的邻域K，$\hat y_k$被设为真实的标签。</p>
+<p>在实践中，我们发现使用$q_\theta(y_{NB(n)\cap U}|x_V)$中的一个样本可以得到多个样本的可比结果，因此，在实验中为了效率，只有一个样本被使用，基于方程（8）和（9），最优$q_\theta(y_n|x_V)$满足：<br>$$<br>q_{\theta}\left(\mathbf{y}<em>{n} \mid \mathbf{x}</em>{V}\right) \approx p_{\phi}\left(\mathbf{y}<em>{n} \mid \hat{\mathbf{y}}</em>{\mathrm{NB}(n)}, \mathbf{x}<em>{V}\right)\tag{10}<br>$$<br>（10）式中，$q_\theta$是一个进行特征传播的 GNN，学习一个从特征到标签的映射，$p_\phi$是一个进行标签传播的 GNN，学习一个从已标注节点标签到未标注节点标签的映射。即我们使用$p_\phi (y_n|\hat y</em>{NB(n)},x_V)$，并最小化：$KL(p_\phi (y_n|\hat y_{NB(n)},x_V)||q_\theta(y_n||x_V))$</p>
+<p>我们进一步使用并行更新策略来加速训练，即联合</p>
+<p>为对 GMNN 进行训练，我们首先预训练$q_\theta$：用全体节点的特征作为输入，将已标注节点标签作为监督信息，为全体节点学习“伪标签”。优化目标：<br>$$<br>O_{\theta, L}=\sum_{n \in L} \log q_{\theta}\left(\mathbf{y}<em>{n} \mid \mathbf{x}</em>{V}\right)\tag{12}<br>$$<br>接着，将生成的“伪标签”输入$p_\phi$，训练目标是使得其生成的标签与“伪标签”尽量接近，这就是（5）式的意义。根据（8）（9）式可将（5）式简化为：<br>$$<br>O_{\phi}=\sum_{n \in V} \log p_{\phi}\left(\hat{\mathbf{y}}<em>{n} \mid \hat{\mathbf{y}}</em>{\mathrm{NB}(\mathrm{n})}, \mathbf{x}<em>{V}\right)\tag{15}<br>$$<br>最后，将节点特征再次输入$q_\theta$，训练目标是使得其生成的标签与$p_\phi$生成的标签尽量接近，并将此时$q_\theta$输出的标签作为预测结果。训练目标：<br>$$<br>O</em>{\theta, U}=\sum_{n \in U} \mathbb{E}<em>{p</em>{\phi}\left(\mathbf{y}<em>{n} \mid \hat{\mathbf{y}}</em>{\mathrm{NB}(n)}, \mathbf{x}<em>{V}\right)}\left[\log q</em>{\theta}\left(\mathbf{y}<em>{n} \mid \mathbf{x}</em>{V}\right)\right]\tag{11}<br>$$<br>所以：<br>$$<br>O_\theta=O_{\theta,U}+O_{\theta,L}\tag{13}<br>$$</p>
+
+    </div>
+
+    
+    
+    
+    <!-- 结尾文字-->
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:18px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+    
+</div>
+      </div>
+    
+        <div class="reward-container">
+  <div>你的打赏会让我的钱包不那么孤单~</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="浅墨 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="浅墨 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>浅墨
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://lightink2020.github.io/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_Note/" title="GNN论文笔记-GMNN Note">https://lightink2020.github.io/2021/09/19/GNN论文笔记_GMNN_Note/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/GNN/" rel="tag"><i class="fa fa-tag"></i> GNN</a>
+              <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 论文笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/16/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GCNII_Note/" rel="prev" title="GNN论文笔记-GCNII Note">
+      <i class="fa fa-chevron-left"></i> GNN论文笔记-GCNII Note
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/19/GNN%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0_GMNN_CRF_Note/" rel="next" title="GNN论文笔记-GMNN 变分推断 EM Note">
+      GNN论文笔记-GMNN 变分推断 EM Note <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GMNN-Note"><span class="nav-text">GMNN Note</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Paper"><span class="nav-text">Paper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Motivation"><span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Method"><span class="nav-text">Method</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Pseudo-likelihood-Variational-EM"><span class="nav-text">Pseudo-likelihood Variational EM</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#M-Step"><span class="nav-text">M-Step</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#E-Step"><span class="nav-text">E-Step</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="浅墨"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">浅墨</p>
+  <div class="site-description" itemprop="description">点点滴滴，汇聚人生</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">40</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/LightInk2020" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;LightInk2020" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2021-04 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">浅墨</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">446k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">6:46</span>
+</div>
+<!--
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+<!-- 不蒜子计算浏览量 -->
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv"><span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>与你擦肩而过<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv"><span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>你是我的第<span id="busuanzi_value_site_uv"></span>个朋友</span>
+    
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+
+<!--浏览器搞笑标题-->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
+<!-- 🌸飘落 -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js"></script>
+<!-- 雪花飘落 -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/Yafine/cdn@2.5/source/js/snow1.js"></script> -->
+<!-- 样式一 连线 -->
+<!-- <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script> -->
+<!-- 样式二（飘动的彩带） -->
+<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/piao.js" type="text/javascript"></script>
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'K46o2NCWKcdduRzLxsjdmu9E-gzGzoHsz',
+      appKey     : 'ilTccl33w3v2Fvw5swGISSju',
+      placeholder: "如果有任何建议、想法和问题，欢迎您的留言！",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
